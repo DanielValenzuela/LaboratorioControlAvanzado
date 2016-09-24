@@ -1,53 +1,52 @@
 close all;
-clear
+%clear
 clc
-%load('DATOS_EXP1.mat');
+load('datosExp1.mat');
 %Constantes
 H = 34.5;  %[cm]
 R = 78.9;  %[cm]
 Ts = 0.01;  %[s]
 Fs = 1/Ts; %[Hz]
 %------------------
-%frecuencias = (30:17.5:100)';
-frecuencias = [30;47.5]';
-%alturas1 = h.signals.values;
-%alturas2 = h2.signals.values;
-alturas1 = h;
-alturas2 = h2;
-%h_datas = struct('alturas1',alturas1,'alturas2',alturas2,'alturas3',alturas3,'alturas4',alturas4,'alturas5',alturas5);
-h_datas = struct('alturas1',alturas1,'alturas2',alturas2);
-limites = [[20 49];[20 55];[30 50];[40 50];[50 50]];
+frecuencias = (30:17.5:100)';
+alturas1 = nivel1;
+alturas2 = nivel2;
+alturas3 = nivel3;
+alturas4 = nivel4;
+alturas5 = nivel5;
+h_datas = struct('alturas1',alturas1,'alturas2',alturas2,'alturas3',alturas3,'alturas4',alturas4,'alturas5',alturas5);
+limites = [[20 40];[30 60];[30 60];[30 60];[30 60]];
 
 %grafico de valores no filtrados
 figure('Name','alturas NO filtradas','NumberTitle','off');
-for i=1:2
+for i=1:length(frecuencias)
     i_dato = strcat('alturas',int2str(i));
-    subplot(2,1,i); plot(h_datas.(i_dato).signals.values, 'r');
+    subplot(2,3,i); plot(h_datas.(i_dato).signals.values, 'r');
     %xlim([1.45 1.5])
     title(strcat('Grafico de alturas con frecuencia',int2str(i),',  NO filtradas'))
     xlabel('Tiempo [s]'); ylabel('Altura [cm], h(t)');
 end
 
-h_datas_filtradas = struct('filt1',[],'filt2',[]);
-h_times = struct('t1',[],'t2',[]);
+h_datas_filtradas = struct('filt1',[],'filt2',[],'filt3',[],'filt4',[],'filt5',[]);
+h_times = struct('t1',[],'t2',[],'t3',[],'t4',[],'t5',[]);
 
 figure('Name','alturas filtradas','NumberTitle','off');
-for i=1:2
+for i=1:length(frecuencias)
     i_altura = strcat('alturas',int2str(i));
     i_time = strcat('t',int2str(i));
     i_filt = strcat('filt',int2str(i));
     [auxH, auxT] = myFilt(h_datas.(i_altura), limites(i,1), limites(i,2));
     h_datas_filtradas.(i_filt) = auxH;
     h_times.(i_time) = auxT;
-    subplot(2,1,i); plot(h_datas_filtradas.(i_filt), 'b');
+    subplot(2,3,i); plot(h_datas_filtradas.(i_filt), 'b');
     %xlim([1.45 1.5])
     title(strcat('Grafico de alturas con frecuencia',int2str(i),',  filtradas'))
     xlabel('Tiempo [s]'); ylabel('Altura [cm], h(t)');
 end
 
-volumenesMatrix = struct('v1',[],'v2',[]);
+volumenesMatrix = struct('v1',[],'v2',[],'v3',[],'v4',[],'v5',[]);
 
-for i=1:2
+for i=1:length(frecuencias)
     i_filt = strcat('filt',int2str(i));
     i_volumen = strcat('v',int2str(i));
     i_time = strcat('t',int2str(i));
@@ -61,7 +60,7 @@ for i=1:2
 end
 
 %figure('Name','Flujos en el tiempo','NumberTitle','off');
-for i=1:2
+for i=1:length(frecuencias)
     i_volumen = strcat('v',int2str(i));
     i_time = strcat('t',int2str(i));
     FlujosProm(i) = mean(volumenesMatrix.(i_volumen));
@@ -73,7 +72,7 @@ for i=1:2
     [flujoFiltrado_f, flujoFiltrado_S] = Fourier(flujoFiltrado_t, Fs);
     graficarEnTyF(h_times.(i_time), flujoFiltrado_t, flujoFiltrado_f, flujoFiltrado_S,' Flujo filtrado'); % Grafico
     
-    %subplot(2,1,i); plot(volumenesMatrix.(i_volumen), 'b');
+    %subplot(2,3,i); plot(volumenesMatrix.(i_volumen), 'b');
     %%xlim([1.45 1.5])
     %title(strcat('Grafico de Flujos con frecuencia de bomaba constante de  ',int2str(frecuencias(i)),',%'))
     %xlabel('Tiempo [s]'); ylabel('Flujo [cm], [cm/s?], Fin(t)');

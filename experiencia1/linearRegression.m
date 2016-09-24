@@ -1,9 +1,10 @@
-function [ params ] = linear_regression( y, x )
+function [ params ] = linearRegression( y, x )
     format long
-    scatter(x,y)
+    figure('Name','Regresión Lineal','NumberTitle','off');
     hold on
+    plot(x,y,'bo-')
     xlabel('Frecuencia de la bomba')
-    ylabel('Flujo de entrada (valvula de salida cerrada)')
+    ylabel('Flujo Promedio')
     title('Modelo mediante Regresion Lineal')
     grid on
     X = [ones(length(x),1) x];
@@ -14,4 +15,3 @@ function [ params ] = linear_regression( y, x )
     plot(x,yCalc,'r--')
     legend('Data','Slope & Intercept','Location','best');
 end
-

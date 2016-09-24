@@ -9,6 +9,8 @@ function [ fiteredData, timeData ] = myFilt(structData, minH, maxH)
             counter = counter+1;
         end
     end
+
+    %disp(strcat('Number of data left: ',32,int2str(counter)))
     
     fiteredData = fiteredData';
     timeData = timeData';
