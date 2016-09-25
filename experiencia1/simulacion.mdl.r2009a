@@ -6,7 +6,11 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.11"
+<<<<<<< HEAD
+    ComputedModelVersion    "1.22"
+=======
+    ComputedModelVersion    "1.13"
+>>>>>>> 688a6330638bf43070c9427ee48b82a8b75611d8
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -24,9 +28,15 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Daniel"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Sep 24 03:57:42 2016"
+<<<<<<< HEAD
+  LastModifiedDate	  "Sun Sep 25 02:35:53 2016"
+  RTWModifiedTimeStamp	  396671737
+  ModelVersionFormat	  "1.%<AutoIncrement:22>"
+=======
+  LastModifiedDate	  "Sun Sep 25 02:39:13 2016"
   RTWModifiedTimeStamp	  0
-  ModelVersionFormat	  "1.%<AutoIncrement:11>"
+  ModelVersionFormat	  "1.%<AutoIncrement:13>"
+>>>>>>> 688a6330638bf43070c9427ee48b82a8b75611d8
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -732,7 +742,11 @@ Model {
   }
   System {
     Name		    "simulacion"
+<<<<<<< HEAD
+    Location		    [707, 221, 1188, 371]
+=======
     Location		    [261, 168, 1241, 541]
+>>>>>>> 688a6330638bf43070c9427ee48b82a8b75611d8
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -750,7 +764,11 @@ Model {
       BlockType		      SubSystem
       Name		      "Planta"
       Ports		      [1, 1]
-      Position		      [360, 105, 400, 165]
+<<<<<<< HEAD
+      Position		      [165, 2, 205, 148]
+=======
+      Position		      [365, 105, 405, 165]
+>>>>>>> 688a6330638bf43070c9427ee48b82a8b75611d8
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -760,7 +778,11 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Planta"
-	Location		[84, 520, 1430, 1152]
+<<<<<<< HEAD
+	Location		[15, 213, 879, 634]
+=======
+	Location		[-29, 250, 1317, 882]
+>>>>>>> 688a6330638bf43070c9427ee48b82a8b75611d8
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -800,8 +822,11 @@ Model {
 	  Name			  "B"
 	  Position		  [115, 280, 145, 310]
 	  Value			  "34.5"
+<<<<<<< HEAD
+=======
 	  OutDataType		  "fixdt(1, 16)"
 	  OutScaling		  "2^0"
+>>>>>>> 688a6330638bf43070c9427ee48b82a8b75611d8
 	}
 	Block {
 	  BlockType		  Product
@@ -837,7 +862,6 @@ Model {
 	  Ports			  [1, 1]
 	  Position		  [490, 100, 520, 130]
 	  InitialCondition	  "1"
-	  LimitOutput		  on
 	  UpperSaturationLimit	  "70"
 	  LowerSaturationLimit	  "0.1"
 	}
@@ -912,17 +936,24 @@ Model {
 	  BlockType		  Constant
 	  Name			  "c1"
 	  Position		  [30, 65, 60, 95]
+<<<<<<< HEAD
+	  Value			  "10"
+=======
 	  Value			  "10.5"
 	  OutDataType		  "fixdt(1, 16)"
 	  OutScaling		  "2^0"
+>>>>>>> 688a6330638bf43070c9427ee48b82a8b75611d8
 	}
 	Block {
 	  BlockType		  Constant
 	  Name			  "c2"
 	  Position		  [45, 175, 75, 205]
 	  Value			  "0"
+<<<<<<< HEAD
+=======
 	  OutDataType		  "fixdt(1, 16)"
 	  OutScaling		  "2^0"
+>>>>>>> 688a6330638bf43070c9427ee48b82a8b75611d8
 	}
 	Block {
 	  BlockType		  Outport
@@ -1044,9 +1075,9 @@ Model {
       BlockType		      Scope
       Name		      "Scope"
       Ports		      [1]
-      Position		      [480, 119, 510, 151]
+      Position		      [555, 119, 585, 151]
       Floating		      off
-      Location		      [1, 49, 1367, 727]
+      Location		      [5, 49, 1371, 727]
       Open		      off
       NumInputPorts	      "1"
       ZoomMode		      "xonly"
@@ -1062,20 +1093,29 @@ Model {
     Block {
       BlockType		      Step
       Name		      "Step"
-      Position		      [270, 120, 300, 150]
-      Time		      "5"
-      After		      "50"
+<<<<<<< HEAD
+      SID		      "19"
+      Position		      [75, 45, 105, 75]
+      Time		      "0"
+      After		      "80"
+=======
+      Position		      [185, 120, 215, 150]
+      Time		      "0"
+      After		      "30"
+>>>>>>> 688a6330638bf43070c9427ee48b82a8b75611d8
       SampleTime	      "0"
     }
     Line {
       SrcBlock		      "Step"
       SrcPort		      1
+      Points		      [40, 0]
       DstBlock		      "Planta"
       DstPort		      1
     }
     Line {
       SrcBlock		      "Planta"
       SrcPort		      1
+      Points		      [0, -15]
       DstBlock		      "Scope"
       DstPort		      1
     }

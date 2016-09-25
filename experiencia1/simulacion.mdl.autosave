@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.8"
+    ComputedModelVersion    "1.4"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -38,9 +38,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Sep 25 02:55:35 2016"
+  LastModifiedDate	  "Sun Sep 25 02:46:17 2016"
   RTWModifiedTimeStamp	  396672313
-  ModelVersionFormat	  "1.%<AutoIncrement:8>"
+  ModelVersionFormat	  "1.%<AutoIncrement:4>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -792,7 +792,7 @@ Model {
   }
   System {
     Name		    "simulacion"
-    Location		    [703, 222, 1347, 437]
+    Location		    [292, 192, 1272, 565]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -830,7 +830,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Planta"
-	Location		[11, 189, 844, 584]
+	Location		[15, 226, 1361, 858]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -869,7 +869,7 @@ Model {
 	  Name			  "B"
 	  SID			  "5"
 	  Position		  [115, 280, 145, 310]
-	  Value			  "34.5"
+	  Value			  "0"
 	}
 	Block {
 	  BlockType		  Product
@@ -978,7 +978,7 @@ Model {
 	  Name			  "c2"
 	  SID			  "16"
 	  Position		  [45, 175, 75, 205]
-	  Value			  "-102"
+	  Value			  "-100"
 	}
 	Block {
 	  BlockType		  Outport
