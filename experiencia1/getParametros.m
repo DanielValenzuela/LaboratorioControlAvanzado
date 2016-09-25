@@ -1,5 +1,5 @@
 close all;
-%clear
+clear
 clc
 load('datosExp1.mat');
 %Constantes
@@ -15,7 +15,7 @@ alturas3 = nivel3;
 alturas4 = nivel4;
 alturas5 = nivel5;
 h_datas = struct('alturas1',alturas1,'alturas2',alturas2,'alturas3',alturas3,'alturas4',alturas4,'alturas5',alturas5);
-limites = [[20 40];[30 60];[30 60];[30 60];[30 60]];
+limites = [[20 40];[30 50];[30 50];[30 50];[30 50]];
 
 %grafico de valores no filtrados
 figure('Name','alturas NO filtradas','NumberTitle','off');
@@ -27,20 +27,39 @@ for i=1:length(frecuencias)
     xlabel('Tiempo [s]'); ylabel('Altura [cm], h(t)');
 end
 
+subMuestH = struct('signal',[],'time',[]);
 h_datas_filtradas = struct('filt1',[],'filt2',[],'filt3',[],'filt4',[],'filt5',[]);
 h_times = struct('t1',[],'t2',[],'t3',[],'t4',[],'t5',[]);
 
-figure('Name','alturas filtradas','NumberTitle','off');
+%figure('Name','alturas filtradas','NumberTitle','off');
 for i=1:length(frecuencias)
     i_altura = strcat('alturas',int2str(i));
     i_time = strcat('t',int2str(i));
     i_filt = strcat('filt',int2str(i));
-    [auxH, auxT] = myFilt(h_datas.(i_altura), limites(i,1), limites(i,2));
+
+    %Graficos en tiempo y frecuencia de altura NO Filtrada
+    [alturas_f, alturas_S] = Fourier(h_datas.(i_altura).signals.values, Fs);
+    graficarEnTyF(h_datas.(i_altura).time, h_datas.(i_altura).signals.values, alturas_f, alturas_S,strcat(' alturas con fBomba[%]= ',int2str(frecuencias(i)))); % Grafico
+
+    alturasFiltradas_t = filtroPasaBajos(h_datas.(i_altura).signals.values, Fs, [2], [20]);
+    %Graficos en tiempo y frecuencia de altura NO Filtrada
+    [alturasFiltradas_f, alturasFiltradas_S] = Fourier(alturasFiltradas_t, Fs);
+    graficarEnTyF(h_datas.(i_altura).time, alturasFiltradas_t, alturasFiltradas_f, alturasFiltradas_S, strcat(' alturas Filtradas con fBomba[%]= ',int2str(frecuencias(i)))); % Grafico
+
+    %[subMuestH.signal, subMuestH.time] = subMuest(h_datas.(i_altura), 1);
+    subMuestH.signal = alturasFiltradas_t;
+    subMuestH.time = h_datas.(i_altura).time;
+    [auxH, auxT] = myFilt(subMuestH, limites(i,1), limites(i,2));
     h_datas_filtradas.(i_filt) = auxH;
     h_times.(i_time) = auxT;
+end
+
+figure('Name','alturas Recortadas','NumberTitle','off');
+for i=1:length(frecuencias)
+    i_filt = strcat('filt',int2str(i));
     subplot(2,3,i); plot(h_datas_filtradas.(i_filt), 'b');
     %xlim([1.45 1.5])
-    title(strcat('Grafico de alturas con frecuencia',int2str(i),',  filtradas'))
+    title(strcat('Grafico de alturas con fBomba[%]= ',int2str(frecuencias(i)),',  Recortadas'))
     xlabel('Tiempo [s]'); ylabel('Altura [cm], h(t)');
 end
 
@@ -50,16 +69,19 @@ for i=1:length(frecuencias)
     i_filt = strcat('filt',int2str(i));
     i_volumen = strcat('v',int2str(i));
     i_time = strcat('t',int2str(i));
-    dh = [diff(h_datas_filtradas.(i_filt))./Ts];
-    dh = [dh;dh(length(dh))];
+    %dh = [myDiff(h_datas_filtradas.(i_filt), 4)];
+    dh = [diff(h_datas_filtradas.(i_filt))];
+    dt = h_times.(i_time)(2)-h_times.(i_time)(1);
+    dh_dt = dh./dt;
+    dh = [dh dh(length(dh))];
+    dh = abs(dh);
     flujo_t = (pi*(R^2)/(H^2))*(h_datas_filtradas.(i_filt).^2).*dh;
     volumenesMatrix.(i_volumen) = flujo_t;
     %Graficos en tiempo y frecuencia del flujo
-    [flujo_f, flujo_S] = Fourier(flujo_t, Fs);
-    graficarEnTyF(h_times.(i_time), flujo_t, flujo_f, flujo_S,' Flujo'); % Grafico
+    [flujo_f, flujo_S] = Fourier(flujo_t', Fs);
+    graficarEnTyF(h_times.(i_time), flujo_t, flujo_f, flujo_S,strcat(' Flujos con fBomba[%]= ',int2str(frecuencias(i)))); % Grafico
 end
 
-%figure('Name','Flujos en el tiempo','NumberTitle','off');
 for i=1:length(frecuencias)
     i_volumen = strcat('v',int2str(i));
     i_time = strcat('t',int2str(i));
@@ -67,10 +89,11 @@ for i=1:length(frecuencias)
     
     %Filtro pasa bajos
     %flujoFiltrado_t = filtroPasaBajos(volumenesMatrix.(i_volumen), Fs);
-    flujoFiltrado_t = filtroPasaBanda(volumenesMatrix.(i_volumen), Fs, [30 40], [10 45]);
+    %flujoFiltrado_t = filtroPasaBanda(volumenesMatrix.(i_volumen), Fs, [30 40], [10 45]);
+    flujoFiltrado_t = filtroPasaBajos(volumenesMatrix.(i_volumen), Fs, [1], [10]);
     %Graficos en tiempo y frecuencia del flujo Filtrado
-    [flujoFiltrado_f, flujoFiltrado_S] = Fourier(flujoFiltrado_t, Fs);
-    graficarEnTyF(h_times.(i_time), flujoFiltrado_t, flujoFiltrado_f, flujoFiltrado_S,' Flujo filtrado'); % Grafico
+    [flujoFiltrado_f, flujoFiltrado_S] = Fourier(flujoFiltrado_t', Fs);
+    graficarEnTyF(h_times.(i_time), flujoFiltrado_t, flujoFiltrado_f, flujoFiltrado_S,strcat(' Flujos Filtrados con fBomba[%]= ',int2str(frecuencias(i)))); % Grafico
     
     %subplot(2,3,i); plot(volumenesMatrix.(i_volumen), 'b');
     %%xlim([1.45 1.5])

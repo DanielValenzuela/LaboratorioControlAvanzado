@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.38"
+    ComputedModelVersion    "1.11"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -24,9 +24,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Daniel"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Sep 25 02:27:11 2016"
+  LastModifiedDate	  "Sat Sep 24 03:57:42 2016"
   RTWModifiedTimeStamp	  0
-  ModelVersionFormat	  "1.%<AutoIncrement:38>"
+  ModelVersionFormat	  "1.%<AutoIncrement:11>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -589,28 +589,6 @@ Model {
       SampleTime	      "-1"
     }
     Block {
-      BlockType		      Gain
-      Gain		      "1"
-      Multiplication	      "Element-wise(K.*u)"
-      ParamMin		      "[]"
-      ParamMax		      "[]"
-      ParameterDataTypeMode   "Same as input"
-      ParameterDataType	      "fixdt(1,16,0)"
-      ParameterScalingMode    "Best Precision: Matrix-wise"
-      ParameterScaling	      "[]"
-      ParamDataTypeStr	      "Inherit: Same as input"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeMode	      "Same as input"
-      OutDataType	      "fixdt(1,16,0)"
-      OutScaling	      "[]"
-      OutDataTypeStr	      "Inherit: Same as input"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	on
-      SampleTime	      "-1"
-    }
-    Block {
       BlockType		      Inport
       Port		      "1"
       UseBusObject	      off
@@ -769,25 +747,10 @@ Model {
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
     Block {
-      BlockType		      Gain
-      Name		      "Gain"
-      Position		      [305, 120, 335, 150]
-      ParameterDataTypeMode   "Inherit via internal rule"
-      ParameterDataType	      "fixdt(1, 16)"
-      ParameterScaling	      "2^0"
-      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      OutDataTypeMode	      "Inherit via internal rule"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-      SampleTime	      "0.1"
-    }
-    Block {
       BlockType		      SubSystem
       Name		      "Planta"
       Ports		      [1, 1]
-      Position		      [455, 105, 495, 165]
+      Position		      [360, 105, 400, 165]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -797,7 +760,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Planta"
-	Location		[318, 212, 1664, 844]
+	Location		[84, 520, 1430, 1152]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -844,7 +807,7 @@ Model {
 	  BlockType		  Product
 	  Name			  "Divide"
 	  Ports			  [1, 1]
-	  Position		  [330, 59, 360, 91]
+	  Position		  [330, 54, 360, 86]
 	  Inputs		  "/"
 	  InputSameDT		  off
 	  OutDataTypeMode	  "Inherit via internal rule"
@@ -873,8 +836,10 @@ Model {
 	  Name			  "Integrator"
 	  Ports			  [1, 1]
 	  Position		  [490, 100, 520, 130]
+	  InitialCondition	  "1"
+	  LimitOutput		  on
 	  UpperSaturationLimit	  "70"
-	  LowerSaturationLimit	  "0"
+	  LowerSaturationLimit	  "0.1"
 	}
 	Block {
 	  BlockType		  Product
@@ -1016,7 +981,7 @@ Model {
 	Line {
 	  SrcBlock		  "Divide"
 	  SrcPort		  1
-	  Points		  [40, 0; 0, 30]
+	  Points		  [40, 0; 0, 35]
 	  DstBlock		  "Product4"
 	  DstPort		  1
 	}
@@ -1041,7 +1006,7 @@ Model {
 	Line {
 	  SrcBlock		  "A"
 	  SrcPort		  1
-	  Points		  [35, 0; 0, 10]
+	  Points		  [35, 0; 0, 15; 20, 0]
 	  DstBlock		  "Product"
 	  DstPort		  2
 	}
@@ -1079,9 +1044,9 @@ Model {
       BlockType		      Scope
       Name		      "Scope"
       Ports		      [1]
-      Position		      [615, 119, 645, 151]
+      Position		      [480, 119, 510, 151]
       Floating		      off
-      Location		      [5, 49, 1371, 727]
+      Location		      [1, 49, 1367, 727]
       Open		      off
       NumInputPorts	      "1"
       ZoomMode		      "xonly"
@@ -1097,48 +1062,21 @@ Model {
     Block {
       BlockType		      Step
       Name		      "Step"
-      Position		      [175, 120, 205, 150]
+      Position		      [270, 120, 300, 150]
       Time		      "5"
-      After		      "20"
-      SampleTime	      "0.1"
+      After		      "50"
+      SampleTime	      "0"
     }
-    Block {
-      BlockType		      Sum
-      Name		      "Sum1"
-      Ports		      [2, 1]
-      Position		      [240, 125, 260, 145]
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "|+-"
-      InputSameDT	      off
-      OutDataTypeMode	      "Inherit via internal rule"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
+    Line {
+      SrcBlock		      "Step"
+      SrcPort		      1
+      DstBlock		      "Planta"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "Planta"
       SrcPort		      1
       DstBlock		      "Scope"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Step"
-      SrcPort		      1
-      DstBlock		      "Sum1"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Sum1"
-      SrcPort		      1
-      DstBlock		      "Gain"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Gain"
-      SrcPort		      1
-      DstBlock		      "Planta"
       DstPort		      1
     }
   }
