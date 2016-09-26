@@ -3,8 +3,8 @@ clear
 clc
 load('datosExp1.mat');
 %Constantes
-H = 34.5;  %[cm]
-R = 78.9;  %[cm]
+H = 79.8;  %[cm]
+R = 34.5;  %[cm]
 Ts = 0.01;  %[s]
 Fs = 1/Ts; %[Hz]
 %------------------
@@ -73,9 +73,9 @@ for i=1:length(frecuencias)
     dh = [diff(h_datas_filtradas.(i_filt))];
     dt = h_times.(i_time)(2)-h_times.(i_time)(1);
     dh_dt = dh./dt;
-    dh = [dh dh(length(dh))];
-    dh = abs(dh);
-    flujo_t = (pi*(R^2)/(H^2))*(h_datas_filtradas.(i_filt).^2).*dh;
+    dh_dt = [dh_dt dh_dt(length(dh_dt))];
+    %dh_dt = abs(dh_dt);
+    flujo_t = (pi*(R^2)/(H^2))*(h_datas_filtradas.(i_filt).^2).*dh_dt;
     volumenesMatrix.(i_volumen) = flujo_t;
     %Graficos en tiempo y frecuencia del flujo
     [flujo_f, flujo_S] = Fourier(flujo_t', Fs);
@@ -85,7 +85,6 @@ end
 for i=1:length(frecuencias)
     i_volumen = strcat('v',int2str(i));
     i_time = strcat('t',int2str(i));
-    FlujosProm(i) = mean(volumenesMatrix.(i_volumen));
     
     %Filtro pasa bajos
     %flujoFiltrado_t = filtroPasaBajos(volumenesMatrix.(i_volumen), Fs);
@@ -95,6 +94,8 @@ for i=1:length(frecuencias)
     %Graficos en tiempo y frecuencia del flujo Filtrado
     [flujoFiltrado_f, flujoFiltrado_S] = Fourier(flujoFiltrado_t', Fs);
     graficarEnTyF(h_times.(i_time), flujoFiltrado_t, flujoFiltrado_f, flujoFiltrado_S,strcat(' Flujos Filtrados con fBomba[%]= ',int2str(frecuencias(i)))); % Grafico
+
+    FlujosProm(i) = mean(flujoFiltrado_t);
     
     %subplot(2,3,i); plot(volumenesMatrix.(i_volumen), 'b');
     %%xlim([1.45 1.5])
