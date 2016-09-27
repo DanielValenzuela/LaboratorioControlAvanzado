@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.1"
+    ComputedModelVersion    "1.3"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -24,9 +24,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Daniel"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Sep 24 21:53:09 2016"
+  LastModifiedDate	  "Sun Sep 25 02:49:46 2016"
   RTWModifiedTimeStamp	  0
-  ModelVersionFormat	  "1.%<AutoIncrement:1>"
+  ModelVersionFormat	  "1.%<AutoIncrement:3>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -658,7 +658,7 @@ Model {
   }
   System {
     Name		    "aprbs"
-    Location		    [2, 75, 1347, 707]
+    Location		    [2, 83, 1331, 715]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -675,7 +675,7 @@ Model {
     Block {
       BlockType		      Constant
       Name		      "Constant"
-      Position		      [100, 295, 130, 325]
+      Position		      [140, 225, 170, 255]
       Value		      "2^6"
       OutDataType	      "fixdt(1, 16)"
       OutScaling	      "2^0"
@@ -691,7 +691,7 @@ Model {
     Block {
       BlockType		      Constant
       Name		      "Constant2"
-      Position		      [395, 360, 425, 390]
+      Position		      [420, 360, 450, 390]
       Value		      "2^4"
       OutDataType	      "fixdt(1, 16)"
       OutScaling	      "2^0"
@@ -699,7 +699,7 @@ Model {
     Block {
       BlockType		      Constant
       Name		      "Constant3"
-      Position		      [520, 430, 550, 460]
+      Position		      [525, 430, 555, 460]
       Value		      "2^3"
       OutDataType	      "fixdt(1, 16)"
       OutScaling	      "2^0"
@@ -707,7 +707,7 @@ Model {
     Block {
       BlockType		      Constant
       Name		      "Constant4"
-      Position		      [660, 490, 690, 520]
+      Position		      [665, 475, 695, 505]
       Value		      "2^2"
       OutDataType	      "fixdt(1, 16)"
       OutScaling	      "2^0"
@@ -715,7 +715,7 @@ Model {
     Block {
       BlockType		      Constant
       Name		      "Constant5"
-      Position		      [780, 550, 810, 580]
+      Position		      [795, 550, 825, 580]
       Value		      "2^1"
       OutDataType	      "fixdt(1, 16)"
       OutScaling	      "2^0"
@@ -723,8 +723,16 @@ Model {
     Block {
       BlockType		      Constant
       Name		      "Constant6"
-      Position		      [910, 610, 940, 640]
+      Position		      [925, 610, 955, 640]
       Value		      "2^0"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Constant7"
+      Position		      [1165, 465, 1195, 495]
+      Value		      "100/(128)"
       OutDataType	      "fixdt(1, 16)"
       OutScaling	      "2^0"
     }
@@ -793,7 +801,7 @@ Model {
       BlockType		      Product
       Name		      "Product4"
       Ports		      [2, 1]
-      Position		      [740, 477, 770, 508]
+      Position		      [740, 467, 770, 498]
       InputSameDT	      off
       OutDataTypeMode	      "Inherit via internal rule"
       OutDataType	      "fixdt(1, 16)"
@@ -826,6 +834,18 @@ Model {
       SaturateOnIntegerOverflow	off
     }
     Block {
+      BlockType		      Product
+      Name		      "Product7"
+      Ports		      [2, 1]
+      Position		      [1235, 347, 1265, 378]
+      InputSameDT	      off
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
       BlockType		      Scope
       Name		      "Scope"
       Ports		      [1]
@@ -847,9 +867,9 @@ Model {
       BlockType		      Scope
       Name		      "Scope1"
       Ports		      [1]
-      Position		      [1250, 334, 1280, 366]
+      Position		      [1290, 319, 1320, 351]
       Floating		      off
-      Location		      [1, 49, 1367, 727]
+      Location		      [5, 49, 1371, 727]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -954,7 +974,7 @@ Model {
 	DstPort			1
       }
       Branch {
-	Points			[0, 305; 30, 0]
+	Points			[0, 300]
 	DstBlock		"Product2"
 	DstPort			1
       }
@@ -1049,28 +1069,27 @@ Model {
     Line {
       SrcBlock		      "Product1"
       SrcPort		      1
-      Points		      [25, 0; 0, -10; 660, 0; 0, 10]
       DstBlock		      "Sum"
       DstPort		      2
     }
     Line {
       SrcBlock		      "Product2"
       SrcPort		      1
-      Points		      [15, 0; 0, -5; 370, 0; 0, -26]
+      Points		      [385, 0; 0, -31]
       DstBlock		      "Sum"
       DstPort		      3
     }
     Line {
       SrcBlock		      "Product3"
       SrcPort		      1
-      Points		      [30, 0; 0, -10; 285, 0; 0, -59]
+      Points		      [315, 0; 0, -69]
       DstBlock		      "Sum"
       DstPort		      4
     }
     Line {
       SrcBlock		      "Product4"
       SrcPort		      1
-      Points		      [0, -10; 245, 0; 0, -80]
+      Points		      [245, 0; 0, -80]
       DstBlock		      "Sum"
       DstPort		      5
     }
@@ -1091,7 +1110,6 @@ Model {
     Line {
       SrcBlock		      "Constant"
       SrcPort		      1
-      Points		      [25, 0; 0, -70]
       DstBlock		      "Product"
       DstPort		      2
     }
@@ -1120,9 +1138,34 @@ Model {
       DstPort		      2
     }
     Line {
+      SrcBlock		      "Constant5"
+      SrcPort		      1
+      DstBlock		      "Product5"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Constant4"
+      SrcPort		      1
+      DstBlock		      "Product4"
+      DstPort		      2
+    }
+    Line {
       SrcBlock		      "Sum"
       SrcPort		      1
-      Points		      [15, 0; 0, -5]
+      DstBlock		      "Product7"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Constant7"
+      SrcPort		      1
+      Points		      [10, 0; 0, -110]
+      DstBlock		      "Product7"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Product7"
+      SrcPort		      1
+      Points		      [0, -30]
       DstBlock		      "Scope1"
       DstPort		      1
     }
