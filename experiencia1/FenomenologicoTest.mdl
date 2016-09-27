@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.138"
+    ComputedModelVersion    "1.146"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -18,7 +18,7 @@ Model {
       Type		      "Cell"
       Dimension		      2
       Cell		      "HDLSubsystem"
-      Cell		      "simulacion"
+      Cell		      "FenomenologicoTest"
       PropName		      "mdlProps"
     }
   }
@@ -38,9 +38,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Sep 26 23:59:49 2016"
+  LastModifiedDate	  "Tue Sep 27 00:48:10 2016"
   RTWModifiedTimeStamp	  396749072
-  ModelVersionFormat	  "1.%<AutoIncrement:138>"
+  ModelVersionFormat	  "1.%<AutoIncrement:146>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -701,6 +701,15 @@ Model {
       ContinuousStateAttributes	"''"
     }
     Block {
+      BlockType		      Logic
+      Operator		      "AND"
+      Inputs		      "2"
+      IconShape		      "rectangular"
+      AllPortsSameDT	      on
+      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Mux
       Inputs		      "4"
       DisplayOption	      "none"
@@ -797,10 +806,19 @@ Model {
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
     }
+    Block {
+      BlockType		      UnitDelay
+      X0		      "0"
+      InputProcessing	      "Inherited"
+      SampleTime	      "1"
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
+      HasFrameUpgradeWarning  on
+    }
   }
   System {
     Name		    "FenomenologicoTest"
-    Location		    [50, 535, 682, 711]
+    Location		    [47, 493, 600, 691]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -814,24 +832,16 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "24"
-    Block {
-      BlockType		      Constant
-      Name		      "Constant"
-      SID		      "20"
-      Position		      [80, 40, 110, 70]
-      ZOrder		      -4
-      Value		      "30"
-    }
+    SIDHighWatermark	    "72"
     Block {
       BlockType		      Mux
       Name		      "Mux"
       SID		      "22"
-      Ports		      [2, 1]
-      Position		      [275, 26, 280, 64]
+      Ports		      [1, 1]
+      Position		      [270, 36, 275, 74]
       ZOrder		      -16
       ShowName		      off
-      Inputs		      "2"
+      Inputs		      "1"
       DisplayOption	      "bar"
     }
     Block {
@@ -839,7 +849,7 @@ Model {
       Name		      "Planta"
       SID		      "1"
       Ports		      [1, 3]
-      Position		      [190, 25, 230, 85]
+      Position		      [185, 35, 225, 95]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -849,7 +859,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Planta"
-	Location		[19, 81, 683, 475]
+	Location		[151, 125, 815, 519]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -924,7 +934,7 @@ Model {
 	  SID			  "9"
 	  Ports			  [1, 1]
 	  Position		  [465, 100, 495, 130]
-	  InitialCondition	  "272097.792"
+	  InitialCondition	  "30*30*30"
 	  LowerSaturationLimit	  "0.1"
 	}
 	Block {
@@ -989,14 +999,14 @@ Model {
 	  Name			  "c1"
 	  SID			  "15"
 	  Position		  [30, 65, 60, 95]
-	  Value			  "0"
+	  Value			  "3.03"
 	}
 	Block {
 	  BlockType		  Constant
 	  Name			  "c2"
 	  SID			  "16"
 	  Position		  [40, 175, 70, 205]
-	  Value			  "0"
+	  Value			  "-48"
 	}
 	Block {
 	  BlockType		  Outport
@@ -1151,7 +1161,7 @@ Model {
       Name		      "Scope"
       SID		      "18"
       Ports		      [1]
-      Position		      [305, 24, 335, 56]
+      Position		      [300, 34, 330, 66]
       Floating		      off
       Location		      [678, 81, 1361, 766]
       Open		      on
@@ -1180,7 +1190,7 @@ Model {
       Name		      "Scope1"
       SID		      "24"
       Ports		      [1]
-      Position		      [425, 44, 455, 76]
+      Position		      [420, 54, 450, 86]
       Floating		      off
       Location		      [675, 81, 1358, 766]
       Open		      on
@@ -1205,17 +1215,553 @@ Model {
       LimitDataPoints	      off
       SampleTime	      "0"
     }
-    Line {
-      SrcBlock		      "Constant"
-      SrcPort		      1
-      DstBlock		      "Planta"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Planta"
-      SrcPort		      1
-      DstBlock		      "Mux"
-      DstPort		      1
+    Block {
+      BlockType		      SubSystem
+      Name		      "aprbs"
+      SID		      "62"
+      Ports		      [0, 1]
+      Position		      [55, 35, 95, 95]
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"aprbs"
+	Location		[139, 309, 992, 727]
+	Open			on
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"A4"
+	PaperUnits		"centimeters"
+	TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant1"
+	  SID			  "25"
+	  Position		  [80, 210, 110, 240]
+	  Value			  "2^6"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant2"
+	  SID			  "26"
+	  Position		  [200, 280, 230, 310]
+	  Value			  "2^5"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant3"
+	  SID			  "27"
+	  Position		  [360, 345, 390, 375]
+	  Value			  "2^4"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant4"
+	  SID			  "28"
+	  Position		  [465, 415, 495, 445]
+	  Value			  "2^3"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant5"
+	  SID			  "29"
+	  Position		  [605, 460, 635, 490]
+	  Value			  "2^2"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant6"
+	  SID			  "30"
+	  Position		  [735, 535, 765, 565]
+	  Value			  "2^1"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant7"
+	  SID			  "31"
+	  Position		  [865, 595, 895, 625]
+	  Value			  "2^0"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant8"
+	  SID			  "32"
+	  Position		  [1105, 450, 1135, 480]
+	  Value			  "100/(128)"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator"
+	  SID			  "33"
+	  Ports			  [2, 1]
+	  Position		  [850, 132, 880, 163]
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  Operator		  "XOR"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product"
+	  SID			  "34"
+	  Ports			  [2, 1]
+	  Position		  [150, 202, 180, 233]
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product1"
+	  SID			  "35"
+	  Ports			  [2, 1]
+	  Position		  [275, 272, 305, 303]
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product2"
+	  SID			  "36"
+	  Ports			  [2, 1]
+	  Position		  [445, 337, 475, 368]
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product3"
+	  SID			  "37"
+	  Ports			  [2, 1]
+	  Position		  [560, 407, 590, 438]
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product4"
+	  SID			  "38"
+	  Ports			  [2, 1]
+	  Position		  [680, 452, 710, 483]
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product5"
+	  SID			  "39"
+	  Ports			  [2, 1]
+	  Position		  [810, 527, 840, 558]
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product6"
+	  SID			  "40"
+	  Ports			  [2, 1]
+	  Position		  [945, 587, 975, 618]
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product7"
+	  SID			  "41"
+	  Ports			  [2, 1]
+	  Position		  [1175, 332, 1205, 363]
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope2"
+	  SID			  "42"
+	  Ports			  [1]
+	  Position		  [1190, 29, 1220, 61]
+	  Floating		  off
+	  Location		  [1, 49, 1367, 727]
+	  Open			  off
+	  NumInputPorts		  "1"
+	  ZoomMode		  "xonly"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	  }
+	  ShowLegends		  off
+	  SaveToWorkspace	  on
+	  SaveName		  "ScopeData2"
+	  SampleTime		  "0"
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope3"
+	  SID			  "43"
+	  Ports			  [1]
+	  Position		  [1230, 304, 1260, 336]
+	  Floating		  off
+	  Location		  [5, 81, 1371, 759]
+	  Open			  off
+	  NumInputPorts		  "1"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	  }
+	  List {
+	    ListType		    ScopeGraphics
+	    FigureColor		    "[0.5 0.5 0.5]"
+	    AxesColor		    "[0 0 0]"
+	    AxesTickColor	    "[1 1 1]"
+	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	    LineStyles		    "-|-|-|-|-|-"
+	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
+	    MarkerStyles	    "none|none|none|none|none|none"
+	  }
+	  ShowLegends		  off
+	  SaveName		  "ScopeData3"
+	  DataFormat		  "StructureWithTime"
+	  SampleTime		  "0"
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum"
+	  SID			  "44"
+	  Ports			  [7, 1]
+	  Position		  [1005, 240, 1135, 440]
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "|+++++++"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay1"
+	  SID			  "45"
+	  Position		  [65, 28, 100, 62]
+	  X0			  "1"
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay2"
+	  SID			  "46"
+	  Position		  [200, 28, 235, 62]
+	  X0			  "1"
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay3"
+	  SID			  "47"
+	  Position		  [335, 28, 370, 62]
+	  X0			  "1"
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay4"
+	  SID			  "48"
+	  Position		  [455, 28, 490, 62]
+	  X0			  "1"
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay5"
+	  SID			  "49"
+	  Position		  [585, 28, 620, 62]
+	  X0			  "1"
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay6"
+	  SID			  "50"
+	  Position		  [715, 28, 750, 62]
+	  X0			  "1"
+	}
+	Block {
+	  BlockType		  UnitDelay
+	  Name			  "Unit Delay7"
+	  SID			  "51"
+	  Position		  [830, 28, 865, 62]
+	  X0			  "1"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Out1"
+	  SID			  "63"
+	  Position		  [1280, 353, 1310, 367]
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Unit Delay1"
+	  SrcPort		  1
+	  Points		  [15, 0]
+	  Branch {
+	    DstBlock		    "Unit Delay2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [5, 0; 0, 165]
+	    DstBlock		    "Product"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Unit Delay2"
+	  SrcPort		  1
+	  Points		  [10, 0]
+	  Branch {
+	    DstBlock		    "Unit Delay3"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 235]
+	    DstBlock		    "Product1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Unit Delay3"
+	  SrcPort		  1
+	  Points		  [25, 0]
+	  Branch {
+	    DstBlock		    "Unit Delay4"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 300]
+	    DstBlock		    "Product2"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Unit Delay4"
+	  SrcPort		  1
+	  Points		  [10, 0]
+	  Branch {
+	    DstBlock		    "Unit Delay5"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 370]
+	    DstBlock		    "Product3"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Unit Delay5"
+	  SrcPort		  1
+	  Points		  [40, 0]
+	  Branch {
+	    DstBlock		    "Unit Delay6"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Product4"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Labels		  [2, 0]
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  Points		  [-815, 0; 0, -105]
+	  DstBlock		  "Unit Delay1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Unit Delay6"
+	  SrcPort		  1
+	  Points		  [20, 0]
+	  Branch {
+	    Points		    [20, 0]
+	    Branch {
+	      DstBlock		      "Unit Delay7"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, 40; 100, 0]
+	      DstBlock		      "Logical\nOperator"
+	      DstPort		      1
+	    }
+	  }
+	  Branch {
+	    Points		    [0, 490]
+	    DstBlock		    "Product5"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Unit Delay7"
+	  SrcPort		  1
+	  Points		  [30, 0]
+	  Branch {
+	    Points		    [30, 0]
+	    Branch {
+	      Points		      [0, 110]
+	      DstBlock		      "Logical\nOperator"
+	      DstPort		      2
+	    }
+	    Branch {
+	      Points		      [0, -10; 140, 0; 0, 10]
+	      DstBlock		      "Scope2"
+	      DstPort		      1
+	    }
+	  }
+	  Branch {
+	    Points		    [0, 550]
+	    DstBlock		    "Product6"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Product"
+	  SrcPort		  1
+	  Points		  [425, 0; 0, 30]
+	  DstBlock		  "Sum"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Product1"
+	  SrcPort		  1
+	  DstBlock		  "Sum"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Product2"
+	  SrcPort		  1
+	  Points		  [385, 0; 0, -31]
+	  DstBlock		  "Sum"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Product3"
+	  SrcPort		  1
+	  Points		  [315, 0; 0, -69]
+	  DstBlock		  "Sum"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "Product4"
+	  SrcPort		  1
+	  Points		  [245, 0; 0, -80]
+	  DstBlock		  "Sum"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "Product5"
+	  SrcPort		  1
+	  Points		  [100, 0; 0, -115]
+	  DstBlock		  "Sum"
+	  DstPort		  6
+	}
+	Line {
+	  SrcBlock		  "Product6"
+	  SrcPort		  1
+	  Points		  [30, 0; 0, -10; 60, 0]
+	  DstBlock		  "Sum"
+	  DstPort		  7
+	}
+	Line {
+	  SrcBlock		  "Constant1"
+	  SrcPort		  1
+	  DstBlock		  "Product"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant2"
+	  SrcPort		  1
+	  DstBlock		  "Product1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant3"
+	  SrcPort		  1
+	  DstBlock		  "Product2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant4"
+	  SrcPort		  1
+	  DstBlock		  "Product3"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant7"
+	  SrcPort		  1
+	  DstBlock		  "Product6"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant6"
+	  SrcPort		  1
+	  DstBlock		  "Product5"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant5"
+	  SrcPort		  1
+	  DstBlock		  "Product4"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Sum"
+	  SrcPort		  1
+	  DstBlock		  "Product7"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Constant8"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, -110]
+	  DstBlock		  "Product7"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Product7"
+	  SrcPort		  1
+	  Points		  [0, -5]
+	  Branch {
+	    Points		    [0, -25]
+	    DstBlock		    "Scope3"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 15]
+	    DstBlock		    "Out1"
+	    DstPort		    1
+	  }
+	}
+	Annotation {
+	  SID			  "52"
+	  Position		  [321, 631]
+	}
+	Annotation {
+	  SID			  "53"
+	  Position		  [270, 121]
+	}
+	Annotation {
+	  SID			  "55"
+	  Position		  [425, 45]
+	}
+      }
     }
     Line {
       SrcBlock		      "Mux"
@@ -1225,11 +1771,37 @@ Model {
       DstPort		      1
     }
     Line {
+      SrcBlock		      "aprbs"
+      SrcPort		      1
+      Points		      [40, 0]
+      Branch {
+	DstBlock		"Planta"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 50; 245, 0; 0, -45]
+	DstBlock		"Scope1"
+	DstPort			1
+      }
+    }
+    Line {
       SrcBlock		      "Planta"
-      SrcPort		      3
-      Points		      [30, 0; 0, 10; 145, 0]
-      DstBlock		      "Scope1"
+      SrcPort		      1
+      Points		      [25, 0]
+      DstBlock		      "Mux"
       DstPort		      1
+    }
+    Annotation {
+      SID		      "60"
+      Position		      [1547, 433]
+    }
+    Annotation {
+      SID		      "59"
+      Position		      [1450, 478]
+    }
+    Annotation {
+      SID		      "72"
+      Position		      [119, 351]
     }
   }
 }
