@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.146"
+    ComputedModelVersion    "1.147"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -38,9 +38,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Sep 27 00:48:10 2016"
-  RTWModifiedTimeStamp	  396749072
-  ModelVersionFormat	  "1.%<AutoIncrement:146>"
+  LastModifiedDate	  "Wed Sep 28 00:13:49 2016"
+  RTWModifiedTimeStamp	  396922410
+  ModelVersionFormat	  "1.%<AutoIncrement:147>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -818,7 +818,7 @@ Model {
   }
   System {
     Name		    "FenomenologicoTest"
-    Location		    [47, 493, 600, 691]
+    Location		    [277, 540, 830, 738]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -832,7 +832,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "72"
+    SIDHighWatermark	    "79"
     Block {
       BlockType		      Mux
       Name		      "Mux"
@@ -860,7 +860,7 @@ Model {
       System {
 	Name			"Planta"
 	Location		[151, 125, 815, 519]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1230,7 +1230,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"aprbs"
-	Location		[139, 309, 992, 727]
+	Location		[284, 237, 1137, 655]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200

@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.196"
+    ComputedModelVersion    "1.209"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -38,9 +38,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Sep 26 01:59:42 2016"
-  RTWModifiedTimeStamp	  396749072
-  ModelVersionFormat	  "1.%<AutoIncrement:196>"
+  LastModifiedDate	  "Wed Sep 28 00:10:39 2016"
+  RTWModifiedTimeStamp	  396922229
+  ModelVersionFormat	  "1.%<AutoIncrement:209>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -124,7 +124,7 @@ Model {
 	  $ObjectID		  3
 	  Version		  "1.12.0"
 	  StartTime		  "0.0"
-	  StopTime		  "200"
+	  StopTime		  "500"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "0.01"
@@ -608,7 +608,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 180, 24, 1186, 752 ] 
+      ConfigPrmDlgPosition     [ 172, 24, 1194, 788 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -832,7 +832,7 @@ Model {
   }
   System {
     Name		    "controladorPV2"
-    Location		    [60, 413, 757, 688]
+    Location		    [243, 179, 940, 454]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -853,7 +853,7 @@ Model {
       SID		      "26"
       Position		      [185, 60, 215, 90]
       ZOrder		      -11
-      Gain		      "80"
+      Gain		      "40"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -893,7 +893,7 @@ Model {
       System {
 	Name			"Planta"
 	Location		[22, 81, 686, 475]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1196,7 +1196,7 @@ Model {
       Ports		      [1]
       Position		      [490, 24, 520, 56]
       Floating		      off
-      Location		      [678, 82, 1361, 767]
+      Location		      [678, 81, 1361, 766]
       Open		      on
       NumInputPorts	      "1"
       List {
@@ -1295,7 +1295,7 @@ Model {
       SID		      "31"
       Position		      [170, 117, 230, 153]
       ZOrder		      -9
-      Denominator	      "[0.5 0]"
+      Denominator	      "[0.8 0]"
     }
     Line {
       SrcBlock		      "Planta"
