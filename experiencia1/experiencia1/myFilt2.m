@@ -3,7 +3,7 @@ function [ fiteredData, timeData ] = myFilt2(structData, maxH, minH)
     ColumData = structData.signal;
     N = length(ColumData);
 
-    for i=30:N
+    for i=70:N
         if ColumData(i) < maxH
             minIndex = i;
             break;

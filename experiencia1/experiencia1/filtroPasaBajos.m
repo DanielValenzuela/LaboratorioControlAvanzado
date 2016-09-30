@@ -8,7 +8,7 @@ function [ salida ] = filtroPasaBajos( noisySignal, Fs, WP, WS )
     [ord1,Wn1]=buttord(Wp1,Ws1,Rp1,Rs1);  % Orden (ord) y frecuencia de corte (Wn) del filtro
     [b1,a1]=butter(ord1,Wn1,'low');       % Coef. función de transferencia del filtro
     [h1,frec1]=freqz(b1,a1,'whole',Fs);   % Respuesta en frecuencia del filtro
-    %figure('Name','Filtro pasa bajos','NumberTitle','off'); 
-    %plot(abs(h1)); title('Filtro pasa bajos'); xlabel('Frecuencia [Hz]'); ylabel('Modulo de la ganancia, |H(jw)|')
+    % figure('Name','Filtro pasa bajos','NumberTitle','off'); 
+    % plot(abs(h1)); title('Filtro pasa bajos'); xlabel('Frecuencia [Hz]'); ylabel('Modulo de la ganancia, |H(jw)|')
     salida=filter(b1,a1,noisySignal); % salida del filtro en tiempo
 end
