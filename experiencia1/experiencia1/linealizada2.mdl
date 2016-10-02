@@ -1,12 +1,20 @@
 Model {
-  Name			  "aprbs"
+  Name			  "linealizada2"
   Version		  7.3
   MdlSubVersion		  0
   GraphicalInterface {
-    NumRootInports	    0
-    NumRootOutports	    0
+    NumRootInports	    1
+    Inport {
+      Name		      "In1"
+    }
+    NumRootOutports	    1
+    Outport {
+      BusObject		      ""
+      BusOutputAsStruct	      "off"
+      Name		      "Out1"
+    }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.3"
+    ComputedModelVersion    "1.2"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -18,15 +26,15 @@ Model {
   DataTypeOverride	  "UseLocalSettings"
   MinMaxOverflowLogging	  "UseLocalSettings"
   MinMaxOverflowArchiveMode "Overwrite"
-  Created		  "Sat Sep 24 21:08:11 2016"
+  Created		  "Fri Sep 30 17:58:14 2016"
   Creator		  "Daniel"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Daniel"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Sep 25 02:49:46 2016"
+  LastModifiedDate	  "Fri Sep 30 18:17:38 2016"
   RTWModifiedTimeStamp	  0
-  ModelVersionFormat	  "1.%<AutoIncrement:3>"
+  ModelVersionFormat	  "1.%<AutoIncrement:2>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -108,7 +116,7 @@ Model {
 	  $ObjectID		  2
 	  Version		  "1.6.0"
 	  StartTime		  "0.0"
-	  StopTime		  "100.0"
+	  StopTime		  "10.0"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -584,15 +592,63 @@ Model {
       FramePeriod	      "inf"
     }
     Block {
-      BlockType		      Logic
-      Operator		      "AND"
-      Inputs		      "2"
-      IconShape		      "rectangular"
-      AllPortsSameDT	      on
-      OutDataTypeMode	      "Logical (see Configuration Parameters: Optimization)"
-      LogicDataType	      "uint(8)"
-      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
+      BlockType		      Inport
+      Port		      "1"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
       SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      DataType		      "auto"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchByCopyingInsideSignal off
+      Interpolate	      on
+      DimensionsMode	      "auto"
+    }
+    Block {
+      BlockType		      Integrator
+      ExternalReset	      "none"
+      InitialConditionSource  "internal"
+      InitialCondition	      "0"
+      LimitOutput	      off
+      UpperSaturationLimit    "inf"
+      LowerSaturationLimit    "-inf"
+      ShowSaturationPort      off
+      ShowStatePort	      off
+      AbsoluteTolerance	      "auto"
+      IgnoreLimit	      off
+      ZeroCross		      on
+      ContinuousStateAttributes	"''"
+    }
+    Block {
+      BlockType		      Outport
+      Port		      "1"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      DataType		      "auto"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      SourceOfInitialOutputValue "Dialog"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+      DimensionsMode	      "auto"
     }
     Block {
       BlockType		      Product
@@ -610,23 +666,6 @@ Model {
       LockScale		      off
       RndMeth		      "Zero"
       SaturateOnIntegerOverflow	on
-      SampleTime	      "-1"
-    }
-    Block {
-      BlockType		      Scope
-      ModelBased	      off
-      TickLabels	      "OneTimeTick"
-      ZoomMode		      "on"
-      Grid		      "on"
-      TimeRange		      "auto"
-      YMin		      "-5"
-      YMax		      "5"
-      SaveToWorkspace	      off
-      SaveName		      "ScopeData"
-      LimitDataPoints	      on
-      MaxDataPoints	      "5000"
-      Decimation	      "1"
-      SampleInput	      off
       SampleTime	      "-1"
     }
     Block {
@@ -648,17 +687,10 @@ Model {
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
     }
-    Block {
-      BlockType		      UnitDelay
-      X0		      "0"
-      SampleTime	      "1"
-      StateMustResolveToSignalObject off
-      RTWStateStorageClass    "Auto"
-    }
   }
   System {
-    Name		    "aprbs"
-    Location		    [2, 83, 1331, 715]
+    Name		    "linealizada2"
+    Location		    [73, 115, 924, 513]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -673,501 +705,251 @@ Model {
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
     Block {
-      BlockType		      Constant
-      Name		      "Constant"
-      Position		      [140, 225, 170, 255]
-      Value		      "2^6"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
+      BlockType		      Inport
+      Name		      "In1"
+      Position		      [310, 223, 340, 237]
+      IconDisplay	      "Port number"
     }
     Block {
-      BlockType		      Constant
-      Name		      "Constant1"
-      Position		      [260, 295, 290, 325]
-      Value		      "2^5"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant2"
-      Position		      [420, 360, 450, 390]
-      Value		      "2^4"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant3"
-      Position		      [525, 430, 555, 460]
-      Value		      "2^3"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant4"
-      Position		      [665, 475, 695, 505]
-      Value		      "2^2"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant5"
-      Position		      [795, 550, 825, 580]
-      Value		      "2^1"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant6"
-      Position		      [925, 610, 955, 640]
-      Value		      "2^0"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant7"
-      Position		      [1165, 465, 1195, 495]
-      Value		      "100/(128)"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
-    }
-    Block {
-      BlockType		      Logic
-      Name		      "Logical\nOperator"
-      Ports		      [2, 1]
-      Position		      [910, 147, 940, 178]
-      BlockMirror	      on
-      NamePlacement	      "alternate"
-      Operator		      "XOR"
-      AllPortsSameDT	      off
-      OutDataTypeMode	      "boolean"
-      LogicDataType	      "fixdt(0, 8)"
-      OutDataTypeStr	      "boolean"
-    }
-    Block {
-      BlockType		      Product
-      Name		      "Product"
-      Ports		      [2, 1]
-      Position		      [210, 217, 240, 248]
-      InputSameDT	      off
-      OutDataTypeMode	      "Inherit via internal rule"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
+      BlockType		      Integrator
+      Name		      "Integrator"
+      Ports		      [1, 1]
+      Position		      [895, 150, 925, 180]
+      InitialCondition	      "10"
+      UpperSaturationLimit    "70"
+      LowerSaturationLimit    "0.1"
     }
     Block {
       BlockType		      Product
       Name		      "Product1"
       Ports		      [2, 1]
-      Position		      [335, 287, 365, 318]
+      Position		      [385, 207, 415, 238]
       InputSameDT	      off
       OutDataTypeMode	      "Inherit via internal rule"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
+      SampleTime	      "0.1"
     }
     Block {
       BlockType		      Product
       Name		      "Product2"
       Ports		      [2, 1]
-      Position		      [505, 352, 535, 383]
+      Position		      [580, 202, 610, 233]
       InputSameDT	      off
       OutDataTypeMode	      "Inherit via internal rule"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
+      SampleTime	      "0.1"
     }
     Block {
       BlockType		      Product
       Name		      "Product3"
       Ports		      [2, 1]
-      Position		      [620, 422, 650, 453]
+      Position		      [760, 182, 790, 213]
       InputSameDT	      off
       OutDataTypeMode	      "Inherit via internal rule"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Product
-      Name		      "Product4"
-      Ports		      [2, 1]
-      Position		      [740, 467, 770, 498]
-      InputSameDT	      off
-      OutDataTypeMode	      "Inherit via internal rule"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Product
-      Name		      "Product5"
-      Ports		      [2, 1]
-      Position		      [870, 542, 900, 573]
-      InputSameDT	      off
-      OutDataTypeMode	      "Inherit via internal rule"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Product
-      Name		      "Product6"
-      Ports		      [2, 1]
-      Position		      [1005, 602, 1035, 633]
-      InputSameDT	      off
-      OutDataTypeMode	      "Inherit via internal rule"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Product
-      Name		      "Product7"
-      Ports		      [2, 1]
-      Position		      [1235, 347, 1265, 378]
-      InputSameDT	      off
-      OutDataTypeMode	      "Inherit via internal rule"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Scope
-      Name		      "Scope"
-      Ports		      [1]
-      Position		      [1250, 44, 1280, 76]
-      Floating		      off
-      Location		      [1, 49, 1367, 727]
-      Open		      off
-      NumInputPorts	      "1"
-      ZoomMode		      "xonly"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      SaveToWorkspace	      on
-      DataFormat	      "Array"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Scope
-      Name		      "Scope1"
-      Ports		      [1]
-      Position		      [1290, 319, 1320, 351]
-      Floating		      off
-      Location		      [5, 49, 1371, 727]
-      Open		      off
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      SaveName		      "ScopeData1"
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
+      SampleTime	      "0.1"
     }
     Block {
       BlockType		      Sum
-      Name		      "Sum"
-      Ports		      [7, 1]
-      Position		      [1065, 255, 1195, 455]
+      Name		      "Sum1"
+      Ports		      [2, 1]
+      Position		      [675, 180, 695, 200]
       ShowName		      off
       IconShape		      "round"
-      Inputs		      "|+++++++"
+      Inputs		      "|+-"
       InputSameDT	      off
       OutDataTypeMode	      "Inherit via internal rule"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
     }
     Block {
-      BlockType		      UnitDelay
-      Name		      "Unit Delay1"
-      Position		      [125, 43, 160, 77]
-      X0		      "1"
+      BlockType		      Sum
+      Name		      "Sum2"
+      Ports		      [2, 1]
+      Position		      [715, 265, 735, 285]
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "|+-"
+      InputSameDT	      off
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
     }
     Block {
-      BlockType		      UnitDelay
-      Name		      "Unit Delay2"
-      Position		      [260, 43, 295, 77]
-      X0		      "1"
+      BlockType		      Sum
+      Name		      "Sum3"
+      Ports		      [2, 1]
+      Position		      [840, 155, 860, 175]
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "|++"
+      InputSameDT	      off
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
     }
     Block {
-      BlockType		      UnitDelay
-      Name		      "Unit Delay3"
-      Position		      [395, 43, 430, 77]
-      X0		      "1"
+      BlockType		      Sum
+      Name		      "Sum4"
+      Ports		      [2, 1]
+      Position		      [460, 215, 480, 235]
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "|+-"
+      InputSameDT	      off
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
     }
     Block {
-      BlockType		      UnitDelay
-      Name		      "Unit Delay4"
-      Position		      [515, 43, 550, 77]
-      X0		      "1"
+      BlockType		      Constant
+      Name		      "c1"
+      Position		      [300, 170, 330, 200]
+      Value		      "0.00366942"
     }
     Block {
-      BlockType		      UnitDelay
-      Name		      "Unit Delay5"
-      Position		      [645, 43, 680, 77]
-      X0		      "1"
+      BlockType		      Constant
+      Name		      "c2"
+      Position		      [415, 275, 445, 305]
+      Value		      "0.147122"
     }
     Block {
-      BlockType		      UnitDelay
-      Name		      "Unit Delay6"
-      Position		      [775, 43, 810, 77]
-      X0		      "1"
+      BlockType		      Constant
+      Name		      "c3"
+      Position		      [525, 160, 555, 190]
+      Value		      "0.000195703"
     }
     Block {
-      BlockType		      UnitDelay
-      Name		      "Unit Delay7"
-      Position		      [890, 43, 925, 77]
-      X0		      "1"
+      BlockType		      Constant
+      Name		      "c4"
+      Position		      [600, 135, 630, 165]
+      Value		      "0.00665993"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "c5"
+      Position		      [675, 300, 705, 330]
+      Value		      "37.5"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "Out1"
+      Position		      [985, 190, 1015, 205]
+      BlockRotation	      270
+      IconDisplay	      "Port number"
     }
     Line {
-      SrcBlock		      "Unit Delay1"
+      SrcBlock		      "c1"
+      SrcPort		      1
+      Points		      [15, 0; 0, 30]
+      DstBlock		      "Product1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "In1"
       SrcPort		      1
       Points		      [15, 0]
       Branch {
-	DstBlock		"Unit Delay2"
-	DstPort			1
-      }
-      Branch {
-	Points			[5, 0; 0, 165]
-	DstBlock		"Product"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "Unit Delay2"
-      SrcPort		      1
-      Points		      [10, 0]
-      Branch {
-	DstBlock		"Unit Delay3"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, 235]
 	DstBlock		"Product1"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "Unit Delay3"
-      SrcPort		      1
-      Points		      [25, 0]
-      Branch {
-	DstBlock		"Unit Delay4"
-	DstPort			1
+	DstPort			2
       }
       Branch {
-	Points			[0, 300]
+	Points			[0, 105; 190, 0; 0, -110]
 	DstBlock		"Product2"
-	DstPort			1
+	DstPort			2
       }
-    }
-    Line {
-      SrcBlock		      "Unit Delay4"
-      SrcPort		      1
-      Points		      [10, 0]
-      Branch {
-	DstBlock		"Unit Delay5"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, 370]
-	DstBlock		"Product3"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "Unit Delay5"
-      SrcPort		      1
-      Points		      [40, 0]
-      Branch {
-	DstBlock		"Unit Delay6"
-	DstPort			1
-      }
-      Branch {
-	DstBlock		"Product4"
-	DstPort			1
-      }
-    }
-    Line {
-      Labels		      [2, 0]
-      SrcBlock		      "Logical\nOperator"
-      SrcPort		      1
-      Points		      [-815, 0; 0, -105]
-      DstBlock		      "Unit Delay1"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Unit Delay6"
-      SrcPort		      1
-      Points		      [20, 0]
-      Branch {
-	Points			[20, 0]
-	Branch {
-	  DstBlock		  "Unit Delay7"
-	  DstPort		  1
-	}
-	Branch {
-	  Points		  [0, 40; 100, 0]
-	  DstBlock		  "Logical\nOperator"
-	  DstPort		  1
-	}
-      }
-      Branch {
-	Points			[0, 490]
-	DstBlock		"Product5"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "Unit Delay7"
-      SrcPort		      1
-      Points		      [30, 0]
-      Branch {
-	Points			[30, 0]
-	Branch {
-	  Points		  [0, 110]
-	  DstBlock		  "Logical\nOperator"
-	  DstPort		  2
-	}
-	Branch {
-	  Points		  [0, -10; 140, 0; 0, 10]
-	  DstBlock		  "Scope"
-	  DstPort		  1
-	}
-      }
-      Branch {
-	Points			[0, 550]
-	DstBlock		"Product6"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "Product"
-      SrcPort		      1
-      Points		      [425, 0; 0, 30]
-      DstBlock		      "Sum"
-      DstPort		      1
     }
     Line {
       SrcBlock		      "Product1"
       SrcPort		      1
-      DstBlock		      "Sum"
+      DstBlock		      "Sum4"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "c2"
+      SrcPort		      1
+      Points		      [20, 0]
+      DstBlock		      "Sum4"
       DstPort		      2
+    }
+    Line {
+      SrcBlock		      "c3"
+      SrcPort		      1
+      Points		      [5, 0]
+      DstBlock		      "Product2"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "Product2"
       SrcPort		      1
-      Points		      [385, 0; 0, -31]
-      DstBlock		      "Sum"
-      DstPort		      3
-    }
-    Line {
-      SrcBlock		      "Product3"
-      SrcPort		      1
-      Points		      [315, 0; 0, -69]
-      DstBlock		      "Sum"
-      DstPort		      4
-    }
-    Line {
-      SrcBlock		      "Product4"
-      SrcPort		      1
-      Points		      [245, 0; 0, -80]
-      DstBlock		      "Sum"
-      DstPort		      5
-    }
-    Line {
-      SrcBlock		      "Product5"
-      SrcPort		      1
-      Points		      [0, -15; 100, 0; 0, -100]
-      DstBlock		      "Sum"
-      DstPort		      6
-    }
-    Line {
-      SrcBlock		      "Product6"
-      SrcPort		      1
-      Points		      [30, 0; 0, -10; 60, 0]
-      DstBlock		      "Sum"
-      DstPort		      7
-    }
-    Line {
-      SrcBlock		      "Constant"
-      SrcPort		      1
-      DstBlock		      "Product"
+      Points		      [70, 0]
+      DstBlock		      "Sum1"
       DstPort		      2
     }
     Line {
-      SrcBlock		      "Constant1"
+      SrcBlock		      "c4"
       SrcPort		      1
-      DstBlock		      "Product1"
+      Points		      [25, 0]
+      DstBlock		      "Sum1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "c5"
+      SrcPort		      1
+      Points		      [15, 0]
+      DstBlock		      "Sum2"
       DstPort		      2
     }
     Line {
-      SrcBlock		      "Constant2"
+      SrcBlock		      "Sum2"
       SrcPort		      1
-      DstBlock		      "Product2"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Constant3"
-      SrcPort		      1
+      Points		      [0, -70]
       DstBlock		      "Product3"
       DstPort		      2
     }
     Line {
-      SrcBlock		      "Constant6"
+      SrcBlock		      "Sum1"
       SrcPort		      1
-      DstBlock		      "Product6"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Constant5"
-      SrcPort		      1
-      DstBlock		      "Product5"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Constant4"
-      SrcPort		      1
-      DstBlock		      "Product4"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Sum"
-      SrcPort		      1
-      DstBlock		      "Product7"
+      DstBlock		      "Product3"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Constant7"
+      SrcBlock		      "Product3"
       SrcPort		      1
-      Points		      [10, 0; 0, -110]
-      DstBlock		      "Product7"
+      Points		      [55, 0]
+      DstBlock		      "Sum3"
       DstPort		      2
     }
     Line {
-      SrcBlock		      "Product7"
+      SrcBlock		      "Sum4"
       SrcPort		      1
-      Points		      [0, -30]
-      DstBlock		      "Scope1"
+      Points		      [15, 0; 0, -120; 325, 0]
+      DstBlock		      "Sum3"
       DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sum3"
+      SrcPort		      1
+      DstBlock		      "Integrator"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Integrator"
+      SrcPort		      1
+      Points		      [0, 50]
+      Branch {
+	Points			[0, 150; -295, 0; 0, -90]
+	DstBlock		"Sum2"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 5]
+	DstBlock		"Out1"
+	DstPort			1
+      }
     }
   }
 }
