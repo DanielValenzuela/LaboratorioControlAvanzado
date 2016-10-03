@@ -21,7 +21,7 @@ alturasFiltradas_t = filtroPasaBajos(signal_15_30.signal, Fs, [1], [2]);
 [alturasFiltradas_f, alturasFiltradas_S] = Fourier(alturasFiltradas_t, Fs);
 graficarEnTyF(signal_15_30.time, alturasFiltradas_t, alturasFiltradas_f, alturasFiltradas_S, ' Close Loop System Out Filtered, 15-30 cm');
 
-realSystemOutputFiltered_15_30 = struct('signal', alturasFiltradas_t,'time', signal_15_30.time);
+realSystemOutputFiltered_15_30 = struct('input', salidaLazoCerrado3.signals.values(1:5520,1),'output', alturasFiltradas_t,'time', signal_15_30.time);
 
 %%----------------------------------------------------------------------
 %%----------------------------------------------------------------------
@@ -36,4 +36,4 @@ alturasFiltradas_t = filtroPasaBajos(signal_30_45.signal, Fs, [1], [2]);
 [alturasFiltradas_f, alturasFiltradas_S] = Fourier(alturasFiltradas_t, Fs);
 graficarEnTyF(signal_30_45.time, alturasFiltradas_t, alturasFiltradas_f, alturasFiltradas_S, ' Close Loop System Out Filtered, 30-45 cm');
 
-realSystemOutputFiltered_30_45 = struct('signal', alturasFiltradas_t,'time', signal_30_45.time);
+realSystemOutputFiltered_30_45 = struct('input', salidaLazoCerrado2.signals.values(1150:2730,1),'output', alturasFiltradas_t,'time', signal_30_45.time);
