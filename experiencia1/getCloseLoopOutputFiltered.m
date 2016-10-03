@@ -55,8 +55,8 @@ u_train = realSystemOutputFiltered_15_30.input;
 t_train = realSystemOutputFiltered_15_30.time;
 z_train = iddata(y_train,u_train,0.1);
 
-delayInputOutput = 1;
-NN = struc(1:3,1:3,delayInputOutput);
+
+NN = struc(1:3,1:3,1:3);
 
 V = arxstruc(z_train(1:2760),z_train(2761:end),NN); % entrenamiento y validacion en el mismo conjunto
 order = selstruc(V,0);
@@ -87,8 +87,7 @@ u_train2 = realSystemOutputFiltered_30_45.input;
 t_train2 = realSystemOutputFiltered_30_45.time;
 z_train2 = iddata(y_train2,u_train2,0.1);
 
-delayInputOutput = 1;
-NN = struc(1:3,1:3,delayInputOutput);
+NN = struc(1:3,1:3,1:3);
 
 V = arxstruc(z_train2(1:2760),z_train2(2761:end),NN);
 order = selstruc(V,0);
@@ -120,8 +119,7 @@ u_train = realSystemOutputFiltered_15_30.input;
 t_train = realSystemOutputFiltered_15_30.time;
 z_train = iddata(y_train,u_train,0.1);
 
-delayInputOutput = 1;
-NN = struc(1:3,1:3,delayInputOutput);
+NN = struc(1:3,1:3,1:3);
 
 V = arxstruc(z_train(1:2760),z_train(2761:end),NN);
 order = selstruc(V,0);
@@ -129,7 +127,7 @@ order = selstruc(V,0);
 for i = 1:18 % i = 1:hasta todas las combinaciones posibles de valores struc
 
 % generar el modelo ARIX con los datos de entrenamiento para cada [na,nb,nk]
-model = arx(z_train,order,'IntegrateNoise',false(5520,1));
+model = arx(z_train,order,'IntegrateNoise',1);
 compare(z_train,model) % mostrar un grafico comparativo para los valores
 % reales y modelo ARIX
 
@@ -152,8 +150,8 @@ u_train2 = realSystemOutputFiltered_30_45.input;
 t_train2 = realSystemOutputFiltered_30_45.time;
 z_train2 = iddata(y_train2,u_train2,0.1);
 
-delayInputOutput = 1;
-NN = struc(1:3,1:3,delayInputOutput);
+
+NN = struc(1:3,1:3,1:3);
 
 V = arxstruc(z_train2(1:2760),z_train2(2761:end),NN); 
 order = selstruc(V,0);
@@ -161,7 +159,7 @@ order = selstruc(V,0);
 for i = 1:18 % i = 1:hasta todas las combinaciones posibles de valores struc
 
 % generar el modelo ARIX con los datos de entrenamiento para cada [na,nb,nk]
-model = arx(z_train,order,'IntegrateNoise',false(5520,1));
+model = arx(z_train,order,'IntegrateNoise',1);
 compare(z_train2,model2) % mostrar un grafico comparativo para los valores
 % reales y modelo ARIX
 
@@ -185,8 +183,7 @@ u_train = realSystemOutputFiltered_15_30.input;
 t_train = realSystemOutputFiltered_15_30.time;
 z_train = iddata(y_train,u_train,0.1);
 
-delayInputOutput = 1;
-NN = struc(1:3,1:3,delayInputOutput);
+NN = struc(1:3,1:3,1:3,1:3);
 
 V = arxstruc(z_train(1:2760),z_train(2761:end),NN);
 order = selstruc(V,0);
@@ -194,7 +191,7 @@ order = selstruc(V,0);
 for i = 1:18 % i = 1:hasta todas las combinaciones posibles de valores struc
 
 % generar el modelo ARMAX con los datos de entrenamiento para cada [na,nb,nk]
-model = armax(z_train,order,'IntegrateNoise',false(5520,1));
+model = armax(z_train,order);
 compare(z_train,model) % mostrar un grafico comparativo para los valores
 % reales y modelo ARMAX
 
@@ -217,8 +214,8 @@ u_train2 = realSystemOutputFiltered_30_45.input;
 t_train2 = realSystemOutputFiltered_30_45.time;
 z_train2 = iddata(y_train2,u_train2,0.1);
 
-delayInputOutput = 1;
-NN = struc(1:3,1:3,delayInputOutput);
+
+NN = struc(1:3,1:3,1:3,1:3);
 
 V = arxstruc(z_train2(1:2760),z_train2(2761:end),NN);
 order = selstruc(V,0);
@@ -226,7 +223,7 @@ order = selstruc(V,0);
 for i = 1:18 % i = 1:hasta todas las combinaciones posibles de valores struc
 
 % generar el modelo ARMAX con los datos de entrenamiento para cada [na,nb,nk]
-model = armax(z_train2,order,'IntegrateNoise',false(5520,1));
+model = armax(z_train2,order);
 compare(z_train2,model2) % mostrar un grafico comparativo para los valores
 % reales y modelo ARMAX
 
