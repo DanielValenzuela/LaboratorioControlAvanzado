@@ -43,9 +43,9 @@ realSystemOutputFiltered_30_45 = struct('input', salidaLazoCerrado2.signals.valu
 %%----------------------------------------------------------------------
 
 %%Modelos ARX , ARIX  y ARMAX para 2 grupos de entrenamiento
-%%Importante: 1) El código no está probado
-%             2) compare devuelve un tipo, pero debería devolver una
-%             estructura iddata, por favor verificar esto en la versión
+%%Importante: 1) El cï¿½digo no estï¿½ probado
+%             2) compare devuelve un tipo, pero deberï¿½a devolver una
+%             estructura iddata, por favor verificar esto en la versiï¿½n
 %             nueva.
 
 %% ARX 15 a 30 [cm]
@@ -136,8 +136,8 @@ for i = 1:18 % i = 1:hasta todas las combinaciones posibles de valores struc
 
 % generar el modelo ARIX con los datos de entrenamiento para cada [na,nb,nk]
 
-%model = arx(z_train,order,'IntegrateNoise',1); %%NO CORRE EN 2009
-model = arx(z_train,order);
+model = arx(z_train,order,'IntegrateNoise',1); %%NO CORRE EN 2009
+%model = arx(z_train,order);
 compare(z_train,model) % mostrar un grafico comparativo para los valores
 % reales y modelo ARIX
 
@@ -173,8 +173,8 @@ for i = 1:18 % i = 1:hasta todas las combinaciones posibles de valores struc
 
 % generar el modelo ARIX con los datos de entrenamiento para cada [na,nb,nk]
 
-%model2 = arx(z_train,order,'IntegrateNoise',1); %NO CORRE EN 2009
-model2 = arx(z_train,order);
+model2 = arx(z_train,order,'IntegrateNoise',1); %NO CORRE EN 2009
+%model2 = arx(z_train,order);
 compare(z_train2,model2) % mostrar un grafico comparativo para los valores
 % reales y modelo ARIX
 
