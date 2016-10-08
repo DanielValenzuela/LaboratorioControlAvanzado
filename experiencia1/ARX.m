@@ -10,7 +10,7 @@ Fs = 1/Ts; %[Hz]
 %%----------------------------------------------------------------------
 
 %%Modelos ARX , ARIX  y ARMAX para 2 grupos de entrenamiento
-%%Importante: 1) El c�digo no est� probado
+%%Importante: 1) El codigo no está probado
 %             2) compare devuelve un tipo, pero deber�a devolver una
 %             estructura iddata, por favor verificar esto en la versi�n
 %             nueva.
@@ -28,7 +28,7 @@ z_train = iddata(y_train,u_train,0.1);
 n = length(y_train);
 NN = struc(1:3,1:3,1:3);
 
-V = arxstruc(z_train(1:(n)/2),z_train((n+1)/2+1:end),NN); % entrenamiento y validacion en el mismo conjunto
+V = arxstruc(z_train(1:int16((n)/2)),z_train(int16((n+1)/2+1):end),NN); % entrenamiento y validacion en el mismo conjunto
 order = selstruc(V,0);
 
 for i = 1:18 % i = 1:hasta todas las combinaciones posibles de valores struc
@@ -50,14 +50,14 @@ end
 % xlabel('tiempo [s]');
 % ylabel('altura [cm]');
 
-pause();
+% pause();
 
 %%----------------------------------------------------------------------
 %% --------------------------ARX 30 a 45 [cm]---------------------------
 %%----------------------------------------------------------------------
 
 y_train2 = realSystemOutputFiltered_30_45.output;
-u_train = realSystemOutputFiltered_15_30.direct_input;
+u_train2 = realSystemOutputFiltered_30_45.direct_input;
 %u_train2 = realSystemOutputFiltered_30_45.input;
 t_train2 = realSystemOutputFiltered_30_45.time;
 z_train2 = iddata(y_train2,u_train2,0.1);
@@ -65,7 +65,7 @@ z_train2 = iddata(y_train2,u_train2,0.1);
 n = length(y_train2);
 NN = struc(1:3,1:3,1:3);
 
-V = arxstruc(z_train2(1:(n)/2),z_train2( ((n+1)/2+1):end),NN);
+V = arxstruc(z_train2(1:int16((n)/2)),z_train2( int16((n+1)/2+1):end),NN);
 order = selstruc(V,0);
 
 for i = 1:18 % i = 1:hasta todas las combinaciones posibles de valores struc
@@ -92,36 +92,36 @@ pause();
 %% ------------------------ARX 45 a 60 [cm]-----------------------------
 %%----------------------------------------------------------------------
 
-% y_train = realSystemOutputFiltered_45_60.output;
-% u_train = realSystemOutputFiltered_45_60.direct_input;
-% %u_train = realSystemOutputFiltered_45_60.input;
-% t_train = realSystemOutputFiltered_45_60.time;
-% z_train = iddata(y_train,u_train,0.1);
+y_train = realSystemOutputFiltered_45_60.output;
+u_train = realSystemOutputFiltered_45_60.direct_input;
+%u_train = realSystemOutputFiltered_45_60.input;
+t_train = realSystemOutputFiltered_45_60.time;
+z_train = iddata(y_train,u_train,0.1);
 
-% n = length(y_train);
-% NN = struc(1:3,1:3,1:3);
+n = length(y_train);
+NN = struc(1:3,1:3,1:3);
 
-% V = arxstruc(z_train(1:(n)/2),z_train((n+1)/2+1:end),NN); % entrenamiento y validacion en el mismo conjunto
-% order = selstruc(V,0);
+V = arxstruc(z_train(1:int16((n)/2)),z_train(int16((n+1)/2+1):end),NN); % entrenamiento y validacion en el mismo conjunto
+order = selstruc(V,0);
 
-% for i = 1:18 % i = 1:hasta todas las combinaciones posibles de valores struc
+for i = 1:18 % i = 1:hasta todas las combinaciones posibles de valores struc
 
-% % generar el modelo ARX con los datos de entrenamiento para cada [na,nb,nk]
-% model = arx(z_train,order);
-% compare(z_train,model) % mostrar un grafico comparativo para los valores
-% % reales y modelo ARX
+% generar el modelo ARX con los datos de entrenamiento para cada [na,nb,nk]
+model = arx(z_train,order);
+compare(z_train,model) % mostrar un grafico comparativo para los valores
+% reales y modelo ARX
 
-% %n(i,:) % mostrar [na,nb,nk]
-% [y_est,fit(i)] = compare(z_train,model); % encontrar el ajuste (fit) de cada modelo ARX 
+%n(i,:) % mostrar [na,nb,nk]
+[y_est,fit(i)] = compare(z_train,model); % encontrar el ajuste (fit) de cada modelo ARX 
 
-% %rmse(i) = sqrt(mean(y_train - y_est.y).^2); % RMSE, para indicar el error cuadratico medio de cada modelo
+%rmse(i) = sqrt(mean(y_train - y_est.y).^2); % RMSE, para indicar el error cuadratico medio de cada modelo
 
-% end
-% % figure
-% % plot(t_train,rmse);
-% % title('Error v/s tiempo (entre 45  60 [cm])')
-% % xlabel('tiempo [s]');
-% % ylabel('altura [cm]');
+end
+% figure
+% plot(t_train,rmse);
+% title('Error v/s tiempo (entre 45  60 [cm])')
+% xlabel('tiempo [s]');
+% ylabel('altura [cm]');
 
 % pause();
 
@@ -141,7 +141,7 @@ z_train = iddata(y_train,u_train,0.1);
 NN = struc(1:3,1:3,1:3);
 
 n = length(y_train);
-V = arxstruc(z_train(1:(n+1)/2),z_train((n+2)/2+1:end),NN);
+V = arxstruc(z_train(1:int16((n)/2)),z_train((n+1)/2+1:end),NN);
 order = selstruc(V,0);
 
 for i = 1:18 % i = 1:hasta todas las combinaciones posibles de valores struc
@@ -154,7 +154,7 @@ compare(z_train,model) % mostrar un grafico comparativo para los valores
 % reales y modelo ARIX
 
 %n(i,:) % mostrar [na,nb,nk]
-[y_est,fit(i)] = compare(z_train,model); % encontrar el ajuste (fit) de cada modelo ARIX 
+[y_est,fit(i)] = compare(z_train,model); % encontrar el ajuste (fit) de cada modelo ARIX
 
 %rmse(i) = sqrt(mean(y_train - y_est.y).^2); % RMSE, para indicar el error cuadratico medio de cada modelo
 
@@ -165,12 +165,12 @@ end
 % xlabel('tiempo [s]');
 % ylabel('altura [cm]');
 
-pause();
+% pause();
 
 %% ARXIX 30 a 45 [cm]
 
 y_train2 = realSystemOutputFiltered_30_45.output;
-u_train = realSystemOutputFiltered_15_30.direct_input;
+u_train = realSystemOutputFiltered_30_45.direct_input;
 %u_train2 = realSystemOutputFiltered_30_45.input;
 t_train2 = realSystemOutputFiltered_30_45.time;
 z_train2 = iddata(y_train2,u_train2,0.1);
@@ -178,7 +178,7 @@ z_train2 = iddata(y_train2,u_train2,0.1);
 n = length(y_train2);
 NN = struc(1:3,1:3,1:3);
 
-V = arxstruc(z_train2(1:(n)/2),z_train2((n+1)/2+1:end),NN); 
+V = arxstruc(z_train2(1:int16((n)/2)),z_train2(int16((n+1)/2+1):end),NN); 
 order = selstruc(V,0);
 
 for i = 1:18 % i = 1:hasta todas las combinaciones posibles de valores struc
@@ -204,41 +204,41 @@ end
 
 pause();
 
-%% ARIX 45 a 60 [cm]
+% ARIX 45 a 60 [cm]
 
 
-% y_train = realSystemOutputFiltered_45_60.output;
-% u_train = realSystemOutputFiltered_45_60.direct_input;
-% %u_train = realSystemOutputFiltered_45_60.input;
-% t_train = realSystemOutputFiltered_45_60.time;
-% z_train = iddata(y_train,u_train,0.1);
+y_train = realSystemOutputFiltered_45_60.output;
+u_train = realSystemOutputFiltered_45_60.direct_input;
+%u_train = realSystemOutputFiltered_45_60.input;
+t_train = realSystemOutputFiltered_45_60.time;
+z_train = iddata(y_train,u_train,0.1);
 
-% NN = struc(1:3,1:3,1:3);
+NN = struc(1:3,1:3,1:3);
 
-% n = length(y_train);
-% V = arxstruc(z_train(1:(n+1)/2),z_train((n+2)/2+1:end),NN);
-% order = selstruc(V,0);
+n = length(y_train);
+V = arxstruc(z_train(1:int16((n+1)/2)),z_train(int16((n+2)/2+1):end),NN);
+order = selstruc(V,0);
 
-% for i = 1:18 % i = 1:hasta todas las combinaciones posibles de valores struc
+for i = 1:18 % i = 1:hasta todas las combinaciones posibles de valores struc
 
-% % generar el modelo ARIX con los datos de entrenamiento para cada [na,nb,nk]
+% generar el modelo ARIX con los datos de entrenamiento para cada [na,nb,nk]
 
-% model = arx(z_train,order,'IntegrateNoise',1); %%NO CORRE EN 2009
-% %model = arx(z_train,order);
-% compare(z_train,model) % mostrar un grafico comparativo para los valores
-% % reales y modelo ARIX
+model = arx(z_train,order,'IntegrateNoise',1); %%NO CORRE EN 2009
+%model = arx(z_train,order);
+compare(z_train,model) % mostrar un grafico comparativo para los valores
+% reales y modelo ARIX
 
-% %n(i,:) % mostrar [na,nb,nk]
-% [y_est,fit(i)] = compare(z_train,model); % encontrar el ajuste (fit) de cada modelo ARIX 
+%n(i,:) % mostrar [na,nb,nk]
+[y_est,fit(i)] = compare(z_train,model); % encontrar el ajuste (fit) de cada modelo ARIX 
 
-% %rmse(i) = sqrt(mean(y_train - y_est.y).^2); % RMSE, para indicar el error cuadratico medio de cada modelo
+%rmse(i) = sqrt(mean(y_train - y_est.y).^2); % RMSE, para indicar el error cuadratico medio de cada modelo
 
-% end
-% % figure
-% % plot(t_train,rmse);
-% % title('Error v/s tiempo (entre 15  30 [cm])')
-% % xlabel('tiempo [s]');
-% % ylabel('altura [cm]');
+end
+% figure
+% plot(t_train,rmse);
+% title('Error v/s tiempo (entre 15  30 [cm])')
+% xlabel('tiempo [s]');
+% ylabel('altura [cm]');
 
 % pause();
 
@@ -247,8 +247,8 @@ pause();
 
 
 y_train = realSystemOutputFiltered_15_30.output;
-%u_train = realSystemOutputFiltered_15_30.direct_input;
-u_train = realSystemOutputFiltered_15_30.input;
+u_train = realSystemOutputFiltered_15_30.direct_input;
+%u_train = realSystemOutputFiltered_15_30.input;
 t_train = realSystemOutputFiltered_15_30.time;
 z_train = iddata(y_train,u_train,0.1);
 
@@ -256,15 +256,15 @@ n = length(y_train);
 %NN = struc(1:3,1:3,1:3,1:3);
 NN = struc(1:3,1:3,1:3,1:3);
 
-%V = arxstruc(z_train(1:(n+1)/2),z_train((n+2)/2+1:end),NN);
-%order = selstruc(V,0);
+V = arxstruc(z_train(1:int16((n)/2)),z_train(int16((n+1)/2+1):end),NN);
+order = selstruc(V,0);
 
 for i = 1:18 % i = 1:hasta todas las combinaciones posibles de valores struc
 
 % generar el modelo ARMAX con los datos de entrenamiento para cada [na,nb,nk]
 
-z_ent = z_train(1:(n+1)/2);
-model = armax(z_ent,NN);
+% z_ent = z_train(1:(n+1)/2);
+model = armax(z_ent,order);
 compare(z_train,model) % mostrar un grafico comparativo para los valores
 % reales y modelo ARMAX
 
@@ -281,11 +281,11 @@ end
 % xlabel('tiempo [s]');
 % ylabel('altura [cm]');
 
-pause();
+% pause();
 %% ARMAX 30 a 45 [cm]
 
 y_train2 = realSystemOutputFiltered_30_45.output;
-u_train = realSystemOutputFiltered_15_30.direct_input;
+u_train = realSystemOutputFiltered_30_45.direct_input;
 %u_train2 = realSystemOutputFiltered_30_45.input;
 t_train2 = realSystemOutputFiltered_30_45.time;
 z_train2 = iddata(y_train2,u_train2,0.1);
@@ -319,39 +319,39 @@ end
 %% ARMAX 45 a 60 [cm]
 
 
-% y_train = realSystemOutputFiltered_45_60.output;
-% %u_train = realSystemOutputFiltered_45_60.direct_input;
-% u_train = realSystemOutputFiltered_45_60.input;
-% t_train = realSystemOutputFiltered_45_60.time;
-% z_train = iddata(y_train,u_train,0.1);
+y_train = realSystemOutputFiltered_45_60.output;
+%u_train = realSystemOutputFiltered_45_60.direct_input;
+u_train = realSystemOutputFiltered_45_60.input;
+t_train = realSystemOutputFiltered_45_60.time;
+z_train = iddata(y_train,u_train,0.1);
 
-% n = length(y_train);
-% %NN = struc(1:3,1:3,1:3,1:3);
-% NN = struc(1:3,1:3,1:3,1:3);
+n = length(y_train);
+%NN = struc(1:3,1:3,1:3,1:3);
+NN = struc(1:3,1:3,1:3,1:3);
 
-% %V = arxstruc(z_train(1:(n+1)/2),z_train((n+2)/2+1:end),NN);
-% %order = selstruc(V,0);
+%V = arxstruc(z_train(1:(n+1)/2),z_train((n+2)/2+1:end),NN);
+%order = selstruc(V,0);
 
-% for i = 1:18 % i = 1:hasta todas las combinaciones posibles de valores struc
+for i = 1:18 % i = 1:hasta todas las combinaciones posibles de valores struc
 
-% % generar el modelo ARMAX con los datos de entrenamiento para cada [na,nb,nk]
+% generar el modelo ARMAX con los datos de entrenamiento para cada [na,nb,nk]
 
-% z_ent = z_train(1:(n+1)/2);
-% model = armax(z_ent,NN);
-% compare(z_train,model) % mostrar un grafico comparativo para los valores
-% % reales y modelo ARMAX
+z_ent = z_train(1:(n+1)/2);
+model = armax(z_ent,NN);
+compare(z_train,model) % mostrar un grafico comparativo para los valores
+% reales y modelo ARMAX
 
-% %n(i,:) % mostrar [na,nb,nk]
-% [y_est,fit(i)] = compare(z_train,model); % encontrar el ajuste (fit) de cada modelo ARMAX 
+%n(i,:) % mostrar [na,nb,nk]
+[y_est,fit(i)] = compare(z_train,model); % encontrar el ajuste (fit) de cada modelo ARMAX 
 
-% %no corre en 2009
-% %rmse(i) = sqrt(mean(y_train - y_est.y).^2); % RMSE, para indicar el error cuadratico medio de cada modelo
+%no corre en 2009
+%rmse(i) = sqrt(mean(y_train - y_est.y).^2); % RMSE, para indicar el error cuadratico medio de cada modelo
 
-% end
-% % figure
-% % plot(t_train,rmse);
-% % title('Error v/s tiempo (entre 45  60 [cm])')
-% % xlabel('tiempo [s]');
-% % ylabel('altura [cm]');
+end
+% figure
+% plot(t_train,rmse);
+% title('Error v/s tiempo (entre 45  60 [cm])')
+% xlabel('tiempo [s]');
+% ylabel('altura [cm]');
 
 % pause();

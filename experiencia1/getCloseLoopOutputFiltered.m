@@ -3,8 +3,11 @@ clear
 clc
 %load('lastDatos/salidaLazoCerrado3.mat');
 %load('lastDatos/salidaLazoCerrado2.mat');
-load('DATOS_MARTES/DATOS_BUENOS_10_30_1.mat');
-load('DATOS_MARTES/DATOS_BUENOS_45_60_1.mat');
+% load('DATOS_MARTES/DATOS_BUENOS_10_30_1.mat');
+% load('DATOS_MARTES/DATOS_BUENOS_45_60_1.mat');
+load('DATOS_JU/DATOS_JU_OK_15_30.mat')
+load('DATOS_JU/DATOS_JU_OK_30_45.mat')
+load('DATOS_JU/DATOS_JU_OK_45_60.mat')
 %Constantes
 Ts = 0.01;  %[s]
 Fs = 1/Ts; %[Hz]
@@ -44,15 +47,15 @@ realSystemOutputFiltered_45_60 = struct('input', salida_45_60.signals.values(1:L
 %%----------------------------------------------------------------------
 %--------------- 30-45 [cm] --------------------------------------------
 %%----------------------------------------------------------------------
+Limit4 = length(salida_30_45.time);
+%Graficos en tiempo y frecuencia de salida (altura) NO Filtrada
+signal_30_45 = struct('signal', salida_30_45.signals.values(1:Limit4,2),'time', salida_30_45.time(1:Limit4));
+[alturas_f, alturas_S] = Fourier(signal_30_45.signal, Fs);
+graficarEnTyF(signal_30_45.time, signal_30_45.signal, alturas_f, alturas_S, 'Close Loop System Out NOT Filtered, 30-45 cm');
+%Filtro Pasa Bajos
+alturasFiltradas_t = filtroPasaBajos(signal_30_45.signal, Fs, [1], [2]);
+%Graficos en tiempo y frecuencia de salida (altura) Filtrada
+[alturasFiltradas_f, alturasFiltradas_S] = Fourier(alturasFiltradas_t, Fs);
+graficarEnTyF(signal_30_45.time, alturasFiltradas_t, alturasFiltradas_f, alturasFiltradas_S, ' Close Loop System Out Filtered, 30-45 cm');
 
-% %Graficos en tiempo y frecuencia de salida (altura) NO Filtrada
-% signal_30_45 = struct('signal', salidaLazoCerrado2.signals.values(1150:2730,2),'time', salidaLazoCerrado2.time(1150:2730));
-% [alturas_f, alturas_S] = Fourier(signal_30_45.signal, Fs);
-% graficarEnTyF(signal_30_45.time, signal_30_45.signal, alturas_f, alturas_S, 'Close Loop System Out NOT Filtered, 30-45 cm');
-% %Filtro Pasa Bajos
-% alturasFiltradas_t = filtroPasaBajos(signal_30_45.signal, Fs, [1], [2]);
-% %Graficos en tiempo y frecuencia de salida (altura) Filtrada
-% [alturasFiltradas_f, alturasFiltradas_S] = Fourier(alturasFiltradas_t, Fs);
-% graficarEnTyF(signal_30_45.time, alturasFiltradas_t, alturasFiltradas_f, alturasFiltradas_S, ' Close Loop System Out Filtered, 30-45 cm');
-
-% realSystemOutputFiltered_30_45 = struct('input', salidaLazoCerrado2.signals.values(1150:2730,1),'output', alturasFiltradas_t,'time', signal_30_45.time);
+realSystemOutputFiltered_30_45 = struct('input', salida_30_45.signals.values(1:Limit4,1),'direct_input', Ctrl_30_45.signals.values(1:Limit4),'output', alturasFiltradas_t,'time', signal_30_45.time);
