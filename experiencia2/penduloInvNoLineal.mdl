@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.10"
+    ComputedModelVersion    "1.24"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -27,9 +27,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Oct 12 04:05:20 2016"
+  LastModifiedDate	  "Wed Oct 12 04:39:01 2016"
   RTWModifiedTimeStamp	  398140032
-  ModelVersionFormat	  "1.%<AutoIncrement:10>"
+  ModelVersionFormat	  "1.%<AutoIncrement:24>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -770,6 +770,19 @@ Model {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      Sin
+      SineType		      "Time based"
+      TimeSource	      "Use simulation time"
+      Amplitude		      "1"
+      Bias		      "0"
+      Frequency		      "1"
+      Phase		      "0"
+      Samples		      "10"
+      Offset		      "0"
+      SampleTime	      "-1"
+      VectorParams1D	      on
+    }
+    Block {
       BlockType		      SubSystem
       ShowPortLabels	      "FromPortIcon"
       Permissions	      "ReadWrite"
@@ -811,7 +824,7 @@ Model {
   }
   System {
     Name		    "penduloInvNoLineal"
-    Location		    [225, 184, 1183, 680]
+    Location		    [280, 173, 1238, 669]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -825,7 +838,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "73"
+    SIDHighWatermark	    "79"
     Block {
       BlockType		      Constant
       Name		      "180/pi"
@@ -833,6 +846,17 @@ Model {
       Position		      [535, 160, 565, 190]
       ZOrder		      -4
       Value		      "180/3.1415926"
+    }
+    Block {
+      BlockType		      Sin
+      Name		      "Sine Wave"
+      SID		      "79"
+      Ports		      [0, 1]
+      Position		      [365, 130, 395, 160]
+      ZOrder		      -21
+      Amplitude		      "2"
+      Frequency		      "10"
+      SampleTime	      "0"
     }
     Block {
       BlockType		      SubSystem
@@ -849,7 +873,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Subsystem"
-	Location		[261, 101, 1161, 742]
+	Location		[176, 95, 1076, 736]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1004,9 +1028,22 @@ Model {
 	  Name			  "Divide"
 	  SID			  "29"
 	  Ports			  [2, 1]
-	  Position		  [535, 87, 565, 118]
+	  Position		  [480, 17, 510, 48]
 	  ZOrder		  -8
 	  Inputs		  "*/"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Divide1"
+	  SID			  "74"
+	  Ports			  [1, 1]
+	  Position		  [534, 15, 566, 45]
+	  BlockRotation		  270
+	  Inputs		  "/"
 	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  RndMeth		  "Floor"
@@ -1057,6 +1094,15 @@ Model {
 	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Fcn
+	  Name			  "div"
+	  SID			  "77"
+	  Position		  [494, 235, 526, 270]
+	  BlockRotation		  270
+	  Expr			  "1/u"
+	  SampleTime		  "0.1"
 	}
 	Block {
 	  BlockType		  Constant
@@ -1181,6 +1227,17 @@ Model {
 	  SID			  "46"
 	  Ports			  [2, 1]
 	  Position		  [640, 95, 665, 135]
+	  ZOrder		  -13
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "prod1"
+	  SID			  "75"
+	  Ports			  [2, 1]
+	  Position		  [535, 87, 565, 118]
 	  ZOrder		  -13
 	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -1458,18 +1515,11 @@ Model {
 	Line {
 	  SrcBlock		  "numerador"
 	  SrcPort		  1
-	  DstBlock		  "Divide"
+	  DstBlock		  "prod1"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "denominador"
-	  SrcPort		  1
-	  Points		  [0, -180]
-	  DstBlock		  "Divide"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Divide"
+	  SrcBlock		  "prod1"
 	  SrcPort		  1
 	  Points		  [30, 0]
 	  Branch {
@@ -1548,6 +1598,19 @@ Model {
 	  DstBlock		  "phi4"
 	  DstPort		  1
 	}
+	Line {
+	  SrcBlock		  "denominador"
+	  SrcPort		  1
+	  DstBlock		  "div"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "div"
+	  SrcPort		  1
+	  Points		  [0, -120]
+	  DstBlock		  "prod1"
+	  DstPort		  2
+	}
       }
     }
     Block {
@@ -1599,12 +1662,22 @@ Model {
       Position		      [600, 284, 630, 316]
       ZOrder		      -16
       Floating		      off
-      Location		      [188, 390, 512, 629]
+      Location		      [1, 53, 1367, 767]
       Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
       }
       ShowLegends	      off
       SaveName		      "ScopeData3"
@@ -1615,9 +1688,8 @@ Model {
       BlockType		      Constant
       Name		      "u"
       SID		      "70"
-      Position		      [325, 120, 355, 150]
+      Position		      [730, 270, 760, 300]
       ZOrder		      -4
-      Value		      "0"
     }
     Block {
       BlockType		      Scope
@@ -1627,7 +1699,7 @@ Model {
       Position		      [600, 64, 630, 96]
       ZOrder		      -16
       Floating		      off
-      Location		      [188, 390, 512, 629]
+      Location		      [1, 53, 1367, 767]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -1655,9 +1727,10 @@ Model {
       Ports		      [1, 1]
       Position		      [75, 65, 105, 95]
       ZOrder		      -2
+      InitialCondition	      "pi"
       LimitOutput	      on
-      UpperSaturationLimit    "360"
-      LowerSaturationLimit    "0"
+      UpperSaturationLimit    "200"
+      LowerSaturationLimit    "-200"
     }
     Block {
       BlockType		      Integrator
@@ -1666,9 +1739,10 @@ Model {
       Ports		      [1, 1]
       Position		      [75, 160, 105, 190]
       ZOrder		      -2
+      InitialCondition	      "pi"
       LimitOutput	      on
-      UpperSaturationLimit    "200"
-      LowerSaturationLimit    "-200"
+      UpperSaturationLimit    "2*pi"
+      LowerSaturationLimit    "0"
     }
     Block {
       BlockType		      Integrator
@@ -1677,6 +1751,7 @@ Model {
       Ports		      [1, 1]
       Position		      [75, 250, 105, 280]
       ZOrder		      -2
+      InitialCondition	      "pi"
       LimitOutput	      on
       UpperSaturationLimit    "100"
       LowerSaturationLimit    "-100"
@@ -1688,6 +1763,7 @@ Model {
       Ports		      [1, 1]
       Position		      [75, 330, 105, 360]
       ZOrder		      -2
+      InitialCondition	      "pi"
       LimitOutput	      on
       UpperSaturationLimit    "100"
       LowerSaturationLimit    "-100"
@@ -1700,12 +1776,22 @@ Model {
       Position		      [600, 204, 630, 236]
       ZOrder		      -16
       Floating		      off
-      Location		      [188, 390, 512, 629]
+      Location		      [1, 53, 1367, 767]
       Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
       }
       ShowLegends	      off
       SaveName		      "ScopeData2"
@@ -1741,9 +1827,9 @@ Model {
       DstPort		      1
     }
     Line {
-      SrcBlock		      "u"
+      SrcBlock		      "Sine Wave"
       SrcPort		      1
-      Points		      [5, 0; 0, 100]
+      Points		      [20, 0; 0, 40; -55, 0; 0, 50]
       DstBlock		      "Subsystem"
       DstPort		      4
     }
