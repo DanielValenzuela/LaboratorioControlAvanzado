@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.97"
+    ComputedModelVersion    "1.100"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -38,9 +38,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Oct 15 18:46:16 2016"
+  LastModifiedDate	  "Sat Oct 15 19:22:28 2016"
   RTWModifiedTimeStamp	  398457077
-  ModelVersionFormat	  "1.%<AutoIncrement:97>"
+  ModelVersionFormat	  "1.%<AutoIncrement:100>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -2058,7 +2058,7 @@ Model {
       Position		      [685, 139, 715, 171]
       ZOrder		      -16
       Floating		      off
-      Location		      [5, 81, 1371, 795]
+      Location		      [10, 86, 1366, 790]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -2289,7 +2289,7 @@ Model {
       Ports		      [1, 1]
       Position		      [70, 160, 100, 190]
       ZOrder		      -2
-      InitialCondition	      "90*pi/180"
+      InitialCondition	      "0*pi/180"
       UpperSaturationLimit    "2*pi"
       LowerSaturationLimit    "0"
     }
