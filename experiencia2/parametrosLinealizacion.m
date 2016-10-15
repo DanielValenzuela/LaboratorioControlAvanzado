@@ -29,5 +29,5 @@ dPhi4_dF = (1.88*m*l)/((M+m)*(I+m*(l^2))-(m^2)*(l^2));
 % dPhi4_dx3
 % dPhi4_dx4
 
-dPhi3_dF
-dPhi4_dF
+% dPhi3_dF
+% dPhi4_dF
