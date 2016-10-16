@@ -1,7 +1,6 @@
 /* Include files */
 
 #include "penduloInvNoLineal_sfun.h"
-#include "c1_penduloInvNoLineal.h"
 #include "c2_penduloInvNoLineal.h"
 #include "c3_penduloInvNoLineal.h"
 #include "c4_penduloInvNoLineal.h"
@@ -31,11 +30,6 @@ void penduloInvNoLineal_terminator(void)
 unsigned int sf_penduloInvNoLineal_method_dispatcher(SimStruct *simstructPtr,
   unsigned int chartFileNumber, const char* specsCksum, int_T method, void *data)
 {
-  if (chartFileNumber==1) {
-    c1_penduloInvNoLineal_method_dispatcher(simstructPtr, method, data);
-    return 1;
-  }
-
   if (chartFileNumber==2) {
     c2_penduloInvNoLineal_method_dispatcher(simstructPtr, method, data);
     return 1;
@@ -84,21 +78,14 @@ unsigned int sf_penduloInvNoLineal_process_check_sum_call( int nlhs, mxArray *
       ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(0U);
       ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(0U);
     } else if (!strcmp(commandName,"makefile")) {
-      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1005518348U);
-      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2664412799U);
-      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1398669774U);
-      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2552656062U);
+      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3746527604U);
+      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1129793577U);
+      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3094809384U);
+      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2865886750U);
     } else if (nrhs==3 && !strcmp(commandName,"chart")) {
       unsigned int chartFileNumber;
       chartFileNumber = (unsigned int)mxGetScalar(prhs[2]);
       switch (chartFileNumber) {
-       case 1:
-        {
-          extern void sf_c1_penduloInvNoLineal_get_check_sum(mxArray *plhs[]);
-          sf_c1_penduloInvNoLineal_get_check_sum(plhs);
-          break;
-        }
-
        case 2:
         {
           extern void sf_c2_penduloInvNoLineal_get_check_sum(mxArray *plhs[]);
@@ -135,10 +122,10 @@ unsigned int sf_penduloInvNoLineal_process_check_sum_call( int nlhs, mxArray *
       return 0;
     }
   } else {
-    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1291665929U);
-    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2057446709U);
-    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(390716518U);
-    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2836699159U);
+    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3888180977U);
+    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2267385977U);
+    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2348506472U);
+    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1294089833U);
   }
 
   return 1;
@@ -174,18 +161,6 @@ unsigned int sf_penduloInvNoLineal_autoinheritance_info( int nlhs, mxArray *
     unsigned int chartFileNumber;
     chartFileNumber = (unsigned int)mxGetScalar(prhs[1]);
     switch (chartFileNumber) {
-     case 1:
-      {
-        if (strcmp(aiChksum, "2C3tH39nCuZ81IY36Ik1fB") == 0) {
-          extern mxArray *sf_c1_penduloInvNoLineal_get_autoinheritance_info(void);
-          plhs[0] = sf_c1_penduloInvNoLineal_get_autoinheritance_info();
-          break;
-        }
-
-        plhs[0] = mxCreateDoubleMatrix(0,0,mxREAL);
-        break;
-      }
-
      case 2:
       {
         if (strcmp(aiChksum, "2C3tH39nCuZ81IY36Ik1fB") == 0) {
@@ -257,17 +232,6 @@ unsigned int sf_penduloInvNoLineal_get_eml_resolved_functions_info( int nlhs,
     unsigned int chartFileNumber;
     chartFileNumber = (unsigned int)mxGetScalar(prhs[1]);
     switch (chartFileNumber) {
-     case 1:
-      {
-        extern const mxArray
-          *sf_c1_penduloInvNoLineal_get_eml_resolved_functions_info(void);
-        mxArray *persistentMxArray = (mxArray *)
-          sf_c1_penduloInvNoLineal_get_eml_resolved_functions_info();
-        plhs[0] = mxDuplicateArray(persistentMxArray);
-        mxDestroyArray(persistentMxArray);
-        break;
-      }
-
      case 2:
       {
         extern const mxArray
@@ -319,7 +283,7 @@ unsigned int sf_penduloInvNoLineal_get_eml_resolved_functions_info( int nlhs,
 void penduloInvNoLineal_debug_initialize(void)
 {
   _penduloInvNoLinealMachineNumber_ = sf_debug_initialize_machine(
-    "penduloInvNoLineal","sfun",0,4,0,0,0);
+    "penduloInvNoLineal","sfun",0,3,0,0,0);
   sf_debug_set_machine_event_thresholds(_penduloInvNoLinealMachineNumber_,0,0);
   sf_debug_set_machine_data_thresholds(_penduloInvNoLinealMachineNumber_,0);
 }
