@@ -1,8 +1,8 @@
 /* Include files */
 
-#include "penduloInvNoLineal_sfun.h"
-#include "c3_penduloInvNoLineal.h"
-#include "c4_penduloInvNoLineal.h"
+#include "penduloInvNoLinealV3_sfun.h"
+#include "c3_penduloInvNoLinealV3.h"
+#include "c4_penduloInvNoLinealV3.h"
 
 /* Type Definitions */
 
@@ -11,38 +11,38 @@
 /* Variable Declarations */
 
 /* Variable Definitions */
-uint32_T _penduloInvNoLinealMachineNumber_;
+uint32_T _penduloInvNoLinealV3MachineNumber_;
 real_T _sfTime_;
 
 /* Function Declarations */
 
 /* Function Definitions */
-void penduloInvNoLineal_initializer(void)
+void penduloInvNoLinealV3_initializer(void)
 {
 }
 
-void penduloInvNoLineal_terminator(void)
+void penduloInvNoLinealV3_terminator(void)
 {
 }
 
 /* SFunction Glue Code */
-unsigned int sf_penduloInvNoLineal_method_dispatcher(SimStruct *simstructPtr,
+unsigned int sf_penduloInvNoLinealV3_method_dispatcher(SimStruct *simstructPtr,
   unsigned int chartFileNumber, const char* specsCksum, int_T method, void *data)
 {
   if (chartFileNumber==3) {
-    c3_penduloInvNoLineal_method_dispatcher(simstructPtr, method, data);
+    c3_penduloInvNoLinealV3_method_dispatcher(simstructPtr, method, data);
     return 1;
   }
 
   if (chartFileNumber==4) {
-    c4_penduloInvNoLineal_method_dispatcher(simstructPtr, method, data);
+    c4_penduloInvNoLinealV3_method_dispatcher(simstructPtr, method, data);
     return 1;
   }
 
   return 0;
 }
 
-unsigned int sf_penduloInvNoLineal_process_check_sum_call( int nlhs, mxArray *
+unsigned int sf_penduloInvNoLinealV3_process_check_sum_call( int nlhs, mxArray *
   plhs[], int nrhs, const mxArray * prhs[] )
 {
 
@@ -62,10 +62,10 @@ unsigned int sf_penduloInvNoLineal_process_check_sum_call( int nlhs, mxArray *
     mxGetString(prhs[1], commandName,sizeof(commandName)/sizeof(char));
     commandName[(sizeof(commandName)/sizeof(char)-1)] = '\0';
     if (!strcmp(commandName,"machine")) {
-      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(812933135U);
-      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(986617439U);
-      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2694649575U);
-      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2989737435U);
+      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2961575253U);
+      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3825263084U);
+      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3369999913U);
+      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1698393457U);
     } else if (!strcmp(commandName,"exportedFcn")) {
       ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(0U);
       ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(0U);
@@ -82,15 +82,15 @@ unsigned int sf_penduloInvNoLineal_process_check_sum_call( int nlhs, mxArray *
       switch (chartFileNumber) {
        case 3:
         {
-          extern void sf_c3_penduloInvNoLineal_get_check_sum(mxArray *plhs[]);
-          sf_c3_penduloInvNoLineal_get_check_sum(plhs);
+          extern void sf_c3_penduloInvNoLinealV3_get_check_sum(mxArray *plhs[]);
+          sf_c3_penduloInvNoLinealV3_get_check_sum(plhs);
           break;
         }
 
        case 4:
         {
-          extern void sf_c4_penduloInvNoLineal_get_check_sum(mxArray *plhs[]);
-          sf_c4_penduloInvNoLineal_get_check_sum(plhs);
+          extern void sf_c4_penduloInvNoLinealV3_get_check_sum(mxArray *plhs[]);
+          sf_c4_penduloInvNoLinealV3_get_check_sum(plhs);
           break;
         }
 
@@ -109,10 +109,10 @@ unsigned int sf_penduloInvNoLineal_process_check_sum_call( int nlhs, mxArray *
       return 0;
     }
   } else {
-    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(441160735U);
-    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3007101776U);
-    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3499770608U);
-    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3395901621U);
+    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2657133138U);
+    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3823375279U);
+    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3083796405U);
+    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2136207335U);
   }
 
   return 1;
@@ -125,7 +125,7 @@ unsigned int sf_penduloInvNoLineal_process_check_sum_call( int nlhs, mxArray *
 
 }
 
-unsigned int sf_penduloInvNoLineal_autoinheritance_info( int nlhs, mxArray *
+unsigned int sf_penduloInvNoLinealV3_autoinheritance_info( int nlhs, mxArray *
   plhs[], int nrhs, const mxArray * prhs[] )
 {
 
@@ -151,8 +151,9 @@ unsigned int sf_penduloInvNoLineal_autoinheritance_info( int nlhs, mxArray *
      case 3:
       {
         if (strcmp(aiChksum, "oU90mQ3XUCEeyPNKoyxTKG") == 0) {
-          extern mxArray *sf_c3_penduloInvNoLineal_get_autoinheritance_info(void);
-          plhs[0] = sf_c3_penduloInvNoLineal_get_autoinheritance_info();
+          extern mxArray *sf_c3_penduloInvNoLinealV3_get_autoinheritance_info
+            (void);
+          plhs[0] = sf_c3_penduloInvNoLinealV3_get_autoinheritance_info();
           break;
         }
 
@@ -163,8 +164,9 @@ unsigned int sf_penduloInvNoLineal_autoinheritance_info( int nlhs, mxArray *
      case 4:
       {
         if (strcmp(aiChksum, "2C3tH39nCuZ81IY36Ik1fB") == 0) {
-          extern mxArray *sf_c4_penduloInvNoLineal_get_autoinheritance_info(void);
-          plhs[0] = sf_c4_penduloInvNoLineal_get_autoinheritance_info();
+          extern mxArray *sf_c4_penduloInvNoLinealV3_get_autoinheritance_info
+            (void);
+          plhs[0] = sf_c4_penduloInvNoLinealV3_get_autoinheritance_info();
           break;
         }
 
@@ -187,7 +189,7 @@ unsigned int sf_penduloInvNoLineal_autoinheritance_info( int nlhs, mxArray *
 
 }
 
-unsigned int sf_penduloInvNoLineal_get_eml_resolved_functions_info( int nlhs,
+unsigned int sf_penduloInvNoLinealV3_get_eml_resolved_functions_info( int nlhs,
   mxArray * plhs[], int nrhs, const mxArray * prhs[] )
 {
 
@@ -210,9 +212,9 @@ unsigned int sf_penduloInvNoLineal_get_eml_resolved_functions_info( int nlhs,
      case 3:
       {
         extern const mxArray
-          *sf_c3_penduloInvNoLineal_get_eml_resolved_functions_info(void);
+          *sf_c3_penduloInvNoLinealV3_get_eml_resolved_functions_info(void);
         mxArray *persistentMxArray = (mxArray *)
-          sf_c3_penduloInvNoLineal_get_eml_resolved_functions_info();
+          sf_c3_penduloInvNoLinealV3_get_eml_resolved_functions_info();
         plhs[0] = mxDuplicateArray(persistentMxArray);
         mxDestroyArray(persistentMxArray);
         break;
@@ -221,9 +223,9 @@ unsigned int sf_penduloInvNoLineal_get_eml_resolved_functions_info( int nlhs,
      case 4:
       {
         extern const mxArray
-          *sf_c4_penduloInvNoLineal_get_eml_resolved_functions_info(void);
+          *sf_c4_penduloInvNoLinealV3_get_eml_resolved_functions_info(void);
         mxArray *persistentMxArray = (mxArray *)
-          sf_c4_penduloInvNoLineal_get_eml_resolved_functions_info();
+          sf_c4_penduloInvNoLinealV3_get_eml_resolved_functions_info();
         plhs[0] = mxDuplicateArray(persistentMxArray);
         mxDestroyArray(persistentMxArray);
         break;
@@ -244,31 +246,31 @@ unsigned int sf_penduloInvNoLineal_get_eml_resolved_functions_info( int nlhs,
 
 }
 
-void penduloInvNoLineal_debug_initialize(void)
+void penduloInvNoLinealV3_debug_initialize(void)
 {
-  _penduloInvNoLinealMachineNumber_ = sf_debug_initialize_machine(
-    "penduloInvNoLineal","sfun",0,2,0,0,0);
-  sf_debug_set_machine_event_thresholds(_penduloInvNoLinealMachineNumber_,0,0);
-  sf_debug_set_machine_data_thresholds(_penduloInvNoLinealMachineNumber_,0);
+  _penduloInvNoLinealV3MachineNumber_ = sf_debug_initialize_machine(
+    "penduloInvNoLinealV3","sfun",0,2,0,0,0);
+  sf_debug_set_machine_event_thresholds(_penduloInvNoLinealV3MachineNumber_,0,0);
+  sf_debug_set_machine_data_thresholds(_penduloInvNoLinealV3MachineNumber_,0);
 }
 
-void penduloInvNoLineal_register_exported_symbols(SimStruct* S)
+void penduloInvNoLinealV3_register_exported_symbols(SimStruct* S)
 {
 }
 
 static mxArray* sRtwOptimizationInfoStruct= NULL;
-mxArray* load_penduloInvNoLineal_optimization_info(void)
+mxArray* load_penduloInvNoLinealV3_optimization_info(void)
 {
   if (sRtwOptimizationInfoStruct==NULL) {
     sRtwOptimizationInfoStruct = sf_load_rtw_optimization_info(
-      "penduloInvNoLineal", "penduloInvNoLineal");
+      "penduloInvNoLinealV3", "penduloInvNoLinealV3");
     mexMakeArrayPersistent(sRtwOptimizationInfoStruct);
   }
 
   return(sRtwOptimizationInfoStruct);
 }
 
-void unload_penduloInvNoLineal_optimization_info(void)
+void unload_penduloInvNoLinealV3_optimization_info(void)
 {
   if (sRtwOptimizationInfoStruct!=NULL) {
     mxDestroyArray(sRtwOptimizationInfoStruct);

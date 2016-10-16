@@ -1,12 +1,12 @@
 Model {
-  Name			  "penduloInvNoLineal"
+  Name			  "penduloInvNoLinealV3"
   Version		  7.9
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.261"
+    ComputedModelVersion    "1.259"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -18,7 +18,7 @@ Model {
       Type		      "Cell"
       Dimension		      2
       Cell		      "HDLSubsystem"
-      Cell		      "penduloInvNoLineal"
+      Cell		      "penduloInvNoLinealV3"
       PropName		      "mdlProps"
     }
   }
@@ -38,9 +38,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Oct 16 00:22:20 2016"
-  RTWModifiedTimeStamp	  398477826
-  ModelVersionFormat	  "1.%<AutoIncrement:261>"
+  LastModifiedDate	  "Sun Oct 16 00:13:48 2016"
+  RTWModifiedTimeStamp	  398473551
+  ModelVersionFormat	  "1.%<AutoIncrement:259>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -77,13 +77,12 @@ Model {
     $PropName		    "DataLoggingOverride"
     $ObjectID		    2
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "penduloInvNoLineal"
-    signals_		    []
+    model_		    "penduloInvNoLinealV3"
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "penduloInvNoLineal"
+      Cell		      "penduloInvNoLinealV3"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -638,7 +637,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 188, 24, 1178, 716 ] 
+      ConfigPrmDlgPosition     [ 204, 44, 1162, 664 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -858,8 +857,8 @@ Model {
     }
   }
   System {
-    Name		    "penduloInvNoLineal"
-    Location		    [407, 269, 1365, 765]
+    Name		    "penduloInvNoLinealV3"
+    Location		    [399, 271, 1357, 767]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -873,7 +872,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "100"
+    SIDHighWatermark	    "110"
     Block {
       BlockType		      Constant
       Name		      "180/pi"
@@ -908,7 +907,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Subsystem"
-	Location		[321, 81, 1365, 722]
+	Location		[309, 78, 1353, 719]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -958,7 +957,7 @@ Model {
 	}
 	Block {
 	  BlockType		  Inport
-	  Name			  "U=u"
+	  Name			  "u"
 	  SID			  "17"
 	  Position		  [100, 48, 130, 62]
 	  ZOrder		  -1
@@ -969,7 +968,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "(I+ml2)"
 	  SID			  "19"
-	  Position		  [570, 135, 600, 165]
+	  Position		  [660, 135, 690, 165]
 	  ZOrder		  -4
 	  Value			  "-0.0245"
 	}
@@ -977,7 +976,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "(M+m)(I+ml2)"
 	  SID			  "20"
-	  Position		  [550, 420, 580, 450]
+	  Position		  [640, 420, 670, 450]
 	  ZOrder		  -4
 	  BlockRotation		  270
 	  Value			  "0.0214"
@@ -1052,6 +1051,28 @@ Model {
 	}
 	Block {
 	  BlockType		  Constant
+	  Name			  "2"
+	  SID			  "104"
+	  Position		  [430, 400, 455, 420]
+	  ZOrder		  -4
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  Value			  "2"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "2*x2"
+	  SID			  "103"
+	  Ports			  [2, 1]
+	  Position		  [392, 370, 423, 390]
+	  ZOrder		  -13
+	  BlockRotation		  270
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Constant
 	  Name			  "4.7"
 	  SID			  "28"
 	  Position		  [290, 95, 320, 125]
@@ -1089,7 +1110,7 @@ Model {
 	  BlockType		  Fcn
 	  Name			  "cos(x2)1"
 	  SID			  "32"
-	  Position		  [665, 314, 710, 346]
+	  Position		  [755, 314, 800, 346]
 	  Expr			  "cos(u)"
 	  SampleTime		  "0.1"
 	}
@@ -1101,6 +1122,28 @@ Model {
 	  BlockRotation		  270
 	  Expr			  "u^2"
 	  SampleTime		  "0.1"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "cte"
+	  SID			  "109"
+	  Position		  [490, 310, 515, 330]
+	  ZOrder		  -4
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  Value			  "0.2232"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "cte*sin(2x2)"
+	  SID			  "108"
+	  Ports			  [2, 1]
+	  Position		  [402, 280, 433, 300]
+	  ZOrder		  -13
+	  BlockRotation		  270
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
 	}
 	Block {
 	  BlockType		  Scope
@@ -1139,7 +1182,7 @@ Model {
 	  Name			  "denominador"
 	  SID			  "34"
 	  Ports			  [2, 1]
-	  Position		  [482, 295, 533, 360]
+	  Position		  [572, 295, 623, 360]
 	  ZOrder		  -2
 	  BlockRotation		  270
 	  Inputs		  "+-"
@@ -1151,7 +1194,7 @@ Model {
 	  BlockType		  Fcn
 	  Name			  "div"
 	  SID			  "77"
-	  Position		  [494, 235, 526, 270]
+	  Position		  [584, 235, 616, 270]
 	  BlockRotation		  270
 	  Expr			  "1/u"
 	  SampleTime		  "0.1"
@@ -1160,7 +1203,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "g"
 	  SID			  "35"
-	  Position		  [525, 175, 555, 205]
+	  Position		  [615, 175, 645, 205]
 	  ZOrder		  -4
 	  Value			  "0"
 	}
@@ -1169,7 +1212,7 @@ Model {
 	  Name			  "gtan(x2)"
 	  SID			  "36"
 	  Ports			  [2, 1]
-	  Position		  [640, 182, 670, 213]
+	  Position		  [730, 182, 760, 213]
 	  ZOrder		  -13
 	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -1179,7 +1222,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "m2l2"
 	  SID			  "37"
-	  Position		  [480, 485, 510, 515]
+	  Position		  [570, 485, 600, 515]
 	  ZOrder		  -4
 	  BlockRotation		  270
 	  Value			  " 0.0011"
@@ -1189,7 +1232,7 @@ Model {
 	  Name			  "m2l2cos2(x2)"
 	  SID			  "38"
 	  Ports			  [2, 1]
-	  Position		  [437, 420, 468, 450]
+	  Position		  [527, 420, 558, 450]
 	  ZOrder		  -13
 	  BlockRotation		  270
 	  InputSameDT		  off
@@ -1208,7 +1251,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "ml1"
 	  SID			  "40"
-	  Position		  [735, 310, 765, 340]
+	  Position		  [825, 310, 855, 340]
 	  ZOrder		  -4
 	  BlockRotation		  270
 	  Value			  "0.0334"
@@ -1218,7 +1261,7 @@ Model {
 	  Name			  "mlcos(x2)"
 	  SID			  "41"
 	  Ports			  [2, 1]
-	  Position		  [710, 240, 750, 265]
+	  Position		  [800, 240, 840, 265]
 	  ZOrder		  -13
 	  BlockRotation		  270
 	  InputSameDT		  off
@@ -1242,9 +1285,21 @@ Model {
 	  Name			  "numerador"
 	  SID			  "43"
 	  Ports			  [5, 1]
-	  Position		  [390, 53, 465, 137]
+	  Position		  [395, 53, 470, 137]
 	  ZOrder		  -2
 	  Inputs		  "+-+-+"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "numerador1"
+	  SID			  "101"
+	  Ports			  [5, 1]
+	  Position		  [425, 163, 500, 247]
+	  ZOrder		  -2
+	  Inputs		  "+-+--"
 	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
@@ -1254,7 +1309,7 @@ Model {
 	  Name			  "phi3_o"
 	  SID			  "44"
 	  Ports			  [2, 1]
-	  Position		  [705, 92, 785, 183]
+	  Position		  [795, 92, 875, 183]
 	  ZOrder		  -2
 	  Inputs		  "+-"
 	  InputSameDT		  off
@@ -1266,7 +1321,7 @@ Model {
 	  Name			  "phi4_o"
 	  SID			  "45"
 	  Ports			  [2, 1]
-	  Position		  [700, 35, 740, 60]
+	  Position		  [790, 35, 830, 60]
 	  ZOrder		  -13
 	  BlockRotation		  270
 	  InputSameDT		  off
@@ -1278,7 +1333,7 @@ Model {
 	  Name			  "prod"
 	  SID			  "46"
 	  Ports			  [2, 1]
-	  Position		  [640, 95, 665, 135]
+	  Position		  [730, 95, 755, 135]
 	  ZOrder		  -13
 	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -1289,11 +1344,31 @@ Model {
 	  Name			  "prod1"
 	  SID			  "75"
 	  Ports			  [2, 1]
-	  Position		  [535, 87, 565, 118]
+	  Position		  [625, 87, 655, 118]
 	  ZOrder		  -13
 	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "prod2"
+	  SID			  "110"
+	  Ports			  [2, 1]
+	  Position		  [625, 32, 655, 63]
+	  ZOrder		  -13
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Fcn
+	  Name			  "sin(2x2)1"
+	  SID			  "102"
+	  Position		  [395, 320, 425, 345]
+	  BlockRotation		  270
+	  Expr			  "sin(u)"
+	  SampleTime		  "0.1"
 	}
 	Block {
 	  BlockType		  Fcn
@@ -1315,7 +1390,7 @@ Model {
 	  BlockType		  Fcn
 	  Name			  "tan(x2)1"
 	  SID			  "49"
-	  Position		  [590, 230, 620, 270]
+	  Position		  [680, 230, 710, 270]
 	  BlockRotation		  270
 	  Expr			  "tan(u)"
 	  SampleTime		  "0.1"
@@ -1332,7 +1407,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "phi1"
 	  SID			  "51"
-	  Position		  [845, 243, 875, 257]
+	  Position		  [935, 243, 965, 257]
 	  ZOrder		  -26
 	  IconDisplay		  "Port number"
 	}
@@ -1340,7 +1415,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "phi2"
 	  SID			  "52"
-	  Position		  [845, 193, 875, 207]
+	  Position		  [935, 193, 965, 207]
 	  ZOrder		  -26
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -1349,7 +1424,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "phi3"
 	  SID			  "53"
-	  Position		  [845, 133, 875, 147]
+	  Position		  [935, 133, 965, 147]
 	  ZOrder		  -26
 	  Port			  "3"
 	  IconDisplay		  "Port number"
@@ -1358,7 +1433,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "phi4"
 	  SID			  "54"
-	  Position		  [845, 83, 875, 97]
+	  Position		  [935, 83, 965, 97]
 	  ZOrder		  -26
 	  Port			  "4"
 	  IconDisplay		  "Port number"
@@ -1380,7 +1455,7 @@ Model {
 	  DstPort		  2
 	}
 	Line {
-	  SrcBlock		  "U=u"
+	  SrcBlock		  "u"
 	  SrcPort		  1
 	  DstBlock		  "1.88u"
 	  DstPort		  1
@@ -1388,15 +1463,30 @@ Model {
 	Line {
 	  SrcBlock		  "1.88u"
 	  SrcPort		  1
-	  DstBlock		  "numerador"
-	  DstPort		  1
+	  Points		  [50, 0]
+	  Branch {
+	    DstBlock		    "numerador"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 110]
+	    DstBlock		    "numerador1"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  SrcBlock		  "4.7"
 	  SrcPort		  1
-	  Points		  [10, 0; 0, -30]
-	  DstBlock		  "numerador"
-	  DstPort		  2
+	  Points		  [10, 0; 0, -30; 30, 0]
+	  Branch {
+	    DstBlock		    "numerador"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [0, 110]
+	    DstBlock		    "numerador1"
+	    DstPort		    2
+	  }
 	}
 	Line {
 	  SrcBlock		  "ml"
@@ -1427,7 +1517,7 @@ Model {
 	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [0, 370; 570, 0; 0, -220; 125, 0; 0, -185]
+	    Points		    [0, 370; 660, 0; 0, -220; 125, 0; 0, -185]
 	    DstBlock		    "phi2"
 	    DstPort		    1
 	  }
@@ -1435,9 +1525,24 @@ Model {
 	Line {
 	  SrcBlock		  "mlx4{2}sin(x2)"
 	  SrcPort		  1
-	  Points		  [20, 0; 0, -110]
-	  DstBlock		  "numerador"
-	  DstPort		  3
+	  Points		  [5, 0]
+	  Branch {
+	    Points		    [15, 0; 0, -110; 10, 0]
+	    Branch {
+	      DstBlock		      "numerador"
+	      DstPort		      3
+	    }
+	    Branch {
+	      Points		      [0, 110]
+	      DstBlock		      "numerador1"
+	      DstPort		      3
+	    }
+	  }
+	  Branch {
+	    Points		    [0, 15]
+	    DstBlock		    "numerador1"
+	    DstPort		    4
+	  }
 	}
 	Line {
 	  SrcBlock		  "(b+0.548)x3"
@@ -1452,7 +1557,7 @@ Model {
 	  Points		  [20, 0]
 	  Branch {
 	    Labels		    [1, 0]
-	    Points		    [0, 415; 600, 0; 0, -215; 140, 0; 0, -150]
+	    Points		    [0, 415; 690, 0; 0, -215; 140, 0; 0, -150]
 	    DstBlock		    "phi1"
 	    DstPort		    1
 	  }
@@ -1487,7 +1592,7 @@ Model {
 	  SrcPort		  1
 	  Points		  [15, 0]
 	  Branch {
-	    Points		    [35, 0]
+	    Points		    [40, 0]
 	    DstBlock		    "numerador"
 	    DstPort		    5
 	  }
@@ -1527,7 +1632,7 @@ Model {
 	Line {
 	  SrcBlock		  "cos2(x2)"
 	  SrcPort		  1
-	  Points		  [35, 0]
+	  Points		  [125, 0]
 	  DstBlock		  "m2l2cos2(x2)"
 	  DstPort		  1
 	}
@@ -1554,16 +1659,9 @@ Model {
 	Line {
 	  SrcBlock		  "prod1"
 	  SrcPort		  1
-	  Points		  [30, 0]
-	  Branch {
-	    DstBlock		    "prod"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, -30]
-	    DstBlock		    "phi4_o"
-	    DstPort		    1
-	  }
+	  Points		  [30, 0; 0, -30]
+	  DstBlock		  "phi4_o"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "(I+ml2)"
@@ -1641,8 +1739,15 @@ Model {
 	  SrcBlock		  "div"
 	  SrcPort		  1
 	  Points		  [0, -120]
-	  DstBlock		  "prod1"
-	  DstPort		  2
+	  Branch {
+	    DstBlock		    "prod1"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [0, -55]
+	    DstBlock		    "prod2"
+	    DstPort		    2
+	  }
 	}
 	Line {
 	  SrcBlock		  "x2"
@@ -1658,13 +1763,21 @@ Model {
 		DstPort			1
 	      }
 	      Branch {
-		Points			[320, 0; 0, -265]
+		Points			[190, 0]
 		Branch {
-		  DstBlock		  "tan(x2)1"
-		  DstPort		  1
+		  Points		  [220, 0; 0, -265]
+		  Branch {
+		    DstBlock		    "tan(x2)1"
+		    DstPort		    1
+		  }
+		  Branch {
+		    DstBlock		    "cos(x2)1"
+		    DstPort		    1
+		  }
 		}
 		Branch {
-		  DstBlock		  "cos(x2)1"
+		  Points		  [0, -150; -75, 0]
+		  DstBlock		  "2*x2"
 		  DstPort		  1
 		}
 	      }
@@ -1700,6 +1813,53 @@ Model {
 	  SrcPort		  1
 	  Points		  [5, 0; 0, -5]
 	  DstBlock		  "debug"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "2*x2"
+	  SrcPort		  1
+	  DstBlock		  "sin(2x2)1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "2"
+	  SrcPort		  1
+	  Points		  [-10, 0]
+	  DstBlock		  "2*x2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "sin(2x2)1"
+	  SrcPort		  1
+	  DstBlock		  "cte*sin(2x2)"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "cte*sin(2x2)"
+	  SrcPort		  1
+	  Points		  [-10, 0]
+	  DstBlock		  "numerador1"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "cte"
+	  SrcPort		  1
+	  Points		  [-55, 0; 0, -5]
+	  DstBlock		  "cte*sin(2x2)"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "numerador1"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, -165]
+	  DstBlock		  "prod2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "prod2"
+	  SrcPort		  1
+	  Points		  [55, 0]
+	  DstBlock		  "prod"
 	  DstPort		  1
 	}
       }
@@ -1872,7 +2032,7 @@ Model {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
 	  SID			  "88::19"
-	  Tag			  "Stateflow S-Function penduloInvNoLineal 3"
+	  Tag			  "Stateflow S-Function penduloInvNoLinealV3 3"
 	  Ports			  [1, 2]
 	  Position		  [180, 100, 230, 160]
 	  ZOrder		  5
@@ -1936,7 +2096,7 @@ Model {
       Position		      [755, 139, 785, 171]
       ZOrder		      -16
       Floating		      off
-      Location		      [678, 81, 1361, 766]
+      Location		      [687, 81, 1370, 766]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -1974,7 +2134,6 @@ Model {
       Location		      [5, 81, 1371, 795]
       Open		      off
       NumInputPorts	      "1"
-      ZoomMode		      "yonly"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
@@ -2089,7 +2248,7 @@ Model {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
 	  SID			  "86::19"
-	  Tag			  "Stateflow S-Function penduloInvNoLineal 4"
+	  Tag			  "Stateflow S-Function penduloInvNoLinealV3 4"
 	  Ports			  [1, 2]
 	  Position		  [180, 100, 230, 160]
 	  ZOrder		  5
@@ -2162,7 +2321,7 @@ Model {
       Ports		      [1, 1]
       Position		      [130, 160, 160, 190]
       ZOrder		      -2
-      InitialCondition	      "170*pi/180"
+      InitialCondition	      "180*pi/180"
       UpperSaturationLimit    "2*pi"
       LowerSaturationLimit    "0"
     }
@@ -2374,7 +2533,7 @@ Model {
 Stateflow {
   machine {
     id			    1
-    name		    "penduloInvNoLineal"
+    name		    "penduloInvNoLinealV3"
     created		    "15-Oct-2016 12:40:07"
     isLibrary		    0
     firstTarget		    16
@@ -2392,6 +2551,8 @@ Stateflow {
     viewObj		    2
     machine		    1
     toolbarMode		    LIBRARY_TOOLBAR
+    subviewS {
+    }
     ssIdHighWaterMark	    5
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
@@ -2511,6 +2672,8 @@ Stateflow {
     viewObj		    9
     machine		    1
     toolbarMode		    LIBRARY_TOOLBAR
+    subviewS {
+    }
     ssIdHighWaterMark	    5
     decomposition	    CLUSTER_CHART
     type		    EML_CHART

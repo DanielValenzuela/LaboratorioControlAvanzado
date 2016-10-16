@@ -6,15 +6,15 @@
 CC = /usr/local/MATLAB/R2012a/bin/mex
 LD = $(CC)
  
-MACHINE     = penduloInvNoLineal
+MACHINE     = penduloInvNoLinealV3
 TARGET      = sfun
 CHART_SRCS 	= \
-     c3_penduloInvNoLineal.c\
-     c4_penduloInvNoLineal.c
-MACHINE_SRC	= penduloInvNoLineal_sfun.c
-MACHINE_REG = penduloInvNoLineal_sfun_registry.c
+     c3_penduloInvNoLinealV3.c\
+     c4_penduloInvNoLinealV3.c
+MACHINE_SRC	= penduloInvNoLinealV3_sfun.c
+MACHINE_REG = penduloInvNoLinealV3_sfun_registry.c
 MEX_WRAPPER =
-MAKEFILE    = penduloInvNoLineal_sfun.mku
+MAKEFILE    = penduloInvNoLinealV3_sfun.mku
 MATLAB_ROOT	= /usr/local/MATLAB/R2012a/toolbox/stateflow/stateflow/../../..
 BUILDARGS   = 
 #------------------------------ Include/Lib Path ------------------------------
@@ -61,7 +61,7 @@ AUX_ABS_OBJS =
 REQ_OBJS = $(REQ_SRCS:.cpp=.o)
 REQ_OBJS2 = $(REQ_OBJS:.c=.o)
 OBJS = $(REQ_OBJS2) $(USER_ABS_OBJS) $(AUX_ABS_OBJS)
-OBJLIST_FILE = penduloInvNoLineal_sfun.mol
+OBJLIST_FILE = penduloInvNoLinealV3_sfun.mol
 SFCLIB = /usr/local/MATLAB/R2012a/stateflow/c/mex/lib/glnxa64/sfc_mex.a /usr/local/MATLAB/R2012a/stateflow/c/debugger/lib/glnxa64/sfc_debug.a
 AUX_LNK_OBJS =
 USER_LIBS =
