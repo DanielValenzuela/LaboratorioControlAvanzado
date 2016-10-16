@@ -2,7 +2,8 @@
 
 #include "controladorLQR_sfun.h"
 #include "c1_controladorLQR.h"
-#include "c2_controladorLQR.h"
+#include "c3_controladorLQR.h"
+#include "c4_controladorLQR.h"
 
 /* Type Definitions */
 
@@ -34,8 +35,13 @@ unsigned int sf_controladorLQR_method_dispatcher(SimStruct *simstructPtr,
     return 1;
   }
 
-  if (chartFileNumber==2) {
-    c2_controladorLQR_method_dispatcher(simstructPtr, method, data);
+  if (chartFileNumber==3) {
+    c3_controladorLQR_method_dispatcher(simstructPtr, method, data);
+    return 1;
+  }
+
+  if (chartFileNumber==4) {
+    c4_controladorLQR_method_dispatcher(simstructPtr, method, data);
     return 1;
   }
 
@@ -72,10 +78,10 @@ unsigned int sf_controladorLQR_process_check_sum_call( int nlhs, mxArray * plhs[
       ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(0U);
       ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(0U);
     } else if (!strcmp(commandName,"makefile")) {
-      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2534468819U);
-      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1981626552U);
-      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3488253881U);
-      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3040988183U);
+      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3507203397U);
+      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3864086528U);
+      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2821628239U);
+      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2708948062U);
     } else if (nrhs==3 && !strcmp(commandName,"chart")) {
       unsigned int chartFileNumber;
       chartFileNumber = (unsigned int)mxGetScalar(prhs[2]);
@@ -87,10 +93,17 @@ unsigned int sf_controladorLQR_process_check_sum_call( int nlhs, mxArray * plhs[
           break;
         }
 
-       case 2:
+       case 3:
         {
-          extern void sf_c2_controladorLQR_get_check_sum(mxArray *plhs[]);
-          sf_c2_controladorLQR_get_check_sum(plhs);
+          extern void sf_c3_controladorLQR_get_check_sum(mxArray *plhs[]);
+          sf_c3_controladorLQR_get_check_sum(plhs);
+          break;
+        }
+
+       case 4:
+        {
+          extern void sf_c4_controladorLQR_get_check_sum(mxArray *plhs[]);
+          sf_c4_controladorLQR_get_check_sum(plhs);
           break;
         }
 
@@ -109,10 +122,10 @@ unsigned int sf_controladorLQR_process_check_sum_call( int nlhs, mxArray * plhs[
       return 0;
     }
   } else {
-    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(983873830U);
-    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(4075459569U);
-    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3385824277U);
-    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2815197041U);
+    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(4099032146U);
+    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3818979813U);
+    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3884716199U);
+    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(486973931U);
   }
 
   return 1;
@@ -150,7 +163,7 @@ unsigned int sf_controladorLQR_autoinheritance_info( int nlhs, mxArray * plhs[],
     switch (chartFileNumber) {
      case 1:
       {
-        if (strcmp(aiChksum, "hZe7dGc5Q2uvnVJqvmSyIH") == 0) {
+        if (strcmp(aiChksum, "ab1iK8hixu50T5Z9kqtiGF") == 0) {
           extern mxArray *sf_c1_controladorLQR_get_autoinheritance_info(void);
           plhs[0] = sf_c1_controladorLQR_get_autoinheritance_info();
           break;
@@ -160,11 +173,23 @@ unsigned int sf_controladorLQR_autoinheritance_info( int nlhs, mxArray * plhs[],
         break;
       }
 
-     case 2:
+     case 3:
       {
-        if (strcmp(aiChksum, "BYTBCc1DAiDK27aa4t2DI") == 0) {
-          extern mxArray *sf_c2_controladorLQR_get_autoinheritance_info(void);
-          plhs[0] = sf_c2_controladorLQR_get_autoinheritance_info();
+        if (strcmp(aiChksum, "LbYio2SizFUlYr5sH1bBcF") == 0) {
+          extern mxArray *sf_c3_controladorLQR_get_autoinheritance_info(void);
+          plhs[0] = sf_c3_controladorLQR_get_autoinheritance_info();
+          break;
+        }
+
+        plhs[0] = mxCreateDoubleMatrix(0,0,mxREAL);
+        break;
+      }
+
+     case 4:
+      {
+        if (strcmp(aiChksum, "uzEn2sbevTBriUpr1ea4VB") == 0) {
+          extern mxArray *sf_c4_controladorLQR_get_autoinheritance_info(void);
+          plhs[0] = sf_c4_controladorLQR_get_autoinheritance_info();
           break;
         }
 
@@ -218,12 +243,23 @@ unsigned int sf_controladorLQR_get_eml_resolved_functions_info( int nlhs,
         break;
       }
 
-     case 2:
+     case 3:
       {
         extern const mxArray
-          *sf_c2_controladorLQR_get_eml_resolved_functions_info(void);
+          *sf_c3_controladorLQR_get_eml_resolved_functions_info(void);
         mxArray *persistentMxArray = (mxArray *)
-          sf_c2_controladorLQR_get_eml_resolved_functions_info();
+          sf_c3_controladorLQR_get_eml_resolved_functions_info();
+        plhs[0] = mxDuplicateArray(persistentMxArray);
+        mxDestroyArray(persistentMxArray);
+        break;
+      }
+
+     case 4:
+      {
+        extern const mxArray
+          *sf_c4_controladorLQR_get_eml_resolved_functions_info(void);
+        mxArray *persistentMxArray = (mxArray *)
+          sf_c4_controladorLQR_get_eml_resolved_functions_info();
         plhs[0] = mxDuplicateArray(persistentMxArray);
         mxDestroyArray(persistentMxArray);
         break;
@@ -247,7 +283,7 @@ unsigned int sf_controladorLQR_get_eml_resolved_functions_info( int nlhs,
 void controladorLQR_debug_initialize(void)
 {
   _controladorLQRMachineNumber_ = sf_debug_initialize_machine("controladorLQR",
-    "sfun",0,2,0,0,0);
+    "sfun",0,3,0,0,0);
   sf_debug_set_machine_event_thresholds(_controladorLQRMachineNumber_,0,0);
   sf_debug_set_machine_data_thresholds(_controladorLQRMachineNumber_,0);
 }

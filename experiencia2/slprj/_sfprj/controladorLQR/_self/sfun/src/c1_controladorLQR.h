@@ -8,17 +8,6 @@
 
 /* Type Definitions */
 typedef struct {
-  const char * context;
-  const char * name;
-  const char * dominantType;
-  const char * resolved;
-  uint32_T fileTimeLo;
-  uint32_T fileTimeHi;
-  uint32_T mFileTimeLo;
-  uint32_T mFileTimeHi;
-} c1_ResolvedFunctionInfo;
-
-typedef struct {
   int32_T c1_sfEvent;
   boolean_T c1_isStable;
   boolean_T c1_doneDoubleBufferReInit;
