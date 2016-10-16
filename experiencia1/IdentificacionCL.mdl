@@ -1,16 +1,12 @@
 Model {
-  Name			  "controladorPV2"
+  Name			  "IdentificacionCL"
   Version		  7.9
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-<<<<<<< HEAD
-    ComputedModelVersion    "1.209"
-=======
-    ComputedModelVersion    "1.212"
->>>>>>> develop
+    ComputedModelVersion    "1.234"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -22,7 +18,7 @@ Model {
       Type		      "Cell"
       Dimension		      2
       Cell		      "HDLSubsystem"
-      Cell		      "controladorPV2"
+      Cell		      "IdentificacionCL"
       PropName		      "mdlProps"
     }
   }
@@ -42,15 +38,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-<<<<<<< HEAD
-  LastModifiedDate	  "Wed Sep 28 00:10:39 2016"
-  RTWModifiedTimeStamp	  396922229
-  ModelVersionFormat	  "1.%<AutoIncrement:209>"
-=======
-  LastModifiedDate	  "Fri Oct 07 17:20:42 2016"
+  LastModifiedDate	  "Fri Oct 07 23:41:51 2016"
   RTWModifiedTimeStamp	  397759580
-  ModelVersionFormat	  "1.%<AutoIncrement:212>"
->>>>>>> develop
+  ModelVersionFormat	  "1.%<AutoIncrement:234>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -134,7 +124,7 @@ Model {
 	  $ObjectID		  3
 	  Version		  "1.12.0"
 	  StartTime		  "0.0"
-	  StopTime		  "500"
+	  StopTime		  "2000"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "0.01"
@@ -618,7 +608,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 172, 24, 1194, 788 ] 
+      ConfigPrmDlgPosition     [ 220, 100, 1146, 648 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -671,6 +661,38 @@ Model {
       SampleTime	      "inf"
       FramePeriod	      "inf"
       PreserveConstantTs      off
+    }
+    Block {
+      BlockType		      DiscreteTransferFcn
+      NumeratorSource	      "Dialog"
+      Numerator		      "[1]"
+      DenominatorSource	      "Dialog"
+      Denominator	      "[1 0.5]"
+      InitialStatesSource     "Dialog"
+      InitialStates	      "0"
+      InputProcessing	      "Elements as channels (sample based)"
+      ExternalReset	      "None"
+      SampleTime	      "-1"
+      a0EqualsOne	      off
+      NumCoefMin	      "[]"
+      NumCoefMax	      "[]"
+      DenCoefMin	      "[]"
+      DenCoefMax	      "[]"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      StateDataTypeStr	      "Inherit: Same as input"
+      NumCoefDataTypeStr      "Inherit: Inherit via internal rule"
+      DenCoefDataTypeStr      "Inherit: Inherit via internal rule"
+      NumProductDataTypeStr   "Inherit: Inherit via internal rule"
+      DenProductDataTypeStr   "Inherit: Inherit via internal rule"
+      NumAccumDataTypeStr     "Inherit: Inherit via internal rule"
+      DenAccumDataTypeStr     "Inherit: Inherit via internal rule"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
     }
     Block {
       BlockType		      Fcn
@@ -766,6 +788,30 @@ Model {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      RateTransition
+      Integrity		      on
+      Deterministic	      on
+      X0		      "0"
+      OutPortSampleTimeOpt    "Specify"
+      OutPortSampleTimeMultiple	"1"
+      OutPortSampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Saturate
+      UpperLimitSource	      "Dialog"
+      UpperLimit	      "0.5"
+      LowerLimitSource	      "Dialog"
+      LowerLimit	      "-0.5"
+      LinearizeAsGain	      on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+    }
+    Block {
       BlockType		      Scope
       ModelBased	      off
       TickLabels	      "OneTimeTick"
@@ -782,15 +828,6 @@ Model {
       Decimation	      "1"
       SampleInput	      off
       SampleTime	      "-1"
-    }
-    Block {
-      BlockType		      Step
-      Time		      "1"
-      Before		      "0"
-      After		      "1"
-      SampleTime	      "-1"
-      VectorParams1D	      on
-      ZeroCross		      on
     }
     Block {
       BlockType		      SubSystem
@@ -831,22 +868,10 @@ Model {
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
     }
-    Block {
-      BlockType		      TransferFcn
-      Numerator		      "[1]"
-      Denominator	      "[1 2 1]"
-      AbsoluteTolerance	      "auto"
-      ContinuousStateAttributes	"''"
-      Realization	      "auto"
-    }
   }
   System {
-    Name		    "controladorPV2"
-<<<<<<< HEAD
-    Location		    [243, 179, 940, 454]
-=======
-    Location		    [84, 130, 821, 514]
->>>>>>> develop
+    Name		    "IdentificacionCL"
+    Location		    [39, 177, 962, 561]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -860,43 +885,74 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-<<<<<<< HEAD
-    SIDHighWatermark	    "34"
-=======
-    SIDHighWatermark	    "37"
->>>>>>> develop
+    SIDHighWatermark	    "48"
+    Block {
+      BlockType		      Reference
+      Name		      "Band-Limited\nWhite Noise"
+      SID		      "39"
+      Ports		      [0, 1]
+      Position		      [30, 90, 60, 120]
+      ZOrder		      -2
+      LibraryVersion	      "1.260"
+      SourceBlock	      "simulink/Sources/Band-Limited\nWhite Noise"
+      SourceType	      "Band-Limited White Noise."
+      Cov		      "[500]"
+      Ts		      "40"
+      seed		      "[23341]"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Band-Limited\nWhite Noise1"
+      SID		      "43"
+      Ports		      [0, 1]
+      Position		      [400, 230, 430, 260]
+      ZOrder		      -2
+      LibraryVersion	      "1.260"
+      SourceBlock	      "simulink/Sources/Band-Limited\nWhite Noise"
+      SourceType	      "Band-Limited White Noise."
+      Cov		      "[0.1]"
+      Ts		      "0.1"
+      seed		      "[23341]"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Constant"
+      SID		      "41"
+      Position		      [140, 160, 170, 190]
+      ZOrder		      -4
+      Value		      "28"
+    }
+    Block {
+      BlockType		      DiscreteTransferFcn
+      Name		      "Discrete\nTransfer Fcn"
+      SID		      "38"
+      Ports		      [1, 1]
+      Position		      [345, 152, 405, 188]
+      ZOrder		      -2
+      InputPortMap	      "u0"
+      Numerator		      "[1 1]"
+      Denominator	      "16*[1 -1]"
+      SampleTime	      "0.1"
+    }
     Block {
       BlockType		      Gain
       Name		      "Gain"
       SID		      "26"
-      Position		      [185, 60, 215, 90]
+      Position		      [375, 90, 405, 120]
       ZOrder		      -11
-<<<<<<< HEAD
-      Gain		      "40"
-=======
       Gain		      "80"
->>>>>>> develop
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
     }
     Block {
-<<<<<<< HEAD
-      BlockType		      Integrator
-      Name		      "Integrator"
-      SID		      "33"
-      Ports		      [1, 1]
-      Position		      [390, 160, 420, 190]
-      ZOrder		      -2
-    }
-    Block {
-=======
->>>>>>> develop
       BlockType		      Mux
       Name		      "Mux"
       SID		      "22"
       Ports		      [2, 1]
-      Position		      [405, 26, 410, 64]
+      Position		      [715, 56, 720, 94]
       ZOrder		      -16
       ShowName		      off
       Inputs		      "2"
@@ -907,7 +963,7 @@ Model {
       Name		      "Planta"
       SID		      "1"
       Ports		      [1, 3]
-      Position		      [280, 45, 320, 105]
+      Position		      [605, 75, 645, 135]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1215,21 +1271,32 @@ Model {
       }
     }
     Block {
+      BlockType		      RateTransition
+      Name		      "Rate Transition"
+      SID		      "42"
+      Position		      [105, 84, 145, 126]
+      ZOrder		      -10
+    }
+    Block {
+      BlockType		      Saturate
+      Name		      "Saturation"
+      SID		      "44"
+      Ports		      [1, 1]
+      Position		      [530, 90, 560, 120]
+      ZOrder		      -15
+      InputPortMap	      "u0"
+      UpperLimit	      "100"
+      LowerLimit	      "30"
+    }
+    Block {
       BlockType		      Scope
       Name		      "Scope"
       SID		      "18"
       Ports		      [1]
-<<<<<<< HEAD
-      Position		      [490, 24, 520, 56]
+      Position		      [755, 59, 785, 91]
       Floating		      off
-      Location		      [678, 81, 1361, 766]
+      Location		      [526, 81, 1366, 747]
       Open		      on
-=======
-      Position		      [495, 29, 525, 61]
-      Floating		      off
-      Location		      [678, 81, 1361, 766]
-      Open		      off
->>>>>>> develop
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -1250,19 +1317,20 @@ Model {
       YMin		      "10"
       YMax		      "40"
       SaveToWorkspace	      on
+      SaveName		      "PIDiscreto"
+      DataFormat	      "StructureWithTime"
       LimitDataPoints	      off
       SampleTime	      "0"
     }
     Block {
-<<<<<<< HEAD
       BlockType		      Scope
       Name		      "Scope1"
-      SID		      "24"
+      SID		      "45"
       Ports		      [1]
-      Position		      [540, 94, 570, 126]
+      Position		      [250, 14, 280, 46]
       Floating		      off
-      Location		      [675, 81, 1358, 766]
-      Open		      on
+      Location		      [479, 81, 1319, 747]
+      Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -1279,43 +1347,150 @@ Model {
 	MarkerStyles		"none|none|none|none|none|none"
       }
       ShowLegends	      off
+      TimeRange		      "1000"
+      YMin		      "10"
+      YMax		      "40"
       SaveToWorkspace	      on
-      SaveName		      "ScopeData1"
+      SaveName		      "noise"
+      DataFormat	      "StructureWithTime"
       LimitDataPoints	      off
       SampleTime	      "0"
     }
     Block {
-=======
->>>>>>> develop
-      BlockType		      Step
-      Name		      "Step"
-      SID		      "28"
-      Position		      [20, 60, 50, 90]
-      ZOrder		      -22
-      Time		      "20"
-      Before		      "20"
-      After		      "60"
-      SampleTime	      "0.1"
+      BlockType		      Scope
+      Name		      "Scope2"
+      SID		      "46"
+      Ports		      [1]
+      Position		      [610, 14, 640, 46]
+      Floating		      off
+      Location		      [320, 81, 1160, 747]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      ShowLegends	      off
+      TimeRange		      "1000"
+      YMin		      "10"
+      YMax		      "40"
+      SaveToWorkspace	      on
+      SaveName		      "noiseIN"
+      DataFormat	      "StructureWithTime"
+      LimitDataPoints	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope3"
+      SID		      "47"
+      Ports		      [1]
+      Position		      [85, 14, 115, 46]
+      Floating		      off
+      Location		      [219, 86, 1059, 752]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      ShowLegends	      off
+      TimeRange		      "1000"
+      YMin		      "10"
+      YMax		      "40"
+      SaveToWorkspace	      on
+      SaveName		      "noise1"
+      DataFormat	      "StructureWithTime"
+      LimitDataPoints	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope4"
+      SID		      "48"
+      Ports		      [1]
+      Position		      [520, 184, 550, 216]
+      Floating		      off
+      Location		      [320, 81, 1160, 747]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      ShowLegends	      off
+      TimeRange		      "1000"
+      YMin		      "10"
+      YMax		      "40"
+      SaveToWorkspace	      on
+      SaveName		      "PIDiscreto1"
+      DataFormat	      "StructureWithTime"
+      LimitDataPoints	      off
+      SampleTime	      "0"
     }
     Block {
       BlockType		      Sum
       Name		      "Sum1"
       SID		      "34"
-      Ports		      [2, 1]
-      Position		      [235, 65, 255, 85]
+      Ports		      [3, 1]
+      Position		      [465, 100, 485, 120]
       ShowName		      off
       IconShape		      "round"
-      Inputs		      "|++"
+      Inputs		      "|+++"
       InputSameDT	      off
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
     }
     Block {
       BlockType		      Sum
+      Name		      "Sum2"
+      SID		      "40"
+      Ports		      [2, 1]
+      Position		      [190, 95, 210, 115]
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "|++"
+      InputSameDT	      off
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+      SampleTime	      "0.1"
+    }
+    Block {
+      BlockType		      Sum
       Name		      "Sum4"
       SID		      "25"
       Ports		      [2, 1]
-      Position		      [115, 65, 135, 85]
+      Position		      [275, 95, 295, 115]
       ShowName		      off
       IconShape		      "round"
       Inputs		      "|+-"
@@ -1324,28 +1499,16 @@ Model {
       SaturateOnIntegerOverflow	off
       SampleTime	      "0.1"
     }
-    Block {
-      BlockType		      TransferFcn
-      Name		      "Transfer Fcn"
-      SID		      "31"
-      Position		      [170, 117, 230, 153]
-      ZOrder		      -9
-      Denominator	      "[0.8 0]"
-    }
     Line {
       SrcBlock		      "Planta"
       SrcPort		      1
-      Points		      [35, 0]
+      Points		      [20, 0]
       Branch {
 	DstBlock		"Mux"
 	DstPort			2
       }
       Branch {
-<<<<<<< HEAD
-	Points			[0, 110; -235, 0]
-=======
-	Points			[0, 125; -235, 0]
->>>>>>> develop
+	Points			[0, 230; -385, 0]
 	DstBlock		"Sum4"
 	DstPort			2
       }
@@ -1353,60 +1516,119 @@ Model {
     Line {
       SrcBlock		      "Mux"
       SrcPort		      1
-<<<<<<< HEAD
-      Points		      [0, -5]
-=======
->>>>>>> develop
       DstBlock		      "Scope"
       DstPort		      1
     }
     Line {
       SrcBlock		      "Sum4"
       SrcPort		      1
-      Points		      [10, 0]
+      Points		      [25, 0]
       Branch {
 	DstBlock		"Gain"
 	DstPort			1
       }
       Branch {
-	Points			[0, 60]
-	DstBlock		"Transfer Fcn"
+	Points			[0, 65]
+	DstBlock		"Discrete\nTransfer Fcn"
 	DstPort			1
       }
     }
     Line {
-      Labels		      [1, 0]
-      SrcBlock		      "Step"
+      SrcBlock		      "Sum2"
       SrcPort		      1
-      Points		      [30, 0]
+      Points		      [5, 0]
       Branch {
-	DstBlock		"Sum4"
+	Labels			[1, 0]
+	Points			[25, 0]
+	Branch {
+	  DstBlock		  "Sum4"
+	  DstPort		  1
+	}
+	Branch {
+	  Points		  [0, -40]
+	  DstBlock		  "Mux"
+	  DstPort		  1
+	}
+      }
+      Branch {
+	Points			[0, -75]
+	DstBlock		"Scope1"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Discrete\nTransfer Fcn"
+      SrcPort		      1
+      Points		      [44, 0]
+      DstBlock		      "Sum1"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Constant"
+      SrcPort		      1
+      Points		      [25, 0]
+      DstBlock		      "Sum2"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Rate Transition"
+      SrcPort		      1
+      DstBlock		      "Sum2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Band-Limited\nWhite Noise"
+      SrcPort		      1
+      Points		      [5, 0]
+      Branch {
+	DstBlock		"Rate Transition"
 	DstPort			1
       }
       Branch {
-	Points			[0, -40]
-	DstBlock		"Mux"
+	DstBlock		"Scope3"
 	DstPort			1
       }
+    }
+    Line {
+      SrcBlock		      "Band-Limited\nWhite Noise1"
+      SrcPort		      1
+      Points		      [40, 0]
+      DstBlock		      "Sum1"
+      DstPort		      3
     }
     Line {
       SrcBlock		      "Gain"
       SrcPort		      1
+      Points		      [44, 0]
       DstBlock		      "Sum1"
       DstPort		      1
     }
     Line {
       SrcBlock		      "Sum1"
       SrcPort		      1
-      DstBlock		      "Planta"
-      DstPort		      1
+      Points		      [10, 0; 0, -5; 5, 0]
+      Branch {
+	DstBlock		"Saturation"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"Scope4"
+	DstPort			1
+      }
     }
     Line {
-      SrcBlock		      "Transfer Fcn"
+      SrcBlock		      "Saturation"
       SrcPort		      1
       Points		      [10, 0]
-      DstBlock		      "Sum1"
-      DstPort		      2
+      Branch {
+	DstBlock		"Planta"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -75]
+	DstBlock		"Scope2"
+	DstPort			1
+      }
     }
   }
 }

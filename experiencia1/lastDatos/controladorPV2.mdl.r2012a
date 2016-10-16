@@ -6,11 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-<<<<<<< HEAD
     ComputedModelVersion    "1.209"
-=======
-    ComputedModelVersion    "1.212"
->>>>>>> develop
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -42,15 +38,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-<<<<<<< HEAD
   LastModifiedDate	  "Wed Sep 28 00:10:39 2016"
   RTWModifiedTimeStamp	  396922229
   ModelVersionFormat	  "1.%<AutoIncrement:209>"
-=======
-  LastModifiedDate	  "Fri Oct 07 17:20:42 2016"
-  RTWModifiedTimeStamp	  397759580
-  ModelVersionFormat	  "1.%<AutoIncrement:212>"
->>>>>>> develop
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -842,11 +832,7 @@ Model {
   }
   System {
     Name		    "controladorPV2"
-<<<<<<< HEAD
     Location		    [243, 179, 940, 454]
-=======
-    Location		    [84, 130, 821, 514]
->>>>>>> develop
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -860,28 +846,19 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-<<<<<<< HEAD
     SIDHighWatermark	    "34"
-=======
-    SIDHighWatermark	    "37"
->>>>>>> develop
     Block {
       BlockType		      Gain
       Name		      "Gain"
       SID		      "26"
       Position		      [185, 60, 215, 90]
       ZOrder		      -11
-<<<<<<< HEAD
       Gain		      "40"
-=======
-      Gain		      "80"
->>>>>>> develop
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
     }
     Block {
-<<<<<<< HEAD
       BlockType		      Integrator
       Name		      "Integrator"
       SID		      "33"
@@ -890,8 +867,6 @@ Model {
       ZOrder		      -2
     }
     Block {
-=======
->>>>>>> develop
       BlockType		      Mux
       Name		      "Mux"
       SID		      "22"
@@ -1219,17 +1194,10 @@ Model {
       Name		      "Scope"
       SID		      "18"
       Ports		      [1]
-<<<<<<< HEAD
       Position		      [490, 24, 520, 56]
       Floating		      off
       Location		      [678, 81, 1361, 766]
       Open		      on
-=======
-      Position		      [495, 29, 525, 61]
-      Floating		      off
-      Location		      [678, 81, 1361, 766]
-      Open		      off
->>>>>>> develop
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -1254,7 +1222,6 @@ Model {
       SampleTime	      "0"
     }
     Block {
-<<<<<<< HEAD
       BlockType		      Scope
       Name		      "Scope1"
       SID		      "24"
@@ -1285,8 +1252,6 @@ Model {
       SampleTime	      "0"
     }
     Block {
-=======
->>>>>>> develop
       BlockType		      Step
       Name		      "Step"
       SID		      "28"
@@ -1341,11 +1306,7 @@ Model {
 	DstPort			2
       }
       Branch {
-<<<<<<< HEAD
 	Points			[0, 110; -235, 0]
-=======
-	Points			[0, 125; -235, 0]
->>>>>>> develop
 	DstBlock		"Sum4"
 	DstPort			2
       }
@@ -1353,10 +1314,7 @@ Model {
     Line {
       SrcBlock		      "Mux"
       SrcPort		      1
-<<<<<<< HEAD
       Points		      [0, -5]
-=======
->>>>>>> develop
       DstBlock		      "Scope"
       DstPort		      1
     }

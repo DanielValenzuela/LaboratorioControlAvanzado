@@ -1,16 +1,12 @@
 Model {
-  Name			  "controladorPV2"
+  Name			  "controladorPIDiscreto"
   Version		  7.9
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-<<<<<<< HEAD
-    ComputedModelVersion    "1.209"
-=======
-    ComputedModelVersion    "1.212"
->>>>>>> develop
+    ComputedModelVersion    "1.218"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -22,7 +18,7 @@ Model {
       Type		      "Cell"
       Dimension		      2
       Cell		      "HDLSubsystem"
-      Cell		      "controladorPV2"
+      Cell		      "controladorPIDiscreto"
       PropName		      "mdlProps"
     }
   }
@@ -42,15 +38,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-<<<<<<< HEAD
-  LastModifiedDate	  "Wed Sep 28 00:10:39 2016"
-  RTWModifiedTimeStamp	  396922229
-  ModelVersionFormat	  "1.%<AutoIncrement:209>"
-=======
-  LastModifiedDate	  "Fri Oct 07 17:20:42 2016"
+  LastModifiedDate	  "Fri Oct 07 18:13:36 2016"
   RTWModifiedTimeStamp	  397759580
-  ModelVersionFormat	  "1.%<AutoIncrement:212>"
->>>>>>> develop
+  ModelVersionFormat	  "1.%<AutoIncrement:218>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -618,7 +608,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 172, 24, 1194, 788 ] 
+      ConfigPrmDlgPosition     [ 228, 128, 1138, 640 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -671,6 +661,38 @@ Model {
       SampleTime	      "inf"
       FramePeriod	      "inf"
       PreserveConstantTs      off
+    }
+    Block {
+      BlockType		      DiscreteTransferFcn
+      NumeratorSource	      "Dialog"
+      Numerator		      "[1]"
+      DenominatorSource	      "Dialog"
+      Denominator	      "[1 0.5]"
+      InitialStatesSource     "Dialog"
+      InitialStates	      "0"
+      InputProcessing	      "Elements as channels (sample based)"
+      ExternalReset	      "None"
+      SampleTime	      "-1"
+      a0EqualsOne	      off
+      NumCoefMin	      "[]"
+      NumCoefMax	      "[]"
+      DenCoefMin	      "[]"
+      DenCoefMax	      "[]"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      StateDataTypeStr	      "Inherit: Same as input"
+      NumCoefDataTypeStr      "Inherit: Inherit via internal rule"
+      DenCoefDataTypeStr      "Inherit: Inherit via internal rule"
+      NumProductDataTypeStr   "Inherit: Inherit via internal rule"
+      DenProductDataTypeStr   "Inherit: Inherit via internal rule"
+      NumAccumDataTypeStr     "Inherit: Inherit via internal rule"
+      DenAccumDataTypeStr     "Inherit: Inherit via internal rule"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
     }
     Block {
       BlockType		      Fcn
@@ -831,22 +853,10 @@ Model {
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
     }
-    Block {
-      BlockType		      TransferFcn
-      Numerator		      "[1]"
-      Denominator	      "[1 2 1]"
-      AbsoluteTolerance	      "auto"
-      ContinuousStateAttributes	"''"
-      Realization	      "auto"
-    }
   }
   System {
-    Name		    "controladorPV2"
-<<<<<<< HEAD
-    Location		    [243, 179, 940, 454]
-=======
-    Location		    [84, 130, 821, 514]
->>>>>>> develop
+    Name		    "controladorPIDiscreto"
+    Location		    [111, 164, 848, 548]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -860,38 +870,31 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-<<<<<<< HEAD
-    SIDHighWatermark	    "34"
-=======
-    SIDHighWatermark	    "37"
->>>>>>> develop
+    SIDHighWatermark	    "38"
+    Block {
+      BlockType		      DiscreteTransferFcn
+      Name		      "Discrete\nTransfer Fcn"
+      SID		      "38"
+      Ports		      [1, 1]
+      Position		      [170, 117, 230, 153]
+      ZOrder		      -2
+      InputPortMap	      "u0"
+      Numerator		      "[1 0]"
+      Denominator	      "16*[1 -1]"
+      SampleTime	      "0.1"
+    }
     Block {
       BlockType		      Gain
       Name		      "Gain"
       SID		      "26"
       Position		      [185, 60, 215, 90]
       ZOrder		      -11
-<<<<<<< HEAD
-      Gain		      "40"
-=======
       Gain		      "80"
->>>>>>> develop
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
     }
     Block {
-<<<<<<< HEAD
-      BlockType		      Integrator
-      Name		      "Integrator"
-      SID		      "33"
-      Ports		      [1, 1]
-      Position		      [390, 160, 420, 190]
-      ZOrder		      -2
-    }
-    Block {
-=======
->>>>>>> develop
       BlockType		      Mux
       Name		      "Mux"
       SID		      "22"
@@ -1219,17 +1222,10 @@ Model {
       Name		      "Scope"
       SID		      "18"
       Ports		      [1]
-<<<<<<< HEAD
-      Position		      [490, 24, 520, 56]
-      Floating		      off
-      Location		      [678, 81, 1361, 766]
-      Open		      on
-=======
       Position		      [495, 29, 525, 61]
       Floating		      off
-      Location		      [678, 81, 1361, 766]
+      Location		      [320, 81, 1160, 747]
       Open		      off
->>>>>>> develop
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -1250,43 +1246,12 @@ Model {
       YMin		      "10"
       YMax		      "40"
       SaveToWorkspace	      on
+      SaveName		      "PIDiscreto"
+      DataFormat	      "StructureWithTime"
       LimitDataPoints	      off
       SampleTime	      "0"
     }
     Block {
-<<<<<<< HEAD
-      BlockType		      Scope
-      Name		      "Scope1"
-      SID		      "24"
-      Ports		      [1]
-      Position		      [540, 94, 570, 126]
-      Floating		      off
-      Location		      [675, 81, 1358, 766]
-      Open		      on
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      List {
-	ListType		ScopeGraphics
-	FigureColor		"[0.5 0.5 0.5]"
-	AxesColor		"[0 0 0]"
-	AxesTickColor		"[1 1 1]"
-	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	LineStyles		"-|-|-|-|-|-"
-	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-	MarkerStyles		"none|none|none|none|none|none"
-      }
-      ShowLegends	      off
-      SaveToWorkspace	      on
-      SaveName		      "ScopeData1"
-      LimitDataPoints	      off
-      SampleTime	      "0"
-    }
-    Block {
-=======
->>>>>>> develop
       BlockType		      Step
       Name		      "Step"
       SID		      "28"
@@ -1324,14 +1289,6 @@ Model {
       SaturateOnIntegerOverflow	off
       SampleTime	      "0.1"
     }
-    Block {
-      BlockType		      TransferFcn
-      Name		      "Transfer Fcn"
-      SID		      "31"
-      Position		      [170, 117, 230, 153]
-      ZOrder		      -9
-      Denominator	      "[0.8 0]"
-    }
     Line {
       SrcBlock		      "Planta"
       SrcPort		      1
@@ -1341,11 +1298,7 @@ Model {
 	DstPort			2
       }
       Branch {
-<<<<<<< HEAD
-	Points			[0, 110; -235, 0]
-=======
 	Points			[0, 125; -235, 0]
->>>>>>> develop
 	DstBlock		"Sum4"
 	DstPort			2
       }
@@ -1353,10 +1306,6 @@ Model {
     Line {
       SrcBlock		      "Mux"
       SrcPort		      1
-<<<<<<< HEAD
-      Points		      [0, -5]
-=======
->>>>>>> develop
       DstBlock		      "Scope"
       DstPort		      1
     }
@@ -1370,7 +1319,7 @@ Model {
       }
       Branch {
 	Points			[0, 60]
-	DstBlock		"Transfer Fcn"
+	DstBlock		"Discrete\nTransfer Fcn"
 	DstPort			1
       }
     }
@@ -1402,7 +1351,7 @@ Model {
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Transfer Fcn"
+      SrcBlock		      "Discrete\nTransfer Fcn"
       SrcPort		      1
       Points		      [10, 0]
       DstBlock		      "Sum1"

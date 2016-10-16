@@ -1,16 +1,12 @@
 Model {
-  Name			  "controladorPV2"
+  Name			  "simulacion"
   Version		  7.9
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-<<<<<<< HEAD
-    ComputedModelVersion    "1.209"
-=======
-    ComputedModelVersion    "1.212"
->>>>>>> develop
+    ComputedModelVersion    "1.67"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -22,7 +18,7 @@ Model {
       Type		      "Cell"
       Dimension		      2
       Cell		      "HDLSubsystem"
-      Cell		      "controladorPV2"
+      Cell		      "simulacion"
       PropName		      "mdlProps"
     }
   }
@@ -42,15 +38,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-<<<<<<< HEAD
-  LastModifiedDate	  "Wed Sep 28 00:10:39 2016"
-  RTWModifiedTimeStamp	  396922229
-  ModelVersionFormat	  "1.%<AutoIncrement:209>"
-=======
-  LastModifiedDate	  "Fri Oct 07 17:20:42 2016"
-  RTWModifiedTimeStamp	  397759580
-  ModelVersionFormat	  "1.%<AutoIncrement:212>"
->>>>>>> develop
+  LastModifiedDate	  "Sun Sep 25 21:21:05 2016"
+  RTWModifiedTimeStamp	  396731041
+  ModelVersionFormat	  "1.%<AutoIncrement:67>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -134,7 +124,7 @@ Model {
 	  $ObjectID		  3
 	  Version		  "1.12.0"
 	  StartTime		  "0.0"
-	  StopTime		  "500"
+	  StopTime		  "400"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "0.01"
@@ -618,7 +608,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 172, 24, 1194, 788 ] 
+      ConfigPrmDlgPosition     [ 289, 24, 1201, 726 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -675,21 +665,6 @@ Model {
     Block {
       BlockType		      Fcn
       Expr		      "sin(u[1])"
-      SampleTime	      "-1"
-    }
-    Block {
-      BlockType		      Gain
-      Gain		      "1"
-      Multiplication	      "Element-wise(K.*u)"
-      ParamMin		      "[]"
-      ParamMax		      "[]"
-      ParamDataTypeStr	      "Inherit: Same as input"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Same as input"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
     }
     Block {
@@ -784,15 +759,6 @@ Model {
       SampleTime	      "-1"
     }
     Block {
-      BlockType		      Step
-      Time		      "1"
-      Before		      "0"
-      After		      "1"
-      SampleTime	      "-1"
-      VectorParams1D	      on
-      ZeroCross		      on
-    }
-    Block {
       BlockType		      SubSystem
       ShowPortLabels	      "FromPortIcon"
       Permissions	      "ReadWrite"
@@ -831,22 +797,10 @@ Model {
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
     }
-    Block {
-      BlockType		      TransferFcn
-      Numerator		      "[1]"
-      Denominator	      "[1 2 1]"
-      AbsoluteTolerance	      "auto"
-      ContinuousStateAttributes	"''"
-      Realization	      "auto"
-    }
   }
   System {
-    Name		    "controladorPV2"
-<<<<<<< HEAD
-    Location		    [243, 179, 940, 454]
-=======
-    Location		    [84, 130, 821, 514]
->>>>>>> develop
+    Name		    "simulacion"
+    Location		    [123, 539, 813, 714]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -860,43 +814,21 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-<<<<<<< HEAD
-    SIDHighWatermark	    "34"
-=======
-    SIDHighWatermark	    "37"
->>>>>>> develop
+    SIDHighWatermark	    "24"
     Block {
-      BlockType		      Gain
-      Name		      "Gain"
-      SID		      "26"
-      Position		      [185, 60, 215, 90]
-      ZOrder		      -11
-<<<<<<< HEAD
-      Gain		      "40"
-=======
-      Gain		      "80"
->>>>>>> develop
-      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
+      BlockType		      Constant
+      Name		      "Constant"
+      SID		      "20"
+      Position		      [80, 40, 110, 70]
+      ZOrder		      -4
+      Value		      "30"
     }
     Block {
-<<<<<<< HEAD
-      BlockType		      Integrator
-      Name		      "Integrator"
-      SID		      "33"
-      Ports		      [1, 1]
-      Position		      [390, 160, 420, 190]
-      ZOrder		      -2
-    }
-    Block {
-=======
->>>>>>> develop
       BlockType		      Mux
       Name		      "Mux"
       SID		      "22"
       Ports		      [2, 1]
-      Position		      [405, 26, 410, 64]
+      Position		      [275, 26, 280, 64]
       ZOrder		      -16
       ShowName		      off
       Inputs		      "2"
@@ -907,7 +839,7 @@ Model {
       Name		      "Planta"
       SID		      "1"
       Ports		      [1, 3]
-      Position		      [280, 45, 320, 105]
+      Position		      [190, 25, 230, 85]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -917,8 +849,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Planta"
-	Location		[22, 81, 686, 475]
-	Open			off
+	Location		[103, 129, 767, 523]
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -956,7 +888,7 @@ Model {
 	  Name			  "B"
 	  SID			  "5"
 	  Position		  [115, 280, 145, 310]
-	  Value			  "11.6"
+	  Value			  "0"
 	}
 	Block {
 	  BlockType		  Product
@@ -992,7 +924,8 @@ Model {
 	  SID			  "9"
 	  Ports			  [1, 1]
 	  Position		  [465, 100, 495, 130]
-	  InitialCondition	  "25*25*25"
+	  InitialCondition	  "1"
+	  UpperSaturationLimit	  "70"
 	  LowerSaturationLimit	  "0.1"
 	}
 	Block {
@@ -1057,14 +990,14 @@ Model {
 	  Name			  "c1"
 	  SID			  "15"
 	  Position		  [30, 65, 60, 95]
-	  Value			  "3.03"
+	  Value			  "3"
 	}
 	Block {
 	  BlockType		  Constant
 	  Name			  "c2"
 	  SID			  "16"
-	  Position		  [40, 175, 70, 205]
-	  Value			  "-48"
+	  Position		  [45, 175, 75, 205]
+	  Value			  "-16"
 	}
 	Block {
 	  BlockType		  Outport
@@ -1106,7 +1039,7 @@ Model {
 	Line {
 	  SrcBlock		  "c2"
 	  SrcPort		  1
-	  Points		  [114, 0]
+	  Points		  [109, 0]
 	  DstBlock		  "Sum4"
 	  DstPort		  2
 	}
@@ -1219,17 +1152,10 @@ Model {
       Name		      "Scope"
       SID		      "18"
       Ports		      [1]
-<<<<<<< HEAD
-      Position		      [490, 24, 520, 56]
+      Position		      [305, 24, 335, 56]
       Floating		      off
-      Location		      [678, 81, 1361, 766]
-      Open		      on
-=======
-      Position		      [495, 29, 525, 61]
-      Floating		      off
-      Location		      [678, 81, 1361, 766]
+      Location		      [685, 81, 1368, 766]
       Open		      off
->>>>>>> develop
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -1246,22 +1172,18 @@ Model {
 	MarkerStyles		"none|none|none|none|none|none"
       }
       ShowLegends	      off
-      TimeRange		      "1000"
-      YMin		      "10"
-      YMax		      "40"
       SaveToWorkspace	      on
       LimitDataPoints	      off
       SampleTime	      "0"
     }
     Block {
-<<<<<<< HEAD
       BlockType		      Scope
       Name		      "Scope1"
       SID		      "24"
       Ports		      [1]
-      Position		      [540, 94, 570, 126]
+      Position		      [425, 44, 455, 76]
       Floating		      off
-      Location		      [675, 81, 1358, 766]
+      Location		      [675, 79, 1358, 764]
       Open		      on
       NumInputPorts	      "1"
       List {
@@ -1284,129 +1206,37 @@ Model {
       LimitDataPoints	      off
       SampleTime	      "0"
     }
-    Block {
-=======
->>>>>>> develop
-      BlockType		      Step
-      Name		      "Step"
-      SID		      "28"
-      Position		      [20, 60, 50, 90]
-      ZOrder		      -22
-      Time		      "20"
-      Before		      "20"
-      After		      "60"
-      SampleTime	      "0.1"
-    }
-    Block {
-      BlockType		      Sum
-      Name		      "Sum1"
-      SID		      "34"
-      Ports		      [2, 1]
-      Position		      [235, 65, 255, 85]
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "|++"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Sum
-      Name		      "Sum4"
-      SID		      "25"
-      Ports		      [2, 1]
-      Position		      [115, 65, 135, 85]
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "|+-"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-      SampleTime	      "0.1"
-    }
-    Block {
-      BlockType		      TransferFcn
-      Name		      "Transfer Fcn"
-      SID		      "31"
-      Position		      [170, 117, 230, 153]
-      ZOrder		      -9
-      Denominator	      "[0.8 0]"
-    }
     Line {
-      SrcBlock		      "Planta"
-      SrcPort		      1
-      Points		      [35, 0]
-      Branch {
-	DstBlock		"Mux"
-	DstPort			2
-      }
-      Branch {
-<<<<<<< HEAD
-	Points			[0, 110; -235, 0]
-=======
-	Points			[0, 125; -235, 0]
->>>>>>> develop
-	DstBlock		"Sum4"
-	DstPort			2
-      }
-    }
-    Line {
-      SrcBlock		      "Mux"
-      SrcPort		      1
-<<<<<<< HEAD
-      Points		      [0, -5]
-=======
->>>>>>> develop
-      DstBlock		      "Scope"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Sum4"
-      SrcPort		      1
-      Points		      [10, 0]
-      Branch {
-	DstBlock		"Gain"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, 60]
-	DstBlock		"Transfer Fcn"
-	DstPort			1
-      }
-    }
-    Line {
-      Labels		      [1, 0]
-      SrcBlock		      "Step"
-      SrcPort		      1
-      Points		      [30, 0]
-      Branch {
-	DstBlock		"Sum4"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, -40]
-	DstBlock		"Mux"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "Gain"
-      SrcPort		      1
-      DstBlock		      "Sum1"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Sum1"
+      SrcBlock		      "Constant"
       SrcPort		      1
       DstBlock		      "Planta"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Transfer Fcn"
+      SrcBlock		      "Planta"
       SrcPort		      1
-      Points		      [10, 0]
-      DstBlock		      "Sum1"
+      DstBlock		      "Mux"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Planta"
+      SrcPort		      2
+      DstBlock		      "Mux"
       DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Mux"
+      SrcPort		      1
+      Points		      [0, -5]
+      DstBlock		      "Scope"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Planta"
+      SrcPort		      3
+      Points		      [30, 0; 0, 10; 145, 0]
+      DstBlock		      "Scope1"
+      DstPort		      1
     }
   }
 }
