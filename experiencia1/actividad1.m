@@ -1,8 +1,13 @@
 %%Parametros del modelo fenomenologico, segun regresion lineal
 %Datos experimento 1. Valvula de salida cerrada
 
+<<<<<<< HEAD
+% Fin = [36 97 151 152 215]';
+% frecuencias = (30:17.5:100)';
+=======
 Fin = [36 97 151 152 215]';
 frecuencias = (30:17.5:100)';
+>>>>>>> develop
 
 % getParametros
 % Fin = FlujosProm';
