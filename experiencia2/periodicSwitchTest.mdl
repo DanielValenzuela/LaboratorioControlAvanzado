@@ -1,16 +1,27 @@
 Model {
-  Name			  "switchTry"
+  Name			  "periodicSwitchTest"
   Version		  7.9
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.1"
+    ComputedModelVersion    "1.31"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
   SavedCharacterEncoding  "UTF-8"
+  slprops.hdlmdlprops {
+    $PropName		    "HDLParams"
+    $ObjectID		    1
+    Array {
+      Type		      "Cell"
+      Dimension		      2
+      Cell		      "HDLSubsystem"
+      Cell		      "periodicSwitchTest"
+      PropName		      "mdlProps"
+    }
+  }
   SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
@@ -27,9 +38,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Oct 16 22:36:39 2016"
-  RTWModifiedTimeStamp	  398558165
-  ModelVersionFormat	  "1.%<AutoIncrement:1>"
+  LastModifiedDate	  "Mon Oct 17 01:18:22 2016"
+  RTWModifiedTimeStamp	  398567620
+  ModelVersionFormat	  "1.%<AutoIncrement:31>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -64,15 +75,15 @@ Model {
   TryForcingSFcnDF	  off
   Object {
     $PropName		    "DataLoggingOverride"
-    $ObjectID		    1
+    $ObjectID		    2
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "switchTry"
+    model_		    "periodicSwitchTest"
     signals_		    []
-    overrideMode_	    [0U]
+    overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "switchTry"
+      Cell		      "periodicSwitchTest"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -124,16 +135,16 @@ Model {
     Type		    "Handle"
     Dimension		    1
     Simulink.ConfigSet {
-      $ObjectID		      2
+      $ObjectID		      3
       Version		      "1.12.0"
       Array {
 	Type			"Handle"
 	Dimension		9
 	Simulink.SolverCC {
-	  $ObjectID		  3
+	  $ObjectID		  4
 	  Version		  "1.12.0"
 	  StartTime		  "0.0"
-	  StopTime		  "10.0"
+	  StopTime		  "60"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -144,7 +155,7 @@ Model {
 	  MaxConsecutiveZCs	  "1000"
 	  ExtrapolationOrder	  4
 	  NumberNewtonIterations  1
-	  MaxStep		  "auto"
+	  MaxStep		  "0.001"
 	  MinStep		  "auto"
 	  MaxConsecutiveMinStep	  "1"
 	  RelTol		  "1e-3"
@@ -165,7 +176,7 @@ Model {
 	  InsertRTBMode		  "Whenever possible"
 	}
 	Simulink.DataIOCC {
-	  $ObjectID		  4
+	  $ObjectID		  5
 	  Version		  "1.12.0"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
@@ -197,7 +208,7 @@ Model {
 	  Refine		  "1"
 	}
 	Simulink.OptimizationCC {
-	  $ObjectID		  5
+	  $ObjectID		  6
 	  Version		  "1.12.0"
 	  Array {
 	    Type		    "Cell"
@@ -253,7 +264,7 @@ Model {
 	  ParallelExecutionInRapidAccelerator on
 	}
 	Simulink.DebuggingCC {
-	  $ObjectID		  6
+	  $ObjectID		  7
 	  Version		  "1.12.0"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
@@ -341,7 +352,7 @@ Model {
 	  SFUnconditionalTransitionShadowingDiag "warning"
 	}
 	Simulink.HardwareCC {
-	  $ObjectID		  7
+	  $ObjectID		  8
 	  Version		  "1.12.0"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
@@ -378,7 +389,7 @@ Model {
 	  ProdEqTarget		  on
 	}
 	Simulink.ModelReferenceCC {
-	  $ObjectID		  8
+	  $ObjectID		  9
 	  Version		  "1.12.0"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
 	  CheckModelReferenceTargetMessage "error"
@@ -393,7 +404,7 @@ Model {
 	  SupportModelReferenceSimTargetCustomCode off
 	}
 	Simulink.SFSimCC {
-	  $ObjectID		  9
+	  $ObjectID		  10
 	  Version		  "1.12.0"
 	  SFSimEnableDebug	  on
 	  SFSimOverflowDetection  on
@@ -408,7 +419,7 @@ Model {
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
-	  $ObjectID		  10
+	  $ObjectID		  11
 	  Version		  "1.12.0"
 	  Array {
 	    Type		    "Cell"
@@ -463,7 +474,7 @@ Model {
 	    Type		    "Handle"
 	    Dimension		    2
 	    Simulink.CodeAppCC {
-	      $ObjectID		      11
+	      $ObjectID		      12
 	      Version		      "1.12.0"
 	      Array {
 		Type			"Cell"
@@ -528,7 +539,7 @@ Model {
 	    }
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
-	      $ObjectID		      12
+	      $ObjectID		      13
 	      Version		      "1.12.0"
 	      Array {
 		Type			"Cell"
@@ -611,7 +622,7 @@ Model {
 	  }
 	}
 	hdlcoderui.hdlcc {
-	  $ObjectID		  13
+	  $ObjectID		  14
 	  Version		  "1.12.0"
 	  Description		  "HDL Coder custom configuration component"
 	  Name			  "HDL Coder"
@@ -627,13 +638,13 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 243, 69, 1123, 699 ] 
+      ConfigPrmDlgPosition     [ 196, 24, 1170, 680 ] 
     }
     PropName		    "ConfigurationSets"
   }
   Simulink.ConfigSet {
     $PropName		    "ActiveConfigurationSet"
-    $ObjectID		    2
+    $ObjectID		    3
   }
   ExplicitPartitioning	  off
   BlockDefaults {
@@ -669,6 +680,19 @@ Model {
   }
   BlockParameterDefaults {
     Block {
+      BlockType		      Constant
+      Value		      "1"
+      VectorParams1D	      on
+      SamplingMode	      "Sample based"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit from 'Constant value'"
+      LockScale		      off
+      SampleTime	      "inf"
+      FramePeriod	      "inf"
+      PreserveConstantTs      off
+    }
+    Block {
       BlockType		      Demux
       Outputs		      "4"
       DisplayOption	      "none"
@@ -693,6 +717,14 @@ Model {
       Interpolate	      on
     }
     Block {
+      BlockType		      Mux
+      Inputs		      "4"
+      DisplayOption	      "none"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      NonVirtualBus	      off
+    }
+    Block {
       BlockType		      Outport
       Port		      "1"
       OutMin		      "[]"
@@ -715,6 +747,37 @@ Model {
       SFunctionModules	      "''"
       PortCounts	      "[]"
       SFunctionDeploymentMode off
+    }
+    Block {
+      BlockType		      Scope
+      ModelBased	      off
+      TickLabels	      "OneTimeTick"
+      ZoomMode		      "on"
+      Grid		      "on"
+      TimeRange		      "auto"
+      YMin		      "-5"
+      YMax		      "5"
+      SaveToWorkspace	      off
+      SaveName		      "ScopeData"
+      DataFormat	      "Array"
+      LimitDataPoints	      on
+      MaxDataPoints	      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Sin
+      SineType		      "Time based"
+      TimeSource	      "Use simulation time"
+      Amplitude		      "1"
+      Bias		      "0"
+      Frequency		      "1"
+      Phase		      "0"
+      Samples		      "10"
+      Offset		      "0"
+      SampleTime	      "-1"
+      VectorParams1D	      on
     }
     Block {
       BlockType		      SubSystem
@@ -744,8 +807,8 @@ Model {
     }
   }
   System {
-    Name		    "switchTry"
-    Location		    [574, 180, 1297, 541]
+    Name		    "periodicSwitchTest"
+    Location		    [309, 131, 1253, 682]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -757,15 +820,119 @@ Model {
     TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "100"
+    ZoomFactor		    "156"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "2"
+    SIDHighWatermark	    "16"
+    Block {
+      BlockType		      Constant
+      Name		      "Critical Angle"
+      SID		      "3"
+      Position		      [300, 40, 340, 70]
+      BlockMirror	      on
+      NamePlacement	      "alternate"
+      Value		      "170"
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux1"
+      SID		      "16"
+      Ports		      [3, 1]
+      Position		      [510, 206, 515, 244]
+      ZOrder		      -12
+      ShowName		      off
+      Inputs		      "3"
+      DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      Sin
+      Name		      "angleTest"
+      SID		      "12"
+      Ports		      [0, 1]
+      Position		      [305, 115, 335, 145]
+      ZOrder		      -21
+      BlockMirror	      on
+      NamePlacement	      "alternate"
+      Amplitude		      "20"
+      Bias		      "160"
+      Frequency		      "0.1"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "out"
+      SID		      "13"
+      Ports		      [1]
+      Position		      [550, 209, 580, 241]
+      Floating		      off
+      Location		      [685, 81, 1368, 766]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      ShowLegends	      off
+      YMin		      "115"
+      YMax		      "180"
+      SaveName		      "ScopeData1"
+      DataFormat	      "StructureWithTime"
+      LimitDataPoints	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "swinUp"
+      SID		      "4"
+      Ports		      [1]
+      Position		      [105, 174, 135, 206]
+      Floating		      off
+      Location		      [5, 81, 1371, 759]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      ShowLegends	      off
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Sin
+      Name		      "swingUp"
+      SID		      "5"
+      Ports		      [0, 1]
+      Position		      [35, 220, 65, 250]
+      ZOrder		      -21
+      Amplitude		      "2"
+      Bias		      "120"
+      Frequency		      "10"
+    }
     Block {
       BlockType		      SubSystem
       Name		      "switch"
       SID		      "2"
-      Ports		      [5, 2]
-      Position		      [570, 54, 645, 116]
+      Ports		      [4, 1]
+      Position		      [250, 157, 450, 308]
       ErrorFcn		      "Stateflow.Translate.translate"
       PermitHierarchicalResolution "ExplicitOnly"
       TreatAsAtomicUnit	      on
@@ -836,15 +1003,6 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Block {
-	  BlockType		  Inport
-	  Name			  "globalState"
-	  SID			  "2::13"
-	  Position		  [20, 246, 40, 264]
-	  ZOrder		  6
-	  Port			  "5"
-	  IconDisplay		  "Port number"
-	}
-	Block {
 	  BlockType		  Demux
 	  Name			  " Demux "
 	  SID			  "2::9"
@@ -857,22 +1015,16 @@ Model {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
 	  SID			  "2::8"
-	  Tag			  "Stateflow S-Function switchTry 1"
-	  Ports			  [5, 3]
+	  Tag			  "Stateflow S-Function periodicSwitchTest 1"
+	  Ports			  [4, 2]
 	  Position		  [180, 100, 230, 220]
 	  ZOrder		  1
 	  FunctionName		  "sf_sfun"
-	  PortCounts		  "[5 3]"
+	  PortCounts		  "[4 2]"
 	  EnableBusSupport	  on
 	  Port {
 	    PortNumber		    2
 	    Name		    "y"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    3
-	    Name		    "globalStateOut"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -889,15 +1041,6 @@ Model {
 	  Name			  "y"
 	  SID			  "2::7"
 	  Position		  [460, 101, 480, 119]
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "globalStateOut"
-	  SID			  "2::14"
-	  Position		  [460, 136, 480, 154]
-	  ZOrder		  7
-	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
 	Line {
@@ -925,25 +1068,11 @@ Model {
 	  DstPort		  4
 	}
 	Line {
-	  SrcBlock		  "globalState"
-	  SrcPort		  1
-	  DstBlock		  " SFunction "
-	  DstPort		  5
-	}
-	Line {
 	  Name			  "y"
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  2
 	  DstBlock		  "y"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "globalStateOut"
-	  Labels		  [0, 0]
-	  SrcBlock		  " SFunction "
-	  SrcPort		  3
-	  DstBlock		  "globalStateOut"
 	  DstPort		  1
 	}
 	Line {
@@ -961,147 +1090,74 @@ Model {
       }
     }
     Block {
-      BlockType		      SubSystem
-      Name		      "switch1"
-      SID		      "1"
-      Ports		      [1, 2]
-      Position		      [185, 88, 260, 152]
-      ErrorFcn		      "Stateflow.Translate.translate"
-      PermitHierarchicalResolution "ExplicitOnly"
-      TreatAsAtomicUnit	      on
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      RTWSystemCode	      "Auto"
-      FunctionWithSeparateData off
-      Opaque		      off
-      RequestExecContextInheritance off
-      MaskHideContents	      off
-      SFBlockType	      "MATLAB Function"
-      MaskType		      "Stateflow"
-      MaskDescription	      "Embedded MATLAB block"
-      MaskSelfModifiable      on
-      MaskDisplay	      "bgColor = Simulink.Root.ColorString2Rgb(get_param(gcbh, 'BackgroundColor')); image(imread('pr"
-      "ivate/eml_membrane_16.png','png','BackgroundColor',bgColor(1:3)),'center'); disp([10 10 'globalHandler']);"
-      MaskIconFrame	      on
-      MaskIconOpaque	      off
-      MaskIconRotate	      "none"
-      MaskPortRotate	      "default"
-      MaskIconUnits	      "normalized"
-      System {
-	Name			"switch1"
-	Location		[257, 457, 812, 717]
-	Open			off
-	ModelBrowserVisibility	off
-	ModelBrowserWidth	200
-	ScreenColor		"white"
-	PaperOrientation	"landscape"
-	PaperPositionMode	"auto"
-	PaperType		"A4"
-	PaperUnits		"centimeters"
-	TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
-	TiledPageScale		1
-	ShowPageBoundaries	off
-	ZoomFactor		"100"
-	SIDHighWatermark	"16"
-	Block {
-	  BlockType		  Inport
-	  Name			  "varUpdate"
-	  SID			  "1::15"
-	  Position		  [20, 101, 40, 119]
-	  ZOrder		  8
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Demux
-	  Name			  " Demux "
-	  SID			  "1::9"
-	  Ports			  [1, 1]
-	  Position		  [270, 220, 320, 260]
-	  ZOrder		  2
-	  Outputs		  "1"
-	}
-	Block {
-	  BlockType		  S-Function
-	  Name			  " SFunction "
-	  SID			  "1::8"
-	  Tag			  "Stateflow S-Function switchTry 2"
-	  Ports			  [1, 3]
-	  Position		  [180, 100, 230, 220]
-	  ZOrder		  1
-	  FunctionName		  "sf_sfun"
-	  PortCounts		  "[1 3]"
-	  EnableBusSupport	  on
-	  Port {
-	    PortNumber		    2
-	    Name		    "varInit"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    3
-	    Name		    "varUpdated"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  Terminator
-	  Name			  " Terminator "
-	  SID			  "1::11"
-	  Position		  [460, 231, 480, 249]
-	  ZOrder		  4
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "varInit"
-	  SID			  "1::7"
-	  Position		  [460, 101, 480, 119]
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "varUpdated"
-	  SID			  "1::16"
-	  Position		  [460, 136, 480, 154]
-	  ZOrder		  9
-	  Port			  "2"
-	  IconDisplay		  "Port number"
-	}
-	Line {
-	  SrcBlock		  "varUpdate"
-	  SrcPort		  1
-	  DstBlock		  " SFunction "
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "varInit"
-	  Labels		  [0, 0]
-	  SrcBlock		  " SFunction "
-	  SrcPort		  2
-	  DstBlock		  "varInit"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "varUpdated"
-	  Labels		  [0, 0]
-	  SrcBlock		  " SFunction "
-	  SrcPort		  3
-	  DstBlock		  "varUpdated"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  " Demux "
-	  SrcPort		  1
-	  DstBlock		  " Terminator "
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  " SFunction "
-	  SrcPort		  1
-	  DstBlock		  " Demux "
-	  DstPort		  1
-	}
+      BlockType		      Constant
+      Name		      "test"
+      SID		      "7"
+      Position		      [35, 270, 65, 300]
+      ZOrder		      -4
+      Value		      "130"
+    }
+    Line {
+      SrcBlock		      "swingUp"
+      SrcPort		      1
+      Points		      [20, 0]
+      Branch {
+	DstBlock		"swinUp"
+	DstPort			1
       }
+      Branch {
+	Points			[0, 15]
+	DstBlock		"switch"
+	DstPort			3
+      }
+    }
+    Line {
+      SrcBlock		      "Critical Angle"
+      SrcPort		      1
+      Points		      [-30, 0]
+      Branch {
+	Points			[-70, 0; 0, 160]
+	DstBlock		"switch"
+	DstPort			2
+      }
+      Branch {
+	Points			[0, -45; 220, 0; 0, 205]
+	DstBlock		"Mux1"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "test"
+      SrcPort		      1
+      DstBlock		      "switch"
+      DstPort		      4
+    }
+    Line {
+      SrcBlock		      "angleTest"
+      SrcPort		      1
+      Points		      [-15, 0]
+      Branch {
+	Points			[-60, 0; 0, 50]
+	DstBlock		"switch"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -40; 175, 0; 0, 135]
+	DstBlock		"Mux1"
+	DstPort			2
+      }
+    }
+    Line {
+      SrcBlock		      "Mux1"
+      SrcPort		      1
+      DstBlock		      "out"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "switch"
+      SrcPort		      1
+      DstBlock		      "Mux1"
+      DstPort		      3
     }
   }
 }
@@ -1115,10 +1171,10 @@ Model {
 Stateflow {
   machine {
     id			    1
-    name		    "switchTry"
+    name		    "periodicSwitchTest"
     created		    "16-Oct-2016 20:42:47"
     isLibrary		    0
-    firstTarget		    22
+    firstTarget		    12
     sfVersion		    76014001.00040001
   }
   chart {
@@ -1133,8 +1189,6 @@ Stateflow {
     viewObj		    2
     machine		    1
     toolbarMode		    LIBRARY_TOOLBAR
-    subviewS {
-    }
     ssIdHighWaterMark	    10
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
@@ -1160,10 +1214,10 @@ Stateflow {
     decomposition	    CLUSTER_STATE
     eml {
       isEML		      1
-      script		      "function [y, globalStateOut] = fcn(ActualAngle, criticalAngle, swingUp, LQRcontroller, globalStat"
-      "e)\n%function y = fcn(swingUp, LQRcontroller, globalState)\n%\nif (ActualAngle < criticalAngle && globalState =="
-      " 0)\n    y = swingUp;\n    %swingOff = 0;\n    globalStateOut = 0;\nelse if (ActualAngle >= criticalAngle || glo"
-      "balState == 1)\n    y = LQRcontroller;\n    globalStateOut = 1;\n    %swingOff = 1;\nend\nend"
+      script		      "function y  = fcn(ActualAngle, criticalAngle, swingUp, LQRcontroller)\n%function y = fcn(swingUp,"
+      " LQRcontroller, globalState)\n%\nif (ActualAngle < criticalAngle)\n    y = swingUp;\n    %globalStateOut = 0;\ne"
+      "lse %if (ActualAngle >= criticalAngle || globalState == 1)\n    y = LQRcontroller;\n    %globalStateOut = 1;\nen"
+      "d\n\nend"
       editorLayout	      "100 M4x1[10 5 700 500]"
       fimathString	      "fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'KeepLSB', "
       "'ProductWordLength', 32,...\n'SumMode', 'KeepLSB', 'SumWordLength', 32,...\n'CastBeforeSum', true)"
@@ -1222,31 +1276,9 @@ Stateflow {
   }
   data {
     id			    7
-    ssIdNumber		    10
-    name		    "globalStateOut"
-    linkNode		    [2 6 8]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    8
     ssIdNumber		    4
     name		    "ActualAngle"
-    linkNode		    [2 7 9]
+    linkNode		    [2 6 8]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -1262,9 +1294,31 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    9
+    id			    8
     ssIdNumber		    7
     name		    "criticalAngle"
+    linkNode		    [2 7 9]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    9
+    ssIdNumber		    6
+    name		    "swingUp"
     linkNode		    [2 8 10]
     scope		    INPUT_DATA
     machine		    1
@@ -1285,53 +1339,9 @@ Stateflow {
   }
   data {
     id			    10
-    ssIdNumber		    6
-    name		    "swingUp"
-    linkNode		    [2 9 11]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    11
     ssIdNumber		    8
     name		    "LQRcontroller"
-    linkNode		    [2 10 12]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    12
-    ssIdNumber		    9
-    name		    "globalState"
-    linkNode		    [2 11 0]
+    linkNode		    [2 9 0]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -1350,159 +1360,13 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   instance {
-    id			    13
+    id			    11
     name		    "switch"
     machine		    1
     chart		    2
   }
-  chart {
-    id			    14
-    name		    "switch1"
-    windowPosition	    [405.747 225 200.25 189.75]
-    viewLimits		    [0 156.75 0 153.75]
-    screen		    [1 1 1366 768 1.25]
-    treeNode		    [0 15 0 0]
-    firstTransition	    17
-    firstJunction	    16
-    viewObj		    14
-    machine		    1
-    toolbarMode		    LIBRARY_TOOLBAR
-    subviewS {
-    }
-    ssIdHighWaterMark	    10
-    decomposition	    CLUSTER_CHART
-    type		    EML_CHART
-    firstData		    18
-    chartFileNumber	    2
-    disableImplicitCasting  1
-    eml {
-      name		      "globalHandler"
-    }
-    supportVariableSizing   0
-  }
-  state {
-    id			    15
-    labelString		    "eML_blk_kernel()"
-    position		    [18 64.5 118 66]
-    fontSize		    12
-    chart		    14
-    treeNode		    [14 0 0 0]
-    superState		    SUBCHART
-    subviewer		    14
-    ssIdNumber		    1
-    type		    FUNC_STATE
-    decomposition	    CLUSTER_STATE
-    eml {
-      isEML		      1
-      script		      "function [varInit, varUpdated] = globalHandler(varUpdate)\n%\n    if(varUpdate ~= varInit)\n     "
-      "   var =  1;\n    else\n        var = 0;\n    end\n    if (varUpdate==1)\n        varUpdated = 1;\n    else\n   "
-      "     varUpdated = 0;\n    end\nend"
-      editorLayout	      "100 M4x1[10 5 700 500]"
-      fimathString	      "fimath(...\n'RoundMode', 'floor',...\n'OverflowMode', 'wrap',...\n'ProductMode', 'KeepLSB', "
-      "'ProductWordLength', 32,...\n'SumMode', 'KeepLSB', 'SumWordLength', 32,...\n'CastBeforeSum', true)"
-      emlDefaultFimath	      FimathUserSpecified
-    }
-  }
-  junction {
-    id			    16
-    position		    [23.5747 49.5747 7]
-    chart		    14
-    linkNode		    [14 0 0]
-    subviewer		    14
-    ssIdNumber		    3
-    type		    CONNECTIVE_JUNCTION
-  }
-  transition {
-    id			    17
-    labelString		    "{eML_blk_kernel();}"
-    labelPosition	    [32.125 19.875 102.544 14.964]
-    fontSize		    12
-    src {
-      intersection	      [0 0 1 0 23.5747 14.625 0 0]
-    }
-    dst {
-      id		      16
-      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
-    }
-    midPoint		    [23.5747 24.9468]
-    chart		    14
-    linkNode		    [14 0 0]
-    dataLimits		    [23.575 23.575 14.625 34.575]
-    subviewer		    14
-    drawStyle		    SMART
-    executionOrder	    1
-    ssIdNumber		    2
-  }
-  data {
-    id			    18
-    ssIdNumber		    5
-    name		    "varInit"
-    linkNode		    [14 0 19]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    19
-    ssIdNumber		    10
-    name		    "varUpdate"
-    linkNode		    [14 18 20]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    20
-    ssIdNumber		    4
-    name		    "varUpdated"
-    linkNode		    [14 19 0]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  instance {
-    id			    21
-    name		    "switch1"
-    machine		    1
-    chart		    14
-  }
   target {
-    id			    22
+    id			    12
     name		    "sfun"
     description		    "Default Simulink S-Function Target."
     machine		    1

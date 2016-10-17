@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.292"
+    ComputedModelVersion    "1.294"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -38,9 +38,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Oct 16 22:54:17 2016"
-  RTWModifiedTimeStamp	  398558722
-  ModelVersionFormat	  "1.%<AutoIncrement:292>"
+  LastModifiedDate	  "Sun Oct 16 22:59:08 2016"
+  RTWModifiedTimeStamp	  398559529
+  ModelVersionFormat	  "1.%<AutoIncrement:294>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -2415,7 +2415,7 @@ Model {
       Name		      "Sum"
       SID		      "79"
       Ports		      [5, 1]
-      Position		      [160, 95, 200, 190]
+      Position		      [160, 99, 200, 196]
       ShowName		      off
       Inputs		      "|+----"
       InputSameDT	      off
@@ -2748,7 +2748,7 @@ Model {
 	DstPort			1
       }
       Branch {
-	Points			[0, -5; 5, 0; 0, 465]
+	Points			[0, 460]
 	DstBlock		"LQR Gain"
 	DstPort			1
       }
@@ -2838,14 +2838,14 @@ Model {
     Line {
       SrcBlock		      "Manual Switch1"
       SrcPort		      1
-      Points		      [-150, 0; 0, -135]
+      Points		      [-150, 0; 0, -125]
       DstBlock		      "Sum"
       DstPort		      5
     }
     Line {
       SrcBlock		      "Manual Switch2"
       SrcPort		      1
-      Points		      [-170, 0; 0, -220]
+      Points		      [-170, 0; 0, -210]
       DstBlock		      "Sum"
       DstPort		      4
     }
@@ -2927,8 +2927,6 @@ Stateflow {
     viewObj		    2
     machine		    1
     toolbarMode		    LIBRARY_TOOLBAR
-    subviewS {
-    }
     ssIdHighWaterMark	    5
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
@@ -3048,8 +3046,6 @@ Stateflow {
     viewObj		    9
     machine		    1
     toolbarMode		    LIBRARY_TOOLBAR
-    subviewS {
-    }
     ssIdHighWaterMark	    5
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
