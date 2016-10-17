@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.322"
+    ComputedModelVersion    "1.353"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -38,9 +38,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Oct 17 02:11:30 2016"
-  RTWModifiedTimeStamp	  398569035
-  ModelVersionFormat	  "1.%<AutoIncrement:322>"
+  LastModifiedDate	  "Mon Oct 17 02:48:28 2016"
+  RTWModifiedTimeStamp	  398572085
+  ModelVersionFormat	  "1.%<AutoIncrement:353>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -78,6 +78,7 @@ Model {
     $ObjectID		    2
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "penduloInvNoLineal"
+    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -867,7 +868,7 @@ Model {
   }
   System {
     Name		    "penduloInvNoLineal"
-    Location		    [21, 114, 1253, 577]
+    Location		    [103, 309, 1335, 772]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -881,7 +882,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "117"
+    SIDHighWatermark	    "120"
     Block {
       BlockType		      Constant
       Name		      "180/pi"
@@ -897,7 +898,7 @@ Model {
       Position		      [295, 155, 335, 185]
       BlockMirror	      on
       NamePlacement	      "alternate"
-      Value		      "150"
+      Value		      "30"
     }
     Block {
       BlockType		      Memory
@@ -1082,7 +1083,7 @@ Model {
 	  SID			  "28"
 	  Position		  [290, 95, 320, 125]
 	  ZOrder		  -4
-	  Value			  "0"
+	  Value			  "4.7"
 	}
 	Block {
 	  BlockType		  Mux
@@ -2034,12 +2035,13 @@ Model {
     }
     Block {
       BlockType		      Scope
-      Name		      "out"
-      SID		      "113"
+      Name		      "input2"
+      SID		      "120"
       Ports		      [1]
-      Position		      [430, 209, 460, 241]
+      Position		      [845, 329, 875, 361]
+      ZOrder		      -16
       Floating		      off
-      Location		      [238, 86, 921, 771]
+      Location		      [6, 81, 689, 766]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -2057,8 +2059,38 @@ Model {
 	MarkerStyles		"none|none|none|none|none|none"
       }
       ShowLegends	      off
-      YMin		      "115"
-      YMax		      "180"
+      SaveName		      "ScopeData4"
+      DataFormat	      "StructureWithTime"
+      LimitDataPoints	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "out"
+      SID		      "113"
+      Ports		      [1]
+      Position		      [430, 209, 460, 241]
+      Floating		      off
+      Location		      [246, 81, 929, 766]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      ShowLegends	      off
+      YMin		      "-10"
+      YMax		      "170"
       SaveName		      "ScopeData6"
       DataFormat	      "StructureWithTime"
       LimitDataPoints	      off
@@ -2253,8 +2285,8 @@ Model {
       Ports		      [0, 1]
       Position		      [75, 270, 105, 300]
       ZOrder		      -21
+      Amplitude		      "3"
       Frequency		      "5"
-      SampleTime	      "0"
     }
     Block {
       BlockType		      SubSystem
@@ -2527,7 +2559,7 @@ Model {
       SID		      "117"
       Position		      [150, 270, 180, 300]
       ZOrder		      -4
-      Value		      "0"
+      Value		      "4.7/1.88"
     }
     Block {
       BlockType		      Scope
@@ -2687,6 +2719,7 @@ Model {
       Ports		      [1, 1]
       Position		      [575, 65, 605, 95]
       ZOrder		      -2
+      LimitOutput	      on
       UpperSaturationLimit    "50"
       LowerSaturationLimit    "-50"
     }
@@ -2719,8 +2752,9 @@ Model {
       Ports		      [1, 1]
       Position		      [560, 330, 590, 360]
       ZOrder		      -2
-      UpperSaturationLimit    "100"
-      LowerSaturationLimit    "-100"
+      LimitOutput	      on
+      UpperSaturationLimit    "0.5"
+      LowerSaturationLimit    "-0.5"
     }
     Block {
       BlockType		      Scope
@@ -2959,15 +2993,22 @@ Model {
     Line {
       SrcBlock		      "switch"
       SrcPort		      1
-      Points		      [5, 0]
+      Points		      [10, 0]
       Branch {
 	DstBlock		"Mux1"
 	DstPort			3
       }
       Branch {
-	Points			[0, 35; 470, 0]
-	DstBlock		"Subsystem"
-	DstPort			5
+	Points			[0, 40; 425, 0]
+	Branch {
+	  DstBlock		  "Subsystem"
+	  DstPort		  5
+	}
+	Branch {
+	  Points		  [0, 70]
+	  DstBlock		  "input2"
+	  DstPort		  1
+	}
       }
     }
   }
@@ -3468,8 +3509,6 @@ Stateflow {
     viewObj		    30
     machine		    1
     toolbarMode		    LIBRARY_TOOLBAR
-    subviewS {
-    }
     ssIdHighWaterMark	    16
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
