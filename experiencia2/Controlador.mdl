@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.56"
+    ComputedModelVersion    "1.57"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -24,9 +24,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Daniel"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Oct 16 02:48:04 2016"
+  LastModifiedDate	  "Mon Oct 17 01:58:29 2016"
   RTWModifiedTimeStamp	  0
-  ModelVersionFormat	  "1.%<AutoIncrement:56>"
+  ModelVersionFormat	  "1.%<AutoIncrement:57>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -108,7 +108,7 @@ Model {
 	  $ObjectID		  2
 	  Version		  "1.6.0"
 	  StartTime		  "0.0"
-	  StopTime		  "20"
+	  StopTime		  "100"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "0.01"
@@ -765,7 +765,7 @@ Model {
   }
   System {
     Name		    "Controlador"
-    Location		    [2, 75, 1347, 707]
+    Location		    [2, 83, 1331, 715]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -892,7 +892,26 @@ Model {
       RTWMemSecDataConstants  "Inherit from model"
       RTWMemSecDataInternal   "Inherit from model"
       RTWMemSecDataParameters "Inherit from model"
-      sw		      "1"
+      sw		      "0"
+      action		      "0"
+      varsize		      off
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Manual Switch1"
+      Ports		      [2, 1]
+      Position		      [220, 112, 250, 148]
+      SourceBlock	      "simulink/Signal\nRouting/Manual Switch"
+      SourceType	      "Manual Switch"
+      ShowPortLabels	      "FromPortIcon"
+      SystemSampleTime	      "-1"
+      FunctionWithSeparateData off
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      sw		      "0"
       action		      "0"
       varsize		      off
     }
@@ -945,7 +964,7 @@ Model {
       Position		      [1225, 284, 1255, 316]
       Floating		      off
       Location		      [5, 49, 1371, 727]
-      Open		      on
+      Open		      off
       NumInputPorts	      "1"
       List {
 	ListType		AxesTitles
@@ -1006,14 +1025,14 @@ Model {
       BlockType		      Sin
       Name		      "Sine Wave1"
       Ports		      [0, 1]
-      Position		      [20, 163, 50, 197]
-      Amplitude		      "2"
+      Position		      [140, 163, 170, 197]
+      Amplitude		      "5"
       Bias		      "0"
-      Frequency		      "10"
+      Frequency		      "0.05"
       Phase		      "0"
       Samples		      "10"
       Offset		      "0"
-      SampleTime	      "0"
+      SampleTime	      "0.1"
     }
     Block {
       BlockType		      StateSpace
@@ -1033,6 +1052,21 @@ Model {
       ShowName		      off
       IconShape		      "round"
       Inputs		      "|+----"
+      InputSameDT	      off
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum1"
+      Ports		      [3, 1]
+      Position		      [80, 70, 150, 150]
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "|++-"
       InputSameDT	      off
       OutDataTypeMode	      "Inherit via internal rule"
       OutDataType	      "fixdt(1, 16)"
@@ -1559,9 +1593,27 @@ Model {
     Block {
       BlockType		      Step
       Name		      "voltaje1"
-      Position		      [20, 305, 50, 335]
+      Position		      [15, 70, 45, 100]
       DropShadow	      on
-      Time		      "0"
+      Time		      "20"
+      After		      "3"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Step
+      Name		      "voltaje2"
+      Position		      [15, 115, 45, 145]
+      DropShadow	      on
+      Time		      "50"
+      After		      "2"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Step
+      Name		      "voltaje3"
+      Position		      [15, 165, 45, 195]
+      DropShadow	      on
+      Time		      "80"
       SampleTime	      "0"
     }
     Line {
@@ -1698,21 +1750,6 @@ Model {
       }
     }
     Line {
-      SrcBlock		      "Sine Wave1"
-      SrcPort		      1
-      Points		      [30, 0; 0, -5; 220, 0]
-      Branch {
-	Points			[5, 0]
-	DstBlock		"Sum"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, -5; 330, 0; 0, 55]
-	DstBlock		"Manual Switch"
-	DstPort			1
-      }
-    }
-    Line {
       SrcBlock		      "Sum"
       SrcPort		      1
       Points		      [45, 0; 0, -15; 15, 0]
@@ -1784,6 +1821,55 @@ Model {
       SrcPort		      1
       DstBlock		      "grados1"
       DstPort		      1
+    }
+    Line {
+      SrcBlock		      "voltaje1"
+      SrcPort		      1
+      Points		      [0, -4; 21, 0]
+      DstBlock		      "Sum1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "voltaje2"
+      SrcPort		      1
+      Points		      [10, 0; 0, -1; 11, 0]
+      DstBlock		      "Sum1"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "voltaje3"
+      SrcPort		      1
+      Points		      [30, 0; 0, -20; 35, 0]
+      DstBlock		      "Sum1"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "Sum1"
+      SrcPort		      1
+      Points		      [25, 0; 0, 10]
+      DstBlock		      "Manual Switch1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sine Wave1"
+      SrcPort		      1
+      Points		      [15, 0; 0, -40]
+      DstBlock		      "Manual Switch1"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Manual Switch1"
+      SrcPort		      1
+      Points		      [55, 0]
+      Branch {
+	DstBlock		"Sum"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -15; 345, 0; 0, 110]
+	DstBlock		"Manual Switch"
+	DstPort			1
+      }
     }
     Annotation {
       Name		      "x"
