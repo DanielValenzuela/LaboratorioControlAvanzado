@@ -1,7 +1,6 @@
 /* Include files */
 
 #include "controladorLQR_sfun.h"
-#include "c1_controladorLQR.h"
 #include "c3_controladorLQR.h"
 #include "c4_controladorLQR.h"
 
@@ -30,11 +29,6 @@ void controladorLQR_terminator(void)
 unsigned int sf_controladorLQR_method_dispatcher(SimStruct *simstructPtr,
   unsigned int chartFileNumber, const char* specsCksum, int_T method, void *data)
 {
-  if (chartFileNumber==1) {
-    c1_controladorLQR_method_dispatcher(simstructPtr, method, data);
-    return 1;
-  }
-
   if (chartFileNumber==3) {
     c3_controladorLQR_method_dispatcher(simstructPtr, method, data);
     return 1;
@@ -78,21 +72,14 @@ unsigned int sf_controladorLQR_process_check_sum_call( int nlhs, mxArray * plhs[
       ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(0U);
       ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(0U);
     } else if (!strcmp(commandName,"makefile")) {
-      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3507203397U);
-      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3864086528U);
-      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2821628239U);
-      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2708948062U);
+      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2173962495U);
+      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2134915167U);
+      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1548234661U);
+      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1101578618U);
     } else if (nrhs==3 && !strcmp(commandName,"chart")) {
       unsigned int chartFileNumber;
       chartFileNumber = (unsigned int)mxGetScalar(prhs[2]);
       switch (chartFileNumber) {
-       case 1:
-        {
-          extern void sf_c1_controladorLQR_get_check_sum(mxArray *plhs[]);
-          sf_c1_controladorLQR_get_check_sum(plhs);
-          break;
-        }
-
        case 3:
         {
           extern void sf_c3_controladorLQR_get_check_sum(mxArray *plhs[]);
@@ -122,10 +109,10 @@ unsigned int sf_controladorLQR_process_check_sum_call( int nlhs, mxArray * plhs[
       return 0;
     }
   } else {
-    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(4099032146U);
-    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3818979813U);
-    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3884716199U);
-    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(486973931U);
+    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3041012468U);
+    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(535003214U);
+    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(326157363U);
+    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2149919131U);
   }
 
   return 1;
@@ -161,18 +148,6 @@ unsigned int sf_controladorLQR_autoinheritance_info( int nlhs, mxArray * plhs[],
     unsigned int chartFileNumber;
     chartFileNumber = (unsigned int)mxGetScalar(prhs[1]);
     switch (chartFileNumber) {
-     case 1:
-      {
-        if (strcmp(aiChksum, "ab1iK8hixu50T5Z9kqtiGF") == 0) {
-          extern mxArray *sf_c1_controladorLQR_get_autoinheritance_info(void);
-          plhs[0] = sf_c1_controladorLQR_get_autoinheritance_info();
-          break;
-        }
-
-        plhs[0] = mxCreateDoubleMatrix(0,0,mxREAL);
-        break;
-      }
-
      case 3:
       {
         if (strcmp(aiChksum, "LbYio2SizFUlYr5sH1bBcF") == 0) {
@@ -232,17 +207,6 @@ unsigned int sf_controladorLQR_get_eml_resolved_functions_info( int nlhs,
     unsigned int chartFileNumber;
     chartFileNumber = (unsigned int)mxGetScalar(prhs[1]);
     switch (chartFileNumber) {
-     case 1:
-      {
-        extern const mxArray
-          *sf_c1_controladorLQR_get_eml_resolved_functions_info(void);
-        mxArray *persistentMxArray = (mxArray *)
-          sf_c1_controladorLQR_get_eml_resolved_functions_info();
-        plhs[0] = mxDuplicateArray(persistentMxArray);
-        mxDestroyArray(persistentMxArray);
-        break;
-      }
-
      case 3:
       {
         extern const mxArray
@@ -283,7 +247,7 @@ unsigned int sf_controladorLQR_get_eml_resolved_functions_info( int nlhs,
 void controladorLQR_debug_initialize(void)
 {
   _controladorLQRMachineNumber_ = sf_debug_initialize_machine("controladorLQR",
-    "sfun",0,3,0,0,0);
+    "sfun",0,2,0,0,0);
   sf_debug_set_machine_event_thresholds(_controladorLQRMachineNumber_,0,0);
   sf_debug_set_machine_data_thresholds(_controladorLQRMachineNumber_,0);
 }

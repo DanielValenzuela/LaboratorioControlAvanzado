@@ -9,7 +9,6 @@ LD = $(CC)
 MACHINE     = controladorLQR
 TARGET      = sfun
 CHART_SRCS 	= \
-     c1_controladorLQR.c\
      c3_controladorLQR.c\
      c4_controladorLQR.c
 MACHINE_SRC	= controladorLQR_sfun.c

@@ -169,11 +169,11 @@ static void sf_c4_controladorLQR(SFc4_controladorLQRInstanceStruct
   c4_b_y = (real_T *)ssGetOutputPortSignal(chartInstance->S, 1);
   c4_b_u = (real_T *)ssGetInputPortSignal(chartInstance->S, 0);
   _sfTime_ = (real_T)ssGetT(chartInstance->S);
-  _SFD_CC_CALL(CHART_ENTER_SFUNCTION_TAG, 2U, chartInstance->c4_sfEvent);
+  _SFD_CC_CALL(CHART_ENTER_SFUNCTION_TAG, 1U, chartInstance->c4_sfEvent);
   _SFD_DATA_RANGE_CHECK(*c4_b_u, 0U);
   _SFD_DATA_RANGE_CHECK(*c4_b_y, 1U);
   chartInstance->c4_sfEvent = CALL_EVENT;
-  _SFD_CC_CALL(CHART_ENTER_DURING_FUNCTION_TAG, 2U, chartInstance->c4_sfEvent);
+  _SFD_CC_CALL(CHART_ENTER_DURING_FUNCTION_TAG, 1U, chartInstance->c4_sfEvent);
   c4_hoistedGlobal = *c4_b_u;
   c4_u = c4_hoistedGlobal;
   sf_debug_symbol_scope_push_eml(0U, 4U, 4U, c4_debug_family_names,
@@ -200,7 +200,7 @@ static void sf_c4_controladorLQR(SFc4_controladorLQRInstanceStruct
   _SFD_EML_CALL(0U, chartInstance->c4_sfEvent, -4);
   sf_debug_symbol_scope_pop();
   *c4_b_y = c4_y;
-  _SFD_CC_CALL(EXIT_OUT_OF_FUNCTION_TAG, 2U, chartInstance->c4_sfEvent);
+  _SFD_CC_CALL(EXIT_OUT_OF_FUNCTION_TAG, 1U, chartInstance->c4_sfEvent);
   sf_debug_check_for_state_inconsistency(_controladorLQRMachineNumber_,
     chartInstance->chartNumber, chartInstance->instanceNumber);
 }
