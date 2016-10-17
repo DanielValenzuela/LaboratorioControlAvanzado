@@ -10,7 +10,7 @@ Ac = (A-B*K);
 Bc = B;
 Cc = C;
 Dc = D;
-
+X0 = [0;4*pi/3;0;0];
 states = {'x' 'theta' 'x_dot' 'theta_dot'};
 inputs = {'r'};
 outputs = {'x','theta'};
@@ -19,12 +19,15 @@ sys_cl = ss(Ac,Bc,Cc,Dc,'statename',states,'inputname',inputs,'outputname',outpu
 sys_tf =tf(sys_cl)
 
 t = 0:0.01:5;
-r =0.2*ones(size(t));
+r =10*ones(size(t));
 
-[y,t,x]=lsim(sys_cl,r,t);
+[y,t,x]=lsim(sys_cl,r,t,X0);
 %plot(t,y(:,1))
-[AX,H1,H2] = plotyy(t,y(:,1),t,y(:,2),'plot');
-set(get(AX(1),'Ylabel'),'String','cart position (m)')
-set(get(AX(2),'Ylabel'),'String','pendulum angle (radians)')
+y(:,2) = 180/pi.*y(:,2);
 
-title('Step Response with LQR Control')
+[AX,H1,H2] = plotyy(t,y(:,1),t,y(:,2),'plot');
+xlabel('Time [s]')
+set(get(AX(1),'Ylabel'),'String','cart position (m)')
+set(get(AX(2),'Ylabel'),'String','pendulum angle (grades)')
+
+title('Step Response with LQR Control with initial condition 4pi/3')
