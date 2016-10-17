@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.57"
+    ComputedModelVersion    "1.58"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -24,9 +24,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Daniel"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Oct 17 01:58:29 2016"
+  LastModifiedDate	  "Mon Oct 17 02:12:03 2016"
   RTWModifiedTimeStamp	  0
-  ModelVersionFormat	  "1.%<AutoIncrement:57>"
+  ModelVersionFormat	  "1.%<AutoIncrement:58>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -671,6 +671,22 @@ Model {
       SFunctionDeploymentMode off
     }
     Block {
+      BlockType		      Saturate
+      UpperLimit	      "0.5"
+      LowerLimit	      "-0.5"
+      LinearizeAsGain	      on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "Same as input"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+    }
+    Block {
       BlockType		      Scope
       ModelBased	      off
       TickLabels	      "OneTimeTick"
@@ -765,7 +781,7 @@ Model {
   }
   System {
     Name		    "Controlador"
-    Location		    [2, 83, 1331, 715]
+    Location		    [2, 75, 1347, 707]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -911,7 +927,7 @@ Model {
       RTWMemSecDataConstants  "Inherit from model"
       RTWMemSecDataInternal   "Inherit from model"
       RTWMemSecDataParameters "Inherit from model"
-      sw		      "0"
+      sw		      "1"
       action		      "0"
       varsize		      off
     }
@@ -925,12 +941,43 @@ Model {
       DisplayOption	      "bar"
     }
     Block {
+      BlockType		      Saturate
+      Name		      "Saturation"
+      Position		      [780, 345, 810, 375]
+      BlockMirror	      on
+      NamePlacement	      "alternate"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+    }
+    Block {
+      BlockType		      Saturate
+      Name		      "Saturation1"
+      Position		      [740, 410, 770, 440]
+      BlockMirror	      on
+      NamePlacement	      "alternate"
+      UpperLimit	      "2"
+      LowerLimit	      "-2"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+    }
+    Block {
+      BlockType		      Saturate
+      Name		      "Saturation2"
+      Position		      [610, 555, 640, 585]
+      BlockMirror	      on
+      NamePlacement	      "alternate"
+      UpperLimit	      "1"
+      LowerLimit	      "-1"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+    }
+    Block {
       BlockType		      Scope
       Name		      "Scope"
       Ports		      [1]
       Position		      [1250, 94, 1280, 126]
       Floating		      off
-      Location		      [5, 49, 1371, 727]
+      Location		      [1, 49, 1367, 727]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -1042,7 +1089,7 @@ Model {
       B			      "[0  ;0 ;2.2747 ;3.0978]"
       C			      "eye(4)"
       D			      "[0;0;0;0]"
-      X0		      "[ 0 ; 0i; 0; 0 ]"
+      X0		      "[ 0 ; 2.2*pi/180; 0; 0 ]"
     }
     Block {
       BlockType		      Sum
@@ -1626,7 +1673,7 @@ Model {
       }
       Branch {
 	Points			[0, -5; 5, 0; 0, 465]
-	DstBlock		"LQR Gain"
+	DstBlock		"Saturation2"
 	DstPort			1
       }
     }
@@ -1654,7 +1701,7 @@ Model {
       }
       Branch {
 	Points			[0, 125]
-	DstBlock		"LQR Gain2"
+	DstBlock		"Saturation1"
 	DstPort			1
       }
     }
@@ -1745,7 +1792,7 @@ Model {
       }
       Branch {
 	Points			[0, -30]
-	DstBlock		"LQR Gain3"
+	DstBlock		"Saturation"
 	DstPort			1
       }
     }
@@ -1870,6 +1917,24 @@ Model {
 	DstBlock		"Manual Switch"
 	DstPort			1
       }
+    }
+    Line {
+      SrcBlock		      "Saturation"
+      SrcPort		      1
+      DstBlock		      "LQR Gain3"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Saturation1"
+      SrcPort		      1
+      DstBlock		      "LQR Gain2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Saturation2"
+      SrcPort		      1
+      DstBlock		      "LQR Gain"
+      DstPort		      1
     }
     Annotation {
       Name		      "x"
