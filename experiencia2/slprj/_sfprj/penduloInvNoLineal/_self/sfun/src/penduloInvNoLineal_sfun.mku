@@ -9,8 +9,11 @@ LD = $(CC)
 MACHINE     = penduloInvNoLineal
 TARGET      = sfun
 CHART_SRCS 	= \
+     c1_penduloInvNoLineal.c\
+     c2_penduloInvNoLineal.c\
      c3_penduloInvNoLineal.c\
-     c4_penduloInvNoLineal.c
+     c4_penduloInvNoLineal.c\
+     c5_penduloInvNoLineal.c
 MACHINE_SRC	= penduloInvNoLineal_sfun.c
 MACHINE_REG = penduloInvNoLineal_sfun_registry.c
 MEX_WRAPPER =
