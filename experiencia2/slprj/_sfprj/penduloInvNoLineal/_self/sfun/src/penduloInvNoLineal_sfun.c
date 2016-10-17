@@ -5,6 +5,7 @@
 #include "c2_penduloInvNoLineal.h"
 #include "c3_penduloInvNoLineal.h"
 #include "c4_penduloInvNoLineal.h"
+#include "c5_penduloInvNoLineal.h"
 
 /* Type Definitions */
 
@@ -51,6 +52,11 @@ unsigned int sf_penduloInvNoLineal_method_dispatcher(SimStruct *simstructPtr,
     return 1;
   }
 
+  if (chartFileNumber==5) {
+    c5_penduloInvNoLineal_method_dispatcher(simstructPtr, method, data);
+    return 1;
+  }
+
   return 0;
 }
 
@@ -84,10 +90,10 @@ unsigned int sf_penduloInvNoLineal_process_check_sum_call( int nlhs, mxArray *
       ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(0U);
       ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(0U);
     } else if (!strcmp(commandName,"makefile")) {
-      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1005518348U);
-      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2664412799U);
-      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1398669774U);
-      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2552656062U);
+      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2232984618U);
+      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2303662852U);
+      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3809788516U);
+      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2475907820U);
     } else if (nrhs==3 && !strcmp(commandName,"chart")) {
       unsigned int chartFileNumber;
       chartFileNumber = (unsigned int)mxGetScalar(prhs[2]);
@@ -120,6 +126,13 @@ unsigned int sf_penduloInvNoLineal_process_check_sum_call( int nlhs, mxArray *
           break;
         }
 
+       case 5:
+        {
+          extern void sf_c5_penduloInvNoLineal_get_check_sum(mxArray *plhs[]);
+          sf_c5_penduloInvNoLineal_get_check_sum(plhs);
+          break;
+        }
+
        default:
         ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(0.0);
         ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(0.0);
@@ -135,10 +148,10 @@ unsigned int sf_penduloInvNoLineal_process_check_sum_call( int nlhs, mxArray *
       return 0;
     }
   } else {
-    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3653059647U);
-    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1334712487U);
-    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1512307045U);
-    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2410983047U);
+    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1186716747U);
+    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(644716436U);
+    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2379827736U);
+    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(284877283U);
   }
 
   return 1;
@@ -215,6 +228,18 @@ unsigned int sf_penduloInvNoLineal_autoinheritance_info( int nlhs, mxArray *
         if (strcmp(aiChksum, "2C3tH39nCuZ81IY36Ik1fB") == 0) {
           extern mxArray *sf_c4_penduloInvNoLineal_get_autoinheritance_info(void);
           plhs[0] = sf_c4_penduloInvNoLineal_get_autoinheritance_info();
+          break;
+        }
+
+        plhs[0] = mxCreateDoubleMatrix(0,0,mxREAL);
+        break;
+      }
+
+     case 5:
+      {
+        if (strcmp(aiChksum, "lB7y7RvN9miSUbdOF4yS6B") == 0) {
+          extern mxArray *sf_c5_penduloInvNoLineal_get_autoinheritance_info(void);
+          plhs[0] = sf_c5_penduloInvNoLineal_get_autoinheritance_info();
           break;
         }
 
@@ -301,6 +326,17 @@ unsigned int sf_penduloInvNoLineal_get_eml_resolved_functions_info( int nlhs,
         break;
       }
 
+     case 5:
+      {
+        extern const mxArray
+          *sf_c5_penduloInvNoLineal_get_eml_resolved_functions_info(void);
+        mxArray *persistentMxArray = (mxArray *)
+          sf_c5_penduloInvNoLineal_get_eml_resolved_functions_info();
+        plhs[0] = mxDuplicateArray(persistentMxArray);
+        mxDestroyArray(persistentMxArray);
+        break;
+      }
+
      default:
       plhs[0] = mxCreateDoubleMatrix(0,0,mxREAL);
     }
@@ -319,7 +355,7 @@ unsigned int sf_penduloInvNoLineal_get_eml_resolved_functions_info( int nlhs,
 void penduloInvNoLineal_debug_initialize(void)
 {
   _penduloInvNoLinealMachineNumber_ = sf_debug_initialize_machine(
-    "penduloInvNoLineal","sfun",0,4,0,0,0);
+    "penduloInvNoLineal","sfun",0,5,0,0,0);
   sf_debug_set_machine_event_thresholds(_penduloInvNoLinealMachineNumber_,0,0);
   sf_debug_set_machine_data_thresholds(_penduloInvNoLinealMachineNumber_,0);
 }
