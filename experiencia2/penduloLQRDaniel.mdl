@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.83"
+    ComputedModelVersion    "1.84"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -24,9 +24,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Daniel"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Oct 19 01:14:34 2016"
+  LastModifiedDate	  "Fri Oct 21 15:39:40 2016"
   RTWModifiedTimeStamp	  0
-  ModelVersionFormat	  "1.%<AutoIncrement:83>"
+  ModelVersionFormat	  "1.%<AutoIncrement:84>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -658,6 +658,14 @@ Model {
       RTWStateStorageClass    "Auto"
     }
     Block {
+      BlockType		      Mux
+      Inputs		      "4"
+      DisplayOption	      "none"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      NonVirtualBus	      off
+    }
+    Block {
       BlockType		      Outport
       Port		      "1"
       UseBusObject	      off
@@ -680,11 +688,45 @@ Model {
       DimensionsMode	      "auto"
     }
     Block {
+      BlockType		      Product
+      Inputs		      "2"
+      Multiplication	      "Element-wise(.*)"
+      CollapseMode	      "All dimensions"
+      CollapseDim	      "1"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "Same as first input"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: Same as first input"
+      LockScale		      off
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      "S-Function"
       FunctionName	      "system"
       SFunctionModules	      "''"
       PortCounts	      "[]"
       SFunctionDeploymentMode off
+    }
+    Block {
+      BlockType		      Saturate
+      UpperLimit	      "0.5"
+      LowerLimit	      "-0.5"
+      LinearizeAsGain	      on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "Same as input"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
     }
     Block {
       BlockType		      Scope
@@ -763,7 +805,7 @@ Model {
   }
   System {
     Name		    "penduloLQRDaniel"
-    Location		    [2, 75, 1347, 707]
+    Location		    [2, 83, 1330, 715]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -775,13 +817,13 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "100"
+    ZoomFactor		    "80"
     ReportName		    "simulink-default.rpt"
     Block {
       BlockType		      Reference
       Name		      "ConLQR/SinLQR"
       Ports		      [2, 1]
-      Position		      [255, 182, 285, 218]
+      Position		      [510, 372, 540, 408]
       SourceBlock	      "simulink/Signal\nRouting/Manual Switch"
       SourceType	      "Manual Switch"
       ShowPortLabels	      "FromPortIcon"
@@ -799,14 +841,14 @@ Model {
     Block {
       BlockType		      Constant
       Name		      "Critical Angle"
-      Position		      [295, 40, 335, 70]
+      Position		      [510, 170, 550, 200]
       NamePlacement	      "alternate"
       Value		      "190*pi/180"
     }
     Block {
       BlockType		      Gain
       Name		      "LQR Gain"
-      Position		      [295, 561, 350, 609]
+      Position		      [550, 751, 605, 799]
       BlockMirror	      on
       DropShadow	      on
       Gain		      "K(1)"
@@ -815,7 +857,7 @@ Model {
     Block {
       BlockType		      Gain
       Name		      "LQR Gain1"
-      Position		      [295, 486, 350, 534]
+      Position		      [550, 676, 605, 724]
       BlockMirror	      on
       DropShadow	      on
       Gain		      "K(2)"
@@ -824,7 +866,7 @@ Model {
     Block {
       BlockType		      Gain
       Name		      "LQR Gain2"
-      Position		      [295, 411, 350, 459]
+      Position		      [550, 601, 605, 649]
       BlockMirror	      on
       DropShadow	      on
       Gain		      "K(3)"
@@ -833,7 +875,7 @@ Model {
     Block {
       BlockType		      Gain
       Name		      "LQR Gain3"
-      Position		      [295, 341, 350, 389]
+      Position		      [550, 531, 605, 579]
       BlockMirror	      on
       DropShadow	      on
       Gain		      "K(4)"
@@ -843,7 +885,7 @@ Model {
       BlockType		      Reference
       Name		      "Manual Switch1"
       Ports		      [2, 1]
-      Position		      [220, 337, 250, 373]
+      Position		      [475, 527, 505, 563]
       BlockMirror	      on
       ShowName		      off
       SourceBlock	      "simulink/Signal\nRouting/Manual Switch"
@@ -864,7 +906,7 @@ Model {
       BlockType		      Reference
       Name		      "Manual Switch2"
       Ports		      [2, 1]
-      Position		      [220, 407, 250, 443]
+      Position		      [475, 597, 505, 633]
       BlockMirror	      on
       ShowName		      off
       SourceBlock	      "simulink/Signal\nRouting/Manual Switch"
@@ -885,7 +927,7 @@ Model {
       BlockType		      Reference
       Name		      "Manual Switch4"
       Ports		      [2, 1]
-      Position		      [230, 557, 260, 593]
+      Position		      [485, 747, 515, 783]
       BlockMirror	      on
       ShowName		      off
       SourceBlock	      "simulink/Signal\nRouting/Manual Switch"
@@ -906,7 +948,7 @@ Model {
       BlockType		      Reference
       Name		      "Manual Switch5"
       Ports		      [2, 1]
-      Position		      [545, 27, 575, 63]
+      Position		      [800, 217, 830, 253]
       ShowName		      off
       SourceBlock	      "simulink/Signal\nRouting/Manual Switch"
       SourceType	      "Manual Switch"
@@ -926,7 +968,7 @@ Model {
       BlockType		      Reference
       Name		      "Manual Switch6"
       Ports		      [2, 1]
-      Position		      [545, 107, 575, 143]
+      Position		      [755, 297, 785, 333]
       ShowName		      off
       SourceBlock	      "simulink/Signal\nRouting/Manual Switch"
       SourceType	      "Manual Switch"
@@ -946,7 +988,7 @@ Model {
       BlockType		      Reference
       Name		      "Manual Switch7"
       Ports		      [2, 1]
-      Position		      [1175, 97, 1205, 133]
+      Position		      [1430, 287, 1460, 323]
       ShowName		      off
       SourceBlock	      "simulink/Signal\nRouting/Manual Switch"
       SourceType	      "Manual Switch"
@@ -966,7 +1008,7 @@ Model {
       BlockType		      Reference
       Name		      "Manual witc3"
       Ports		      [2, 1]
-      Position		      [220, 482, 250, 518]
+      Position		      [475, 672, 505, 708]
       BlockMirror	      on
       ShowName		      off
       SourceBlock	      "simulink/Signal\nRouting/Manual Switch"
@@ -986,14 +1028,23 @@ Model {
     Block {
       BlockType		      Memory
       Name		      "Memoria"
-      Position		      [425, 220, 455, 250]
+      Position		      [680, 410, 710, 440]
       BlockMirror	      on
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux"
+      Ports		      [2, 1]
+      Position		      [855, 421, 860, 459]
+      ShowName		      off
+      Inputs		      "2"
+      DisplayOption	      "bar"
     }
     Block {
       BlockType		      SubSystem
       Name		      "PlantaNoLineal"
       Ports		      [1, 4]
-      Position		      [610, 92, 650, 153]
+      Position		      [865, 282, 905, 343]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1743,19 +1794,68 @@ Model {
       }
     }
     Block {
+      BlockType		      Product
+      Name		      "Product"
+      Ports		      [2, 1]
+      Position		      [235, 187, 265, 218]
+      InputSameDT	      off
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
       BlockType		      Step
       Name		      "Referencia"
-      Position		      [45, 65, 75, 95]
+      Position		      [160, 365, 190, 395]
       DropShadow	      on
       Time		      "0"
       After		      "2.5"
       SampleTime	      "0.1"
     }
     Block {
+      BlockType		      Step
+      Name		      "Referencia1"
+      Position		      [160, 205, 190, 235]
+      DropShadow	      on
+      Time		      "5"
+      Before		      "1"
+      After		      "0"
+      SampleTime	      "0.1"
+    }
+    Block {
+      BlockType		      Step
+      Name		      "Referencia2"
+      Position		      [235, 250, 265, 280]
+      DropShadow	      on
+      Time		      "0"
+      After		      "2.5"
+      SampleTime	      "0.1"
+    }
+    Block {
+      BlockType		      Saturate
+      Name		      "Saturation"
+      Position		      [470, 480, 500, 510]
+      UpperLimit	      "5"
+      LowerLimit	      "0"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+    }
+    Block {
+      BlockType		      Saturate
+      Name		      "Saturation1"
+      Position		      [805, 300, 830, 330]
+      UpperLimit	      "5"
+      LowerLimit	      "0"
+      OutDataType	      "fixdt(1, 16)"
+      OutScaling	      "2^0"
+    }
+    Block {
       BlockType		      Sum
       Name		      "Sum"
       Ports		      [5, 1]
-      Position		      [155, 86, 195, 194]
+      Position		      [410, 276, 450, 384]
       ShowName		      off
       Inputs		      "|+----"
       InputSameDT	      off
@@ -1767,7 +1867,7 @@ Model {
       BlockType		      Sum
       Name		      "Sum1"
       Ports		      [2, 1]
-      Position		      [605, 30, 635, 60]
+      Position		      [860, 220, 890, 250]
       ShowName		      off
       IconShape		      "round"
       Inputs		      "|-+"
@@ -1777,10 +1877,22 @@ Model {
       SaturateOnIntegerOverflow	off
     }
     Block {
+      BlockType		      Sum
+      Name		      "Sum2"
+      Ports		      [2, 1]
+      Position		      [360, 197, 400, 233]
+      ShowName		      off
+      Inputs		      "|++"
+      InputSameDT	      off
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
       BlockType		      SubSystem
       Name		      "Switch"
       Ports		      [5, 2]
-      Position		      [395, 90, 510, 190]
+      Position		      [610, 280, 725, 380]
       ErrorFcn		      "Stateflow.Translate.translate"
       PermitHierarchicalResolution "ExplicitOnly"
       TreatAsAtomicUnit	      on
@@ -1965,7 +2077,7 @@ Model {
       BlockType		      Scope
       Name		      "Theta"
       Ports		      [1]
-      Position		      [1285, 99, 1315, 131]
+      Position		      [1540, 289, 1570, 321]
       Floating		      off
       Location		      [5, 72, 1367, 750]
       Open		      off
@@ -1984,7 +2096,7 @@ Model {
       BlockType		      Scope
       Name		      "ThetaDot"
       Ports		      [1]
-      Position		      [1285, 309, 1315, 341]
+      Position		      [1540, 499, 1570, 531]
       Floating		      off
       Location		      [5, 49, 1367, 727]
       Open		      off
@@ -2001,9 +2113,28 @@ Model {
     }
     Block {
       BlockType		      Scope
+      Name		      "UControlado"
+      Ports		      [1]
+      Position		      [895, 424, 925, 456]
+      Floating		      off
+      Location		      [5, 66, 1367, 744]
+      Open		      off
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      YMin		      "-2e+007"
+      YMax		      "-4e+006"
+      SaveName		      "ScopeData4"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
       Name		      "X"
       Ports		      [1]
-      Position		      [1285, 14, 1315, 46]
+      Position		      [1540, 204, 1570, 236]
       Floating		      off
       Location		      [5, 66, 1367, 744]
       Open		      off
@@ -2021,7 +2152,7 @@ Model {
       BlockType		      Scope
       Name		      "XDot"
       Ports		      [1]
-      Position		      [1285, 204, 1315, 236]
+      Position		      [1540, 394, 1570, 426]
       Floating		      off
       Location		      [5, 49, 1367, 727]
       Open		      off
@@ -2040,7 +2171,7 @@ Model {
     Block {
       BlockType		      Gain
       Name		      "rad2deg2"
-      Position		      [885, 110, 915, 140]
+      Position		      [1140, 300, 1170, 330]
       NamePlacement	      "alternate"
       ShowName		      off
       Gain		      "180/pi"
@@ -2049,10 +2180,10 @@ Model {
       BlockType		      Sin
       Name		      "swingUp"
       Ports		      [0, 1]
-      Position		      [45, 15, 75, 45]
-      Amplitude		      "2.4"
-      Bias		      "2.5"
-      Frequency		      "0.5*(2*pi)"
+      Position		      [160, 145, 190, 175]
+      Amplitude		      "2"
+      Bias		      "0"
+      Frequency		      "0.57*(2*pi)"
       Phase		      "0"
       Samples		      "10"
       Offset		      "0"
@@ -2062,7 +2193,7 @@ Model {
       BlockType		      SubSystem
       Name		      "x%2pi2"
       Ports		      [1, 1]
-      Position		      [955, 110, 990, 140]
+      Position		      [1210, 300, 1245, 330]
       ErrorFcn		      "Stateflow.Translate.translate"
       PermitHierarchicalResolution "ExplicitOnly"
       TreatAsAtomicUnit	      on
@@ -2173,7 +2304,7 @@ Model {
     Block {
       BlockType		      Constant
       Name		      "xe"
-      Position		      [460, 20, 490, 50]
+      Position		      [715, 210, 745, 240]
       Value		      "180*pi/180"
       OutDataType	      "fixdt(1, 16)"
       OutScaling	      "2^0"
@@ -2264,7 +2395,7 @@ Model {
     Line {
       SrcBlock		      "Referencia"
       SrcPort		      1
-      Points		      [45, 0]
+      Points		      [0, -70; 185, 0; 0, -40]
       Branch {
 	Points			[5, 0; 0, 30]
 	DstBlock		"Sum"
@@ -2315,7 +2446,7 @@ Model {
 	}
       }
       Branch {
-	Points			[0, -25; -305, 0]
+	Points			[0, -25; -350, 0; 0, 20]
 	DstBlock		"Switch"
 	DstPort			1
       }
@@ -2343,42 +2474,43 @@ Model {
     Line {
       SrcBlock		      "Critical Angle"
       SrcPort		      1
-      Points		      [10, 0; 0, 65]
+      Points		      [15, 0; 0, 125]
       DstBlock		      "Switch"
       DstPort		      2
     }
     Line {
-      SrcBlock		      "swingUp"
-      SrcPort		      1
-      Points		      [190, 0; 0, 110]
-      DstBlock		      "Switch"
-      DstPort		      3
-    }
-    Line {
       SrcBlock		      "ConLQR/SinLQR"
       SrcPort		      1
-      Points		      [0, -40; 85, 0]
+      Points		      [0, -40; 30, 0]
       Branch {
 	DstBlock		"Switch"
 	DstPort			4
       }
       Branch {
-	Points			[0, 15; -40, 0; 0, 100; 210, 0; 0, -115; -15, 0]
-	DstBlock		"Manual Switch6"
-	DstPort			2
+	Points			[0, 115; 225, 0; 0, -10]
+	Branch {
+	  Points		  [0, -105; -60, 0]
+	  DstBlock		  "Manual Switch6"
+	  DstPort		  2
+	}
+	Branch {
+	  Points		  [0, -5]
+	  DstBlock		  "Mux"
+	  DstPort		  2
+	}
       }
     }
     Line {
       SrcBlock		      "Switch"
       SrcPort		      2
-      Points		      [15, 0; 0, 70]
+      Points		      [55, 0; 0, 70]
       DstBlock		      "Memoria"
       DstPort		      1
     }
     Line {
       SrcBlock		      "Memoria"
       SrcPort		      1
-      Points		      [-70, 0; 0, -55]
+      Points		      [-85, 0; 0, -55]
       DstBlock		      "Switch"
       DstPort		      5
     }
@@ -2392,7 +2524,7 @@ Model {
     Line {
       SrcBlock		      "Manual Switch6"
       SrcPort		      1
-      DstBlock		      "PlantaNoLineal"
+      DstBlock		      "Saturation1"
       DstPort		      1
     }
     Line {
@@ -2420,8 +2552,63 @@ Model {
       DstBlock		      "ConLQR/SinLQR"
       DstPort		      2
     }
+    Line {
+      SrcBlock		      "Sum2"
+      SrcPort		      1
+      Points		      [115, 0; 0, 115]
+      DstBlock		      "Switch"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "Referencia1"
+      SrcPort		      1
+      Points		      [10, 0; 0, -10]
+      DstBlock		      "Product"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "swingUp"
+      SrcPort		      1
+      Points		      [10, 0; 0, 35]
+      DstBlock		      "Product"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Product"
+      SrcPort		      1
+      Points		      [35, 0; 0, 10]
+      DstBlock		      "Sum2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Referencia2"
+      SrcPort		      1
+      Points		      [35, 0; 0, -40]
+      DstBlock		      "Sum2"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Mux"
+      SrcPort		      1
+      DstBlock		      "UControlado"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Saturation1"
+      SrcPort		      1
+      Points		      [0, 0]
+      Branch {
+	DstBlock		"PlantaNoLineal"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 115]
+	DstBlock		"Mux"
+	DstPort			1
+      }
+    }
     Annotation {
-      Position		      [869, 453]
+      Position		      [1124, 643]
     }
   }
 }
