@@ -1,6 +1,6 @@
 figure(1);
 for k=1:length(theta.time);
-	hold on
+	% hold on
 	thetaAux = theta.signals.values(k)*pi/180;
 	arg = thetaAux-(pi/2);
 	if (k+1<length(theta.signals.values))

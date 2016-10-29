@@ -126,10 +126,10 @@ unsigned int sf_modeloNoLinealEcuaciones_process_check_sum_call( int nlhs,
       return 0;
     }
   } else {
-    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2206407207U);
-    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3736015465U);
-    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3746289195U);
-    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1960630136U);
+    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1196177229U);
+    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1334558923U);
+    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(50415793U);
+    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(420402471U);
   }
 
   return 1;
@@ -193,7 +193,7 @@ unsigned int sf_modeloNoLinealEcuaciones_autoinheritance_info( int nlhs, mxArray
 
      case 8:
       {
-        if (strcmp(aiChksum, "OQuJoV9pmlZXeIKUCIc9j") == 0) {
+        if (strcmp(aiChksum, "yvkGnQHU6RruDb7BZOkA1F") == 0) {
           extern mxArray
             *sf_c8_modeloNoLinealEcuaciones_get_autoinheritance_info(void);
           plhs[0] = sf_c8_modeloNoLinealEcuaciones_get_autoinheritance_info();

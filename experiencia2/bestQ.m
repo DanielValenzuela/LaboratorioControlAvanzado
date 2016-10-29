@@ -1,14 +1,15 @@
 minMetrica = 100000;
-L = [1995 795 145 4995];
-N = [2005 805 155 5005];
+L = [1920 720 70 4920];
+N = [2080 880 230 5080];
+step_ = 40;
 best_params = [];
 bestMins = struct('min0',[],'min1',[],'min2',[],'min3',[],'min4',[],'min5',[]);
 count = 0;
 
-for x1=L(1):N(1)
-	for x2=L(2):N(2)
-		for x3=L(3):N(3)
-			for x4=L(4):N(4)
+for x1=L(1):step_:N(1)
+	for x2=L(2):step_:N(2)
+		for x3=L(3):step_:N(3)
+			for x4=L(4):step_:N(4)
 				Q_i = [x1 0 0 0; 0 x2 0 0; 0 0 x3 0; 0 0 0 x4];
 				K = setK_lqr(Q_i);
 				sim('nonlinearEcuaciones');
