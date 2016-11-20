@@ -31,4 +31,3 @@ clear all
 %PARA GRAFICOS PARA GRAFICOS GENERALES (descomentar este y comentar codigo de arriba)
 
 loadData('DATOS_ADAPTIVO1',1);
-
