@@ -12,10 +12,10 @@ try
            a=load(strcat('DATOS/',NAMEDATA));
            fields = fieldnames(a);
            for i =1:numel(fields)
-               assignin('base',fields{i},eval(strcat('a.',fields{i})));
-                if(OPTION)
+                if(OPTION && isstruct(eval(strcat('a.',fields{i}))))
                      graphInTime(eval(strcat('a.',fields{i},'.time')), eval(strcat('a.',fields{i},'.signals.values')), 'TITULO' , [0 160], 'b',1, 'b');
                 end
+                assignin('base',fields{i},eval(strcat('a.',fields{i})));
 
            end 
 catch ME
@@ -25,7 +25,7 @@ catch ME
            fields = fieldsnames(a);
            for i =1:numel(fields)
                assignin('base',strcat(fields{i}),a.fields{i});
-               if(OPTION)
+               if(OPTION && isstruct(eval(strcat('a.',fields{i}))))
                    graphInTime(eval(strcat('a.',fields{i},'.time')), eval(strcat('a.',fields{i},'.signals.values')), 'TITULO' , [0 160], 'b',1, 'b');
                end    
            end

@@ -7,7 +7,7 @@ clear all
 %PONGO TODOS ESTOS COMENTES PARA EJEMPLIFICAR, si quieres los borras
 
 % fileName ='DATOS_ADAPTIVO1';
-% loadData('DATOS_ADAPTIVO1',0);
+ loadData('DATOS_ADAPTIVO1',0);
 % 
 % %%GRAFICOS PARA DATOS_ADAPTIVO1
 % graphInTime(errPlanta.time, errPlanta.signals.values, 'Error de la planta' , [0 160], 'b',1, 'b');
@@ -30,5 +30,5 @@ clear all
 
 %PARA GRAFICOS PARA GRAFICOS GENERALES (descomentar este y comentar codigo de arriba)
 
-loadData('DATOS3',1);
+%loadData('DATOS3',1);
 
