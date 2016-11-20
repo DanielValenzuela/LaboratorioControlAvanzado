@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.137"
+    ComputedModelVersion    "1.77"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -27,9 +27,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Nov 04 23:16:41 2016"
-  RTWModifiedTimeStamp	  400185126
-  ModelVersionFormat	  "1.%<AutoIncrement:137>"
+  LastModifiedDate	  "Wed Oct 26 03:03:34 2016"
+  RTWModifiedTimeStamp	  399351721
+  ModelVersionFormat	  "1.%<AutoIncrement:77>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -108,12 +108,12 @@ Model {
       Version		      "1.12.0"
       Array {
 	Type			"Handle"
-	Dimension		9
+	Dimension		8
 	Simulink.SolverCC {
 	  $ObjectID		  2
 	  Version		  "1.12.0"
 	  StartTime		  "0.0"
-	  StopTime		  "15"
+	  StopTime		  "300"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -577,100 +577,11 @@ Model {
 	    PropName		    "Components"
 	  }
 	}
-	SSC.SimscapeCC {
-	  $ObjectID		  12
-	  Version		  "1.0"
-	  Array {
-	    Type		    "Cell"
-	    Dimension		    1
-	    Cell		    "Name"
-	    PropName		    "DisabledProps"
-	  }
-	  Array {
-	    Type		    "Handle"
-	    Dimension		    2
-	    MECH.SimMechanicsCC {
-	      $ObjectID		      13
-	      Version		      "1.12.0"
-	      Name		      "SimMechanics"
-	      WarnOnRedundantConstraints on
-	      WarnOnSingularInitialAssembly off
-	      ShowCutJoints	      off
-	      VisOnUpdateDiagram      off
-	      VisDuringSimulation     off
-	      EnableVisSimulationTime on
-	      VisSampleTime	      "0"
-	      DisableBodyVisControl   off
-	      ShowCG		      on
-	      ShowCS		      on
-	      ShowOnlyPortCS	      off
-	      HighlightModel	      on
-	      FramesToBeSkipped	      "0"
-	      AnimationDelay	      "3"
-	      RecordAVI		      off
-	      CompressAVI	      on
-	      AutoFitVis	      "off"
-	      EnableSelection	      on
-	      LastVizWinPosition      "[-1 -1 -1 -1]"
-	      CamPosition	      "[0 0 0]"
-	      CamTarget		      "[0 0 -1]"
-	      CamUpVector	      "[0 1 0]"
-	      CamHeight		      "-1"
-	      CamViewAngle	      "0"
-	      VisBackgroundColor      "[0.9 0.9 0.95]"
-	      DefaultBodyColor	      "[1 0 0]"
-	      MDLBodyVisualizationType "Convex hull from body CS locations"
-	      OVRRIDBodyVisualizationType "NONE"
-	    }
-	    simmechanics.ConfigurationSet {
-	      $ObjectID		      14
-	      Version		      "1.12.0"
-	      Description	      "SimMechanics 2G"
-	      Array {
-		Type			"Handle"
-		Dimension		2
-		simmechanics.DiagnosticsConfigSet {
-		  $ObjectID		  15
-		  Version		  "1.12.0"
-		  Description		  "Diagnostics"
-		  Name			  "DiagnosticsConfigSet"
-		  SimMechanicsInvalidVisualProperty "warning"
-		  SimMechanicsCrossSectionNullEdge "warning"
-		  SimMechanicsUnconnectedFramePorts "warning"
-		  SimMechanicsRedundantBlock "warning"
-		  SimMechanicsConflictingReferenceFrames "warning"
-		  SimMechanicsRigidlyBoundBlock	"error"
-		  SimMechanicsUnsatisfiedHighPriorityTargets "warning"
-		  SimMechanicsJointTargetOverSpecification "error"
-		}
-		simmechanics.ExplorerConfigSet {
-		  $ObjectID		  16
-		  Version		  "1.12.0"
-		  Description		  "Explorer"
-		  Name			  "ExplorerConfigSet"
-		  SimMechanicsOpenEditorOnUpdate on
-		}
-		PropName		"Components"
-	      }
-	      Name		      "SimMechanics2G"
-	    }
-	    PropName		    "Components"
-	  }
-	  Name			  "Simscape"
-	  EditingMode		  "Full"
-	  ExplicitSolverDiagnosticOptions "warning"
-	  GlobalZcOffDiagnosticOptions "warning"
-	  SimscapeLogType	  "none"
-	  SimscapeLogName	  "simlog"
-	  SimscapeLogDecimation	  1
-	  SimscapeLogLimitData	  on
-	  SimscapeLogDataHistory  5000
-	}
 	PropName		"Components"
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 18, 24, 962, 798 ] 
+      ConfigPrmDlgPosition     [ 42, 46, 938, 712 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -779,21 +690,6 @@ Model {
       ContinuousStateAttributes	"''"
     }
     Block {
-      BlockType		      Math
-      Operator		      "exp"
-      OutputSignalType	      "auto"
-      SampleTime	      "-1"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Same as first input"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	on
-      IntermediateResultsDataTypeStr "Inherit: Inherit via internal rule"
-      AlgorithmType	      "Newton-Raphson"
-      Iterations	      "3"
-    }
-    Block {
       BlockType		      Memory
       X0		      "0"
       InheritSampleTime	      off
@@ -826,21 +722,6 @@ Model {
       SourceOfInitialOutputValue "Dialog"
       OutputWhenDisabled      "held"
       InitialOutput	      "[]"
-    }
-    Block {
-      BlockType		      Product
-      Inputs		      "2"
-      Multiplication	      "Element-wise(.*)"
-      CollapseMode	      "All dimensions"
-      CollapseDim	      "1"
-      InputSameDT	      on
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Same as first input"
-      LockScale		      off
-      RndMeth		      "Zero"
-      SaturateOnIntegerOverflow	on
-      SampleTime	      "-1"
     }
     Block {
       BlockType		      S-Function
@@ -946,19 +827,10 @@ Model {
     Block {
       BlockType		      Terminator
     }
-    Block {
-      BlockType		      UnitDelay
-      X0		      "0"
-      InputProcessing	      "Inherited"
-      SampleTime	      "1"
-      StateMustResolveToSignalObject off
-      RTWStateStorageClass    "Auto"
-      HasFrameUpgradeWarning  on
-    }
   }
   System {
     Name		    "nonlinearEcuaciones"
-    Location		    [1, 81, 1306, 746]
+    Location		    [684, 81, 1367, 767]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -972,13 +844,22 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "104"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "86"
+    SIDHighWatermark	    "52"
+    Block {
+      BlockType		      Constant
+      Name		      "180 ref"
+      SID		      "45"
+      Position		      [860, 520, 890, 550]
+      NamePlacement	      "alternate"
+      Value		      "180"
+      VectorParams1D	      off
+    }
     Block {
       BlockType		      Reference
       Name		      "ConLQR/SinLQR"
       SID		      "1"
       Ports		      [2, 1]
-      Position		      [345, 207, 375, 243]
+      Position		      [190, 202, 220, 238]
       LibraryVersion	      "1.260"
       SourceBlock	      "simulink/Signal\nRouting/Manual Switch"
       SourceType	      "Manual Switch"
@@ -990,7 +871,7 @@ Model {
       BlockType		      Constant
       Name		      "Constant"
       SID		      "2"
-      Position		      [655, 570, 685, 600]
+      Position		      [500, 565, 530, 595]
       BlockMirror	      on
       Value		      "[0;pi;0;0]"
       VectorParams1D	      off
@@ -999,63 +880,24 @@ Model {
       BlockType		      Constant
       Name		      "Constant1"
       SID		      "3"
-      Position		      [325, 170, 355, 200]
+      Position		      [170, 140, 200, 170]
       NamePlacement	      "alternate"
       Value		      "2.5"
     }
     Block {
       BlockType		      Constant
-      Name		      "Constant2"
-      SID		      "62"
-      Position		      [15, 60, 45, 90]
-      NamePlacement	      "alternate"
-      Value		      "0.1"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant3"
-      SID		      "71"
-      Position		      [165, 25, 195, 55]
-      NamePlacement	      "alternate"
-      Value		      "0.4"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant4"
-      SID		      "75"
-      Position		      [120, 150, 150, 180]
-      NamePlacement	      "alternate"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant6"
-      SID		      "84"
-      Position		      [95, 390, 125, 420]
-      NamePlacement	      "alternate"
-      Value		      "180"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant7"
-      SID		      "85"
-      Position		      [95, 465, 125, 495]
-      NamePlacement	      "alternate"
-      Value		      "0"
-    }
-    Block {
-      BlockType		      Constant
       Name		      "Critical Angle"
       SID		      "4"
-      Position		      [460, 20, 500, 50]
+      Position		      [305, 15, 345, 45]
       BlockMirror	      on
-      Value		      "150*pi/180"
+      Value		      "140*pi/180"
     }
     Block {
       BlockType		      SubSystem
       Name		      "Embedded\nMATLAB Function"
       SID		      "5"
       Ports		      [5, 4]
-      Position		      [960, 198, 1055, 292]
+      Position		      [805, 193, 900, 287]
       ForegroundColor	      "blue"
       ErrorFcn		      "Stateflow.Translate.translate"
       PermitHierarchicalResolution "ExplicitOnly"
@@ -1296,7 +1138,7 @@ Model {
       BlockType		      Gain
       Name		      "Feedback Gain\nUsing LQR Design"
       SID		      "6"
-      Position		      [565, 461, 620, 519]
+      Position		      [410, 456, 465, 514]
       BlockMirror	      on
       NamePlacement	      "alternate"
       Gain		      "K"
@@ -1309,7 +1151,7 @@ Model {
       BlockType		      Gain
       Name		      "Feedback Gain\nUsing LQR Design1"
       SID		      "7"
-      Position		      [540, 556, 595, 614]
+      Position		      [385, 551, 440, 609]
       BlockMirror	      on
       NamePlacement	      "alternate"
       Gain		      "K"
@@ -1323,35 +1165,27 @@ Model {
       Name		      "Manual Switch6"
       SID		      "9"
       Ports		      [2, 1]
-      Position		      [655, 132, 685, 168]
+      Position		      [500, 127, 530, 163]
       ShowName		      off
       LibraryVersion	      "1.260"
       SourceBlock	      "simulink/Signal\nRouting/Manual Switch"
       SourceType	      "Manual Switch"
-      sw		      "1"
+      sw		      "0"
       action		      "0"
       varsize		      off
-    }
-    Block {
-      BlockType		      Math
-      Name		      "Math\nFunction"
-      SID		      "69"
-      Ports		      [1, 1]
-      Position		      [305, 35, 335, 65]
-      ZOrder		      -13
     }
     Block {
       BlockType		      Memory
       Name		      "Memoria"
       SID		      "10"
-      Position		      [515, 245, 545, 275]
+      Position		      [360, 240, 390, 270]
     }
     Block {
       BlockType		      Mux
       Name		      "Mux"
       SID		      "11"
       Ports		      [4, 1]
-      Position		      [685, 471, 690, 509]
+      Position		      [530, 466, 535, 504]
       BlockMirror	      on
       ShowName		      off
       DisplayOption	      "bar"
@@ -1361,7 +1195,7 @@ Model {
       Name		      "Mux1"
       SID		      "12"
       Ports		      [3, 1]
-      Position		      [486, 350, 524, 355]
+      Position		      [331, 380, 369, 385]
       BlockRotation	      270
       BlockMirror	      on
       NamePlacement	      "alternate"
@@ -1370,33 +1204,22 @@ Model {
       DisplayOption	      "bar"
     }
     Block {
-      BlockType		      Product
-      Name		      "Product"
-      SID		      "56"
+      BlockType		      Mux
+      Name		      "Mux2"
+      SID		      "44"
       Ports		      [2, 1]
-      Position		      [245, 97, 275, 128]
-      ZOrder		      -13
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Product
-      Name		      "Product1"
-      SID		      "70"
-      Ports		      [2, 1]
-      Position		      [230, 32, 260, 63]
-      ZOrder		      -13
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
+      Position		      [930, 481, 935, 519]
+      ZOrder		      -12
+      ShowName		      off
+      Inputs		      "2"
+      DisplayOption	      "bar"
     }
     Block {
       BlockType		      Saturate
       Name		      "Saturation"
       SID		      "15"
       Ports		      [1, 1]
-      Position		      [735, 135, 755, 165]
+      Position		      [580, 130, 600, 160]
       InputPortMap	      "u0"
       UpperLimit	      "inf"
       LowerLimit	      "0"
@@ -1406,7 +1229,7 @@ Model {
       Name		      "Sum"
       SID		      "16"
       Ports		      [3, 1]
-      Position		      [270, 185, 290, 205]
+      Position		      [115, 180, 135, 200]
       ShowName		      off
       IconShape		      "round"
       Inputs		      "|++-"
@@ -1419,35 +1242,7 @@ Model {
       Name		      "Sum1"
       SID		      "17"
       Ports		      [2, 1]
-      Position		      [370, 105, 390, 125]
-      NamePlacement	      "alternate"
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "|++"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Sum
-      Name		      "Sum2"
-      SID		      "63"
-      Ports		      [2, 1]
-      Position		      [65, 65, 85, 85]
-      NamePlacement	      "alternate"
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "|++"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Sum
-      Name		      "Sum3"
-      SID		      "74"
-      Ports		      [2, 1]
-      Position		      [155, 95, 175, 115]
+      Position		      [210, 95, 230, 115]
       NamePlacement	      "alternate"
       ShowName		      off
       IconShape		      "round"
@@ -1461,7 +1256,7 @@ Model {
       Name		      "Switch"
       SID		      "18"
       Ports		      [5, 2]
-      Position		      [460, 115, 575, 215]
+      Position		      [305, 110, 420, 210]
       ErrorFcn		      "Stateflow.Translate.translate"
       PermitHierarchicalResolution "ExplicitOnly"
       TreatAsAtomicUnit	      on
@@ -1654,46 +1449,11 @@ Model {
       }
     }
     Block {
-      BlockType		      Reference
-      Name		      "Timer"
-      SID		      "60"
-      Ports		      []
-      Position		      [345, 385, 455, 445]
-      LibraryVersion	      "1.33"
-      SourceBlock	      "c281xlib/Timer"
-      SourceType	      "C281x EV Timer"
-      module		      "A"
-      timerAno		      "Timer 1"
-      timerBno		      "Timer 3"
-      clockSource	      "Internal"
-      periodSource	      "Specify via dialog"
-      period		      "10000"
-      compareSource	      "Specify via dialog"
-      compareValue	      "5000"
-      countingMode	      "Up"
-      preScaler		      "1/128"
-      postPeriodInterrupt     off
-      postUnderflowInterrupt  off
-      postOverflowInterrupt   off
-      postCompareInterrupt    off
-    }
-    Block {
-      BlockType		      UnitDelay
-      Name		      "Unit Delay"
-      SID		      "64"
-      Position		      [85, 88, 105, 122]
-      ZOrder		      -21
-      BlockMirror	      on
-      NamePlacement	      "alternate"
-      InputProcessing	      "Elements as channels (sample based)"
-      SampleTime	      "0.1"
-    }
-    Block {
       BlockType		      Scope
       Name		      "angle"
       SID		      "19"
       Ports		      [1]
-      Position		      [1120, 489, 1150, 521]
+      Position		      [965, 484, 995, 516]
       Floating		      off
       Location		      [5, 81, 1369, 766]
       Open		      off
@@ -1717,7 +1477,7 @@ Model {
       YMin		      "180"
       YMax		      "180.007"
       SaveToWorkspace	      on
-      SaveName		      "theta_sim"
+      SaveName		      "theta"
       DataFormat	      "StructureWithTime"
       LimitDataPoints	      off
       SampleTime	      "0"
@@ -1727,7 +1487,7 @@ Model {
       Name		      "angularVel"
       SID		      "20"
       Ports		      [1]
-      Position		      [1120, 609, 1150, 641]
+      Position		      [965, 609, 995, 641]
       Floating		      off
       Location		      [5, 81, 1371, 795]
       Open		      off
@@ -1750,69 +1510,7 @@ Model {
       YMin		      "-1.75e+006"
       YMax		      "1.75e+006"
       SaveToWorkspace	      on
-      SaveName		      "angularVel_sim"
-      DataFormat	      "StructureWithTime"
-      LimitDataPoints	      off
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Scope
-      Name		      "banda"
-      SID		      "83"
-      Ports		      [1]
-      Position		      [175, 389, 205, 421]
-      Floating		      off
-      Location		      [5, 81, 1371, 759]
-      Open		      off
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      List {
-	ListType		ScopeGraphics
-	FigureColor		"[0.5 0.5 0.5]"
-	AxesColor		"[0 0 0]"
-	AxesTickColor		"[1 1 1]"
-	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	LineStyles		"-|-|-|-|-|-"
-	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-	MarkerStyles		"none|none|none|none|none|none"
-      }
-      ShowLegends	      off
-      SaveToWorkspace	      on
-      SaveName		      "banda"
-      DataFormat	      "StructureWithTime"
-      LimitDataPoints	      off
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Scope
-      Name		      "banda0"
-      SID		      "86"
-      Ports		      [1]
-      Position		      [175, 464, 205, 496]
-      Floating		      off
-      Location		      [5, 81, 1371, 759]
-      Open		      off
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      List {
-	ListType		ScopeGraphics
-	FigureColor		"[0.5 0.5 0.5]"
-	AxesColor		"[0 0 0]"
-	AxesTickColor		"[1 1 1]"
-	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	LineStyles		"-|-|-|-|-|-"
-	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-	MarkerStyles		"none|none|none|none|none|none"
-      }
-      ShowLegends	      off
-      SaveToWorkspace	      on
-      SaveName		      "banda0"
+      SaveName		      "angularVel"
       DataFormat	      "StructureWithTime"
       LimitDataPoints	      off
       SampleTime	      "0"
@@ -1822,7 +1520,7 @@ Model {
       Name		      "linealVel"
       SID		      "21"
       Ports		      [1]
-      Position		      [1120, 549, 1150, 581]
+      Position		      [965, 544, 995, 576]
       Floating		      off
       Location		      [5, 81, 1371, 759]
       Open		      off
@@ -1846,7 +1544,7 @@ Model {
       YMin		      "2e+010"
       YMax		      "5.5e+010"
       SaveToWorkspace	      on
-      SaveName		      "linealVel_sim"
+      SaveName		      "linealVel"
       DataFormat	      "StructureWithTime"
       LimitDataPoints	      off
       SampleTime	      "0"
@@ -1856,7 +1554,7 @@ Model {
       Name		      "out"
       SID		      "22"
       Ports		      [1]
-      Position		      [555, 354, 585, 386]
+      Position		      [400, 379, 430, 411]
       Floating		      off
       Location		      [1, 53, 1367, 767]
       Open		      off
@@ -1890,7 +1588,7 @@ Model {
       Name		      "position"
       SID		      "23"
       Ports		      [1]
-      Position		      [1120, 439, 1150, 471]
+      Position		      [965, 434, 995, 466]
       Floating		      off
       Location		      [5, 81, 1371, 759]
       Open		      off
@@ -1911,7 +1609,7 @@ Model {
       }
       ShowLegends	      off
       SaveToWorkspace	      on
-      SaveName		      "position_sim"
+      SaveName		      "position"
       DataFormat	      "StructureWithTime"
       LimitDataPoints	      off
       SampleTime	      "0"
@@ -1920,7 +1618,7 @@ Model {
       BlockType		      Gain
       Name		      "rad2deg1"
       SID		      "24"
-      Position		      [940, 440, 970, 470]
+      Position		      [785, 435, 815, 465]
       NamePlacement	      "alternate"
       ShowName		      off
     }
@@ -1928,7 +1626,7 @@ Model {
       BlockType		      Gain
       Name		      "rad2deg2"
       SID		      "25"
-      Position		      [940, 490, 970, 520]
+      Position		      [785, 485, 815, 515]
       NamePlacement	      "alternate"
       ShowName		      off
       Gain		      "180/pi"
@@ -1937,7 +1635,7 @@ Model {
       BlockType		      Gain
       Name		      "rad2deg3"
       SID		      "26"
-      Position		      [935, 550, 965, 580]
+      Position		      [780, 545, 810, 575]
       NamePlacement	      "alternate"
       ShowName		      off
     }
@@ -1945,7 +1643,7 @@ Model {
       BlockType		      Gain
       Name		      "rad2deg4"
       SID		      "27"
-      Position		      [935, 610, 965, 640]
+      Position		      [780, 605, 810, 635]
       NamePlacement	      "alternate"
       ShowName		      off
       Gain		      "180/pi"
@@ -1955,49 +1653,16 @@ Model {
       Name		      "swingUp"
       SID		      "29"
       Ports		      [0, 1]
-      Position		      [305, 100, 335, 130]
+      Position		      [130, 90, 160, 120]
       Amplitude		      "2"
       Frequency		      "0.57*(2*pi)"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Scope
-      Name		      "swingUp1"
-      SID		      "57"
-      Ports		      [1]
-      Position		      [1010, 24, 1040, 56]
-      Floating		      off
-      Location		      [1, 53, 1367, 767]
-      Open		      off
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      List {
-	ListType		ScopeGraphics
-	FigureColor		"[0.5 0.5 0.5]"
-	AxesColor		"[0 0 0]"
-	AxesTickColor		"[1 1 1]"
-	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	LineStyles		"-|-|-|-|-|-"
-	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-	MarkerStyles		"none|none|none|none|none|none"
-      }
-      ShowLegends	      off
-      YMin		      "-68"
-      YMax		      "-48"
-      SaveToWorkspace	      on
-      SaveName		      "swingUpFunc"
-      DataFormat	      "StructureWithTime"
-      LimitDataPoints	      off
       SampleTime	      "0"
     }
     Block {
       BlockType		      Step
       Name		      "u"
       SID		      "30"
-      Position		      [190, 160, 220, 190]
+      Position		      [35, 155, 65, 185]
       DropShadow	      on
       Time		      "0"
       After		      "4.7/1.88"
@@ -2007,7 +1672,7 @@ Model {
       BlockType		      Step
       Name		      "u1"
       SID		      "46"
-      Position		      [305, 280, 335, 310]
+      Position		      [150, 275, 180, 305]
       DropShadow	      on
       Time		      "0"
       After		      "4.7/1.88"
@@ -2018,7 +1683,7 @@ Model {
       Name		      "x1_"
       SID		      "32"
       Ports		      [1, 1]
-      Position		      [805, 210, 835, 240]
+      Position		      [650, 205, 680, 235]
       UpperSaturationLimit    "50"
       LowerSaturationLimit    "-50"
     }
@@ -2027,8 +1692,8 @@ Model {
       Name		      "x2_"
       SID		      "33"
       Ports		      [1, 1]
-      Position		      [745, 245, 775, 275]
-      InitialCondition	      "0*pi/180"
+      Position		      [590, 240, 620, 270]
+      InitialCondition	      "190*pi/180"
       UpperSaturationLimit    "2*pi"
       LowerSaturationLimit    "0"
     }
@@ -2037,7 +1702,7 @@ Model {
       Name		      "x3_"
       SID		      "34"
       Ports		      [1, 1]
-      Position		      [805, 280, 835, 310]
+      Position		      [650, 275, 680, 305]
       UpperSaturationLimit    "100"
       LowerSaturationLimit    "-100"
     }
@@ -2046,7 +1711,7 @@ Model {
       Name		      "x4_"
       SID		      "35"
       Ports		      [1, 1]
-      Position		      [750, 320, 780, 350]
+      Position		      [595, 315, 625, 345]
       UpperSaturationLimit    "100"
       LowerSaturationLimit    "-100"
     }
@@ -2076,6 +1741,25 @@ Model {
       SrcPort		      4
       Points		      [10, 0; 0, 85; -335, 0]
       DstBlock		      "x4_"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "rad2deg4"
+      SrcPort		      1
+      Points		      [135, 0]
+      DstBlock		      "angularVel"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "rad2deg3"
+      SrcPort		      1
+      DstBlock		      "linealVel"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "rad2deg1"
+      SrcPort		      1
+      DstBlock		      "position"
       DstPort		      1
     }
     Line {
@@ -2247,7 +1931,7 @@ Model {
       SrcPort		      1
       Points		      [-5, 0]
       Branch {
-	Points			[0, 185]
+	Points			[0, 195; -170, 0]
 	DstBlock		"Mux1"
 	DstPort			3
       }
@@ -2265,7 +1949,7 @@ Model {
     Line {
       SrcBlock		      "Sum"
       SrcPort		      1
-      Points		      [15, 0; 0, 20]
+      Points		      [35, 0]
       DstBlock		      "ConLQR/SinLQR"
       DstPort		      1
     }
@@ -2279,7 +1963,7 @@ Model {
     Line {
       SrcBlock		      "Mux1"
       SrcPort		      1
-      Points		      [0, 10]
+      Points		      [0, 5]
       DstBlock		      "out"
       DstPort		      1
     }
@@ -2293,13 +1977,13 @@ Model {
     Line {
       SrcBlock		      "Sum1"
       SrcPort		      1
-      Points		      [0, 50]
+      Points		      [0, 55; 5, 0]
       Branch {
 	DstBlock		"Switch"
 	DstPort			3
       }
       Branch {
-	Points			[0, 170]
+	Points			[0, 175; 100, 0]
 	DstBlock		"Mux1"
 	DstPort			1
       }
@@ -2307,74 +1991,8 @@ Model {
     Line {
       SrcBlock		      "Constant1"
       SrcPort		      1
-      Points		      [20, 0]
+      Points		      [15, 0]
       DstBlock		      "Sum1"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "u1"
-      SrcPort		      1
-      Points		      [5, 0; 0, -35; -25, 0; 0, -25]
-      DstBlock		      "ConLQR/SinLQR"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Sum2"
-      SrcPort		      1
-      Points		      [45, 0; 0, 30]
-      Branch {
-	DstBlock		"Unit Delay"
-	DstPort			1
-      }
-      Branch {
-	DstBlock		"Sum3"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "Constant2"
-      SrcPort		      1
-      DstBlock		      "Sum2"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Unit Delay"
-      SrcPort		      1
-      Points		      [-5, 0]
-      DstBlock		      "Sum2"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Math\nFunction"
-      SrcPort		      1
-      Points		      [5, 0; 0, 35; -115, 0]
-      DstBlock		      "Product"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Product1"
-      SrcPort		      1
-      DstBlock		      "Math\nFunction"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Constant3"
-      SrcPort		      1
-      DstBlock		      "Product1"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Constant4"
-      SrcPort		      1
-      Points		      [10, 0]
-      DstBlock		      "Sum3"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Sum3"
-      SrcPort		      1
-      Points		      [35, 0]
-      DstBlock		      "Product1"
       DstPort		      2
     }
     Line {
@@ -2384,63 +2002,55 @@ Model {
       DstPort		      1
     }
     Line {
-      SrcBlock		      "rad2deg1"
-      SrcPort		      1
-      DstBlock		      "position"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "rad2deg2"
+      SrcBlock		      "Mux2"
       SrcPort		      1
       DstBlock		      "angle"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "rad2deg3"
+      Labels		      [0, 0]
+      SrcBlock		      "rad2deg2"
       SrcPort		      1
-      DstBlock		      "linealVel"
+      Points		      [45, 0; 0, -10]
+      DstBlock		      "Mux2"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "rad2deg4"
+      SrcBlock		      "180 ref"
       SrcPort		      1
-      DstBlock		      "angularVel"
-      DstPort		      1
+      Points		      [10, 0; 0, -25]
+      DstBlock		      "Mux2"
+      DstPort		      2
     }
     Line {
-      SrcBlock		      "Constant6"
+      SrcBlock		      "u1"
       SrcPort		      1
-      DstBlock		      "banda"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Constant7"
-      SrcPort		      1
-      DstBlock		      "banda0"
-      DstPort		      1
+      Points		      [5, 0; 0, -35; -25, 0; 0, -25]
+      DstBlock		      "ConLQR/SinLQR"
+      DstPort		      2
     }
     Annotation {
       SID		      "36"
       Name		      "x"
-      Position		      [1042, 468]
+      Position		      [887, 463]
       FontName		      "Arial"
     }
     Annotation {
       SID		      "37"
       Name		      "theta"
-      Position		      [992, 518]
+      Position		      [837, 513]
       FontName		      "Arial"
     }
     Annotation {
       SID		      "38"
       Name		      "x_dot"
-      Position		      [1037, 578]
+      Position		      [882, 573]
       FontName		      "Arial"
     }
     Annotation {
       SID		      "39"
       Name		      "theta_dot"
-      Position		      [1035, 631]
+      Position		      [880, 626]
     }
   }
 }
