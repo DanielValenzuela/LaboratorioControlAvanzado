@@ -1,0 +1,2 @@
+El archivo principal es graficos.m, 
+si tienes dudas hace "help loadData" en la ventana de comandos.
