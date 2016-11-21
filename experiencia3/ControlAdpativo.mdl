@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.14"
+    ComputedModelVersion    "1.15"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -27,9 +27,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Nov 20 16:03:27 2016"
-  RTWModifiedTimeStamp	  401558604
-  ModelVersionFormat	  "1.%<AutoIncrement:14>"
+  LastModifiedDate	  "Sun Nov 20 21:50:10 2016"
+  RTWModifiedTimeStamp	  401579407
+  ModelVersionFormat	  "1.%<AutoIncrement:15>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -67,6 +67,7 @@ Model {
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "ControlAdpativo"
+    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -1691,7 +1692,7 @@ Model {
       Name		      "TwinRotor"
       SID		      "33"
       Description	      "imread('/home/hernan/Documentos/semestre10/labControl/repo/LaboratorioControlAvanzado/experie"
-      "ncia3/Twin-rotor-system.jpg')"
+      "ncia3/Twin-rotor-system.jpg');"
       Ports		      [2, 2]
       Position		      [325, 100, 420, 175]
       ZOrder		      -4
@@ -1700,7 +1701,7 @@ Model {
       LoadFcn		      "imread('/home/hernan/Documentos/semestre10/labControl/repo/LaboratorioControlAvanzado/experienci"
       "a3/Twin-rotor-system.jpg')"
       ClipboardFcn	      "imread('/home/hernan/Documentos/semestre10/labControl/repo/LaboratorioControlAvanzado/experi"
-      "encia3/Twin-rotor-system.jpg')"
+      "encia3/Twin-rotor-system.jpg');"
       ErrorFcn		      "Stateflow.Translate.translate"
       PermitHierarchicalResolution "ExplicitOnly"
       TreatAsAtomicUnit	      on
