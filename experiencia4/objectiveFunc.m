@@ -1,7 +1,17 @@
-proportionalTerm = K( 1 );
-integralTerm = (K(2)/(wcg^K(3)))∗(cos(pi∗K(3)/2)−1 j∗sin(pi∗K(3)/2));
-derivativeTerm = (K(4)∗wcg^K(5))∗(cos(pi∗K(5)/2)+1 j∗sin(pi∗K(5)/2));
-C_jw = (proportionalTerm+integralTerm+derivativeTerm);
-G_jw = K11/(1 j∗wcg+n11);
+function fun = objectiveFunc(params)
+	parameters;
 
-fun = @(K)abs(abs(C_jw∗G_jw)−1);
+	%controller parameters
+	Kp = params(1);
+	Ki = params(2);
+	lambda = params(3);
+	Kd = params(4);
+	mu = params(5);
+
+	Ki_OF = (Ki/(wcg^lambda))*(cos(pi*lambda/2)-1j*sin(pi*lambda/2));
+	Kd_OF = (Kd*wcg^mu)*(cos(pi*mu/2)+1j*sin(pi*mu/2));
+	C_jw = (Kp+Ki_OF+Kd_OF);
+	G_jw = numG/(1j*wcg-poloG);
+
+	fun = abs(abs(C_jw*G_jw)-1);
+end
