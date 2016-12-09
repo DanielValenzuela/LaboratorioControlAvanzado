@@ -25,7 +25,7 @@ function [c,ceq] = nonlconstr(params)
 
 	%Constraints
 	c = [abs(angle(C_jwcg*G_jwcg)+pi-phi_m)-e1;
-		 %abs(simple(derivative_restriction))-e2;
+		 abs(restriction2(params))-e2;
 		 abs((C_jwh*G_jwh)/(1+C_jwh*G_jwh))-H-e3;
 		 abs(1/(1+C_jwl*G_jwl))-N-e4];
 	% c = [];
