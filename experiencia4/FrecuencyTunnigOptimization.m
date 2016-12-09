@@ -1,5 +1,5 @@
 % Funcion Objetivo
-% fun  = @objectiveFunc;
+fun  = @objectiveFunc;
 
 % Limites de parametros del controlador
 lb = [0,0,0,0.75,0];

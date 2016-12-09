@@ -2,10 +2,10 @@ function [c,ceq] = nonlconstr(params)
 	parameters;
 
 	%Constraints tolerances
-	e1 = 10;
-	e2 = 10;
-	e3 = 10;
-	e4 = 10;
+	e1 = 70;
+	e2 = 1;
+	e3 = 15;
+	e4 = 25;
 
 	%Controller Transfers functions
 	C_jwcg = controllerTransferFcn(params, wcg);
@@ -24,10 +24,10 @@ function [c,ceq] = nonlconstr(params)
 
 
 	%Constraints
-	% c = [abs(angle(C_jwcg*G_jwcg)+pi-phi_m)-e1;
-	% 	 %abs(simple(derivative_restriction))-e2;
-	% 	 abs((C_jwh*G_jwh)/(1+C_jwh*G_jwh))-H-e3;
-	% 	 abs(1/(1+C_jwl*G_jwl))-N-e4];
-	c = [];
+	c = [abs(angle(C_jwcg*G_jwcg)+pi-phi_m)-e1;
+		 %abs(simple(derivative_restriction))-e2;
+		 abs((C_jwh*G_jwh)/(1+C_jwh*G_jwh))-H-e3;
+		 abs(1/(1+C_jwl*G_jwl))-N-e4];
+	% c = [];
 	ceq = [];
 end
