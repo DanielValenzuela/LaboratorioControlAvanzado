@@ -2,23 +2,25 @@ function derivative_restriction = restriction2(params)
 
 	parameters;
 
-	%Controller parameters
-	Kp = params(1);
-	Ki = params(2);
-	lambda = params(3);
-	Kd = params(4);
-	mu = params(5);
-
 	syms w;
 
-	%Controller Transfer function
-	Ki_OF_real = (Ki/(w^lambda))*cos(pi*lambda/2);
-	Ki_OF_imag = -(Ki/(w^lambda))*sin(pi*lambda/2);
-	Kd_OF_real = (Kd*w^mu)*cos(pi*mu/2);
-	Kd_OF_imag = (Kd*w^mu)*sin(pi*mu/2);
+	%Controller Transfers functions
+	if ControllerType == 0
+		%-------------------- Funcion Objetivo PIDOF --------------------
+		 Controller = controllerTransferFcn(params, w, 'rectangular');
+	elseif ControllerType == 1
+		%-------------------- Funcion Objetivo PID --------------------
+		Controller = controllerTransferFcnPID(params, w, 'rectangular');
+	elseif ControllerType == 2
+		%-------------------- Funcion Objetivo PIOF --------------------
+		Controller = controllerTransferFcnPIOF(params, w, 'rectangular');
+	else
+		%-------------------- Funcion Objetivo PI --------------------
+		Controller = controllerTransferFcnPI(params, w, 'rectangular');
+	end
 
-	C_real = (Kp+Ki_OF_real+Kd_OF_real);
-	C_imag = (Kp+Ki_OF_imag+Kd_OF_imag);
+	C_real = Controller(1);
+	C_imag = Controller(2);
 
 	%System Transfer function
 	G_real = (numG*poloG)/(w^2+poloG^2);

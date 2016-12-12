@@ -7,26 +7,27 @@ function [c,ceq] = nonlconstr(params)
 	e3 = 15;
 	e4 = 25;
 
-	%Controller type
-	ControllerType = 3;	%	0:PIDOF,	1:PID,		2:PIOF,		3:PI
-
 	%Controller Transfers functions
-	if ControllerType == 0		%PIDOF
-		C_jwcg = controllerTransferFcn(params, wcg);
-		C_jwh = controllerTransferFcn(params, wh);
-		C_jwl = controllerTransferFcn(params, wl);
+	if ControllerType == 0
+		%-------------------- Funcion Objetivo PIDOF --------------------
+		C_jwcg = controllerTransferFcn(params, wcg, 'paralela');
+		C_jwh = controllerTransferFcn(params, wh, 'paralela');
+		C_jwl = controllerTransferFcn(params, wl, 'paralela');
 	elseif ControllerType == 1
-		C_jwcg = controllerTransferFcnPID(params, wcg);
-		C_jwh = controllerTransferFcnPID(params, wh);
-		C_jwl = controllerTransferFcnPID(params, wl);
+		%-------------------- Funcion Objetivo PID --------------------
+		C_jwcg = controllerTransferFcnPID(params, wcg, 'paralela');
+		C_jwh = controllerTransferFcnPID(params, wh, 'paralela');
+		C_jwl = controllerTransferFcnPID(params, wl, 'paralela');
 	elseif ControllerType == 2
-		C_jwcg = controllerTransferFcnPIOF(params, wcg);
-		C_jwh = controllerTransferFcnPIOF(params, wh);
-		C_jwl = controllerTransferFcnPIOF(params, wl);
+		%-------------------- Funcion Objetivo PIOF --------------------
+		C_jwcg = controllerTransferFcnPIOF(params, wcg, 'paralela');
+		C_jwh = controllerTransferFcnPIOF(params, wh, 'paralela');
+		C_jwl = controllerTransferFcnPIOF(params, wl, 'paralela');
 	else
-		C_jwcg = controllerTransferFcnPI(params, wcg);
-		C_jwh = controllerTransferFcnPI(params, wh);
-		C_jwl = controllerTransferFcnPI(params, wl);
+		%-------------------- Funcion Objetivo PI --------------------
+		C_jwcg = controllerTransferFcnPI(params, wcg, 'paralela');
+		C_jwh = controllerTransferFcnPI(params, wh, 'paralela');
+		C_jwl = controllerTransferFcnPI(params, wl, 'paralela');
 	end
 	
 	%System Transfers functions
@@ -36,7 +37,7 @@ function [c,ceq] = nonlconstr(params)
 
 	%Constraints
 	c = [abs(angle(C_jwcg*G_jwcg)+pi-phi_m)-e1;
-		 %abs(restriction2(params))-e2;
+		 abs(restriction2(params))-e2;
 		 abs((C_jwh*G_jwh)/(1+C_jwh*G_jwh))-H-e3;
 		 abs(1/(1+C_jwl*G_jwl))-N-e4];
 	% c = [];

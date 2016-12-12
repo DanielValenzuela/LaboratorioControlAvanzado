@@ -12,3 +12,6 @@ N = -20;		%[dB]
 
 numG = 0.0040;
 poloG = -0.0012;
+
+%Controller type
+ControllerType = 0;	%	0:PIDOF,	1:PID,		2:PIOF,		3:PI

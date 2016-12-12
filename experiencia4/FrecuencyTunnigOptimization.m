@@ -1,31 +1,39 @@
-% Funcion Objetivo
-% fun  = @objectiveFunc;		%PIDOF
-% fun  = @objectiveFuncPID;		%PID
-% fun  = @objectiveFuncPIOF;	%PIOF
-fun  = @objectiveFuncPI;		%PI
+tic
+%% Paramtros Necesarios
+parameters;
+maxGain = 500;
 
-% % Limites de parametros del controlador PIDOF
-% lb = [0,0,0.75,0,0];
-% ub = [inf,inf,1,inf,0.25];
+%% Funcion Objetivo y limites segun el tipo de controlador
 
-% Limites de parametros del controlador PID
-% lb = [0,0,0];
-% ub = [inf,inf,inf];
-
-% % Limites de parametros del controlador PIOF
-% lb = [0,0,0.75];
-% ub = [inf,inf,1];
-
-% % Limites de parametros del controlador PI
-lb = [0,0];
-ub = [inf,inf];
-
-% Punto de partida busqueda de optimo
-% initialPoint = [10; 10; 0.1; 10; 0.1];	%PIDOF
-% initialPoint = [10; 10; 1];				%PID
-% initialPoint = [10; 10; 0.1];				%PIOF
-initialPoint = [10; 10];					%PI
-
+if ControllerType == 0
+	%-------------------- Funcion Objetivo PIDOF --------------------
+	fun  = @objectiveFunc;
+	% Limites de parametros
+	lb = [0,0,0.75,0,0];
+	ub = [maxGain,maxGain,1,maxGain,0.25];
+	initialPoint = [10; 10; 0.1; 10; 0.1];
+elseif ControllerType == 1	%PID
+	%-------------------- Funcion Objetivo PID --------------------
+	fun  = @objectiveFuncPID;
+	% Limites de parametros
+	lb = [0,0,0];
+	ub = [maxGain,maxGain,maxGain];
+	initialPoint = [10; 10; 1];
+elseif ControllerType == 2
+	%-------------------- Funcion Objetivo PIOF --------------------
+	fun  = @objectiveFuncPIOF;
+	% Limites de parametros
+	lb = [0,0,0.75];
+	ub = [maxGain,maxGain,1];
+	initialPoint = [10; 10; 0.1];
+else
+	%-------------------- Funcion Objetivo PI --------------------
+	fun  = @objectiveFuncPI;
+	% Limites de parametros
+	lb = [0,0];
+	ub = [maxGain,maxGain];
+	initialPoint = [10; 10];
+end
 
 % Declaracion de restricciones
 nonlcon = @constraints;
@@ -33,4 +41,7 @@ nonlcon = @constraints;
 options = optimset('Algorithm','interior-point', 'MaxFunEvals', 3000, 'MaxIter', 3000); % run interior-point algorithm
 % Solucion del problema de optimizacion
 
-K = fmincon(@(params) fun(params), initialPoint, [], [], [], [], lb, ub, @(params) nonlconstr(params), options)
+K = fmincon(@(params) fun(params), initialPoint, [], [], [], [], lb, ub, @(params) nonlconstr(params), options);
+toc
+
+showResults(K);
