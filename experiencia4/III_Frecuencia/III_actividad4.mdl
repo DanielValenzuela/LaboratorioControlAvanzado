@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.187"
+    ComputedModelVersion    "1.196"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -38,9 +38,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Dec 11 23:33:30 2016"
-  RTWModifiedTimeStamp	  403399803
-  ModelVersionFormat	  "1.%<AutoIncrement:187>"
+  LastModifiedDate	  "Sun Dec 18 02:09:35 2016"
+  RTWModifiedTimeStamp	  403923517
+  ModelVersionFormat	  "1.%<AutoIncrement:196>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -78,6 +78,7 @@ Model {
     $ObjectID		    2
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "modeloNoLinealPIDOF"
+    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -702,6 +703,11 @@ Model {
       CoefficientInTFapproximation "inf"
     }
     Block {
+      BlockType		      Fcn
+      Expr		      "sin(u[1])"
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Gain
       Gain		      "1"
       Multiplication	      "Element-wise(K.*u)"
@@ -790,6 +796,21 @@ Model {
       SourceOfInitialOutputValue "Dialog"
       OutputWhenDisabled      "held"
       InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      Product
+      Inputs		      "2"
+      Multiplication	      "Element-wise(.*)"
+      CollapseMode	      "All dimensions"
+      CollapseDim	      "1"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as first input"
+      LockScale		      off
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
     }
     Block {
       BlockType		      S-Function
@@ -893,7 +914,7 @@ Model {
   }
   System {
     Name		    "III_actividad4"
-    Location		    [76, 91, 1332, 747]
+    Location		    [111, 111, 1367, 767]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -907,20 +928,13 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "156"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "101"
-    Block {
-      BlockType		      Derivative
-      Name		      "Derivative"
-      SID		      "22"
-      Position		      [210, 100, 240, 130]
-      ZOrder		      -1
-    }
+    SIDHighWatermark	    "115"
     Block {
       BlockType		      Reference
       Name		      "Fractional PI"
       SID		      "44"
       Ports		      [1, 1]
-      Position		      [165, 338, 205, 372]
+      Position		      [190, 270, 230, 310]
       LibraryVersion	      "1.13"
       FontName		      "Arial"
       SourceBlock	      "nintblocks/Fractional PID"
@@ -941,7 +955,7 @@ Model {
       Name		      "Fractional PID"
       SID		      "15"
       Ports		      [1, 1]
-      Position		      [170, 176, 210, 214]
+      Position		      [190, 134, 230, 176]
       LibraryVersion	      "1.13"
       FontName		      "Arial"
       SourceBlock	      "nintblocks/Fractional PID"
@@ -956,39 +970,6 @@ Model {
       form1		      "crone"
       exp1		      "mcltime"
       decomp1		      "frac"
-    }
-    Block {
-      BlockType		      Gain
-      Name		      "Gain"
-      SID		      "24"
-      Position		      [150, 95, 195, 135]
-      ZOrder		      -8
-      Gain		      "39.42"
-      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Gain
-      Name		      "Gain1"
-      SID		      "33"
-      Position		      [150, 24, 195, 66]
-      ZOrder		      -8
-      Gain		      "84.08"
-      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Gain
-      Name		      "Gain2"
-      SID		      "34"
-      Position		      [155, 259, 200, 301]
-      ZOrder		      -8
-      Gain		      "71.03"
-      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
     }
     Block {
       BlockType		      Integrator
@@ -1165,11 +1146,376 @@ Model {
       Name		      "Mux1"
       SID		      "91"
       Ports		      [3, 1]
-      Position		      [585, 231, 590, 269]
+      Position		      [585, 221, 590, 259]
       ZOrder		      -12
       ShowName		      off
       Inputs		      "3"
       DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "PI"
+      SID		      "106"
+      Ports		      [1, 1]
+      Position		      [190, 204, 230, 246]
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"PI"
+	Location		[146, 367, 661, 639]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"A4"
+	PaperUnits		"centimeters"
+	TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"156"
+	Block {
+	  BlockType		  Inport
+	  Name			  "In1"
+	  SID			  "108"
+	  Position		  [15, 28, 45, 42]
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Fcn
+	  Name			  "Fcn"
+	  SID			  "103"
+	  Position		  [150, 137, 180, 153]
+	  ZOrder		  -1
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  Expr			  "(u<100)*(u>0)"
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain2"
+	  SID			  "34"
+	  Position		  [60, 14, 105, 56]
+	  ZOrder		  -8
+	  Gain			  "71.03"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product"
+	  SID			  "105"
+	  Ports			  [2, 1]
+	  Position		  [125, 70, 145, 90]
+	  ZOrder		  -13
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum2"
+	  SID			  "104"
+	  Ports			  [2, 1]
+	  Position		  [210, 25, 230, 45]
+	  ZOrder		  -18
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "|++"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  TransferFcn
+	  Name			  "Transfer Fcn1"
+	  SID			  "35"
+	  Position		  [170, 63, 215, 97]
+	  ZOrder		  -9
+	  Numerator		  "[122.71]"
+	  Denominator		  "[1 0]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Out1"
+	  SID			  "107"
+	  Position		  [260, 28, 290, 42]
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Gain2"
+	  SrcPort		  1
+	  Points		  [0, 0]
+	  Branch {
+	    DstBlock		    "Sum2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Product"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Sum2"
+	  SrcPort		  1
+	  Points		  [5, 0]
+	  Branch {
+	    Points		    [0, 110]
+	    DstBlock		    "Fcn"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Out1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Transfer Fcn1"
+	  SrcPort		  1
+	  DstBlock		  "Sum2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Product"
+	  SrcPort		  1
+	  DstBlock		  "Transfer Fcn1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Fcn"
+	  SrcPort		  1
+	  Points		  [-35, 0]
+	  DstBlock		  "Product"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "In1"
+	  SrcPort		  1
+	  DstBlock		  "Gain2"
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "PID"
+      SID		      "112"
+      Ports		      [1, 1]
+      Position		      [190, 64, 230, 106]
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"PID"
+	Location		[139, 81, 809, 505]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"A4"
+	PaperUnits		"centimeters"
+	TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"156"
+	Block {
+	  BlockType		  Inport
+	  Name			  "In1"
+	  SID			  "114"
+	  Position		  [25, 108, 55, 122]
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Derivative
+	  Name			  "Derivative"
+	  SID			  "22"
+	  Position		  [190, 190, 220, 220]
+	  ZOrder		  -1
+	}
+	Block {
+	  BlockType		  Fcn
+	  Name			  "Fcn"
+	  SID			  "109"
+	  Position		  [170, 137, 200, 153]
+	  ZOrder		  -1
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  Expr			  "(u<100)*(u>0)"
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain"
+	  SID			  "24"
+	  Position		  [130, 185, 175, 225]
+	  ZOrder		  -8
+	  Gain			  "40"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain1"
+	  SID			  "33"
+	  Position		  [75, 24, 120, 66]
+	  ZOrder		  -8
+	  Gain			  "84"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product"
+	  SID			  "110"
+	  Ports			  [2, 1]
+	  Position		  [140, 70, 160, 90]
+	  ZOrder		  -13
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum1"
+	  SID			  "23"
+	  Ports			  [2, 1]
+	  Position		  [290, 75, 310, 95]
+	  ZOrder		  -18
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "|++"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum2"
+	  SID			  "111"
+	  Ports			  [2, 1]
+	  Position		  [245, 35, 265, 55]
+	  ZOrder		  -18
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "|++"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  TransferFcn
+	  Name			  "Transfer Fcn"
+	  SID			  "32"
+	  Position		  [180, 63, 225, 97]
+	  ZOrder		  -9
+	  Numerator		  "[130]"
+	  Denominator		  "[1 0]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Out1"
+	  SID			  "113"
+	  Position		  [335, 78, 365, 92]
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Gain"
+	  SrcPort		  1
+	  DstBlock		  "Derivative"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Gain1"
+	  SrcPort		  1
+	  Points		  [20, 0]
+	  Branch {
+	    DstBlock		    "Sum2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [-20, 0]
+	    DstBlock		    "Product"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Sum2"
+	  SrcPort		  1
+	  Points		  [1, 0; 0, 40]
+	  DstBlock		  "Sum1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Transfer Fcn"
+	  SrcPort		  1
+	  Points		  [25, 0]
+	  DstBlock		  "Sum2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Product"
+	  SrcPort		  1
+	  DstBlock		  "Transfer Fcn"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Fcn"
+	  SrcPort		  1
+	  Points		  [-40, 0]
+	  DstBlock		  "Product"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "In1"
+	  SrcPort		  1
+	  Points		  [0, 0]
+	  Branch {
+	    Points		    [0, 90]
+	    DstBlock		    "Gain"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 0]
+	    DstBlock		    "Gain1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Sum1"
+	  SrcPort		  1
+	  Points		  [5, 0]
+	  Branch {
+	    DstBlock		    "Out1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 60]
+	    DstBlock		    "Fcn"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Derivative"
+	  SrcPort		  1
+	  Points		  [75, 0]
+	  DstBlock		  "Sum1"
+	  DstPort		  2
+	}
+      }
     }
     Block {
       BlockType		      Saturate
@@ -1187,7 +1533,7 @@ Model {
       Name		      "Sum"
       SID		      "7"
       Ports		      [2, 1]
-      Position		      [85, 85, 105, 105]
+      Position		      [85, 75, 105, 95]
       ZOrder		      -18
       ShowName		      off
       IconShape		      "round"
@@ -1195,38 +1541,6 @@ Model {
       InputSameDT	      off
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Sum
-      Name		      "Sum1"
-      SID		      "23"
-      Ports		      [2, 1]
-      Position		      [285, 75, 305, 95]
-      ZOrder		      -18
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "|+-"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      TransferFcn
-      Name		      "Transfer Fcn"
-      SID		      "32"
-      Position		      [210, 28, 255, 62]
-      ZOrder		      -9
-      Numerator		      "[139.25]"
-      Denominator	      "[1 0]"
-    }
-    Block {
-      BlockType		      TransferFcn
-      Name		      "Transfer Fcn1"
-      SID		      "35"
-      Position		      [220, 263, 265, 297]
-      ZOrder		      -9
-      Numerator		      "[122.71]"
-      Denominator	      "[1 0]"
     }
     Block {
       BlockType		      Scope
@@ -1236,7 +1550,7 @@ Model {
       Position		      [760, 109, 790, 141]
       ZOrder		      -16
       Floating		      off
-      Location		      [5, 81, 1371, 795]
+      Location		      [1, 53, 1367, 767]
       Open		      off
       NumInputPorts	      "1"
       List {
@@ -1255,8 +1569,8 @@ Model {
       }
       ShowLegends	      off
       TimeRange		      "971.6614906832298"
-      YMin		      "-7.5"
-      YMax		      "22.5"
+      YMin		      "22.5"
+      YMax		      "22.517"
       SaveToWorkspace	      on
       SaveName		      "hc"
       DataFormat	      "StructureWithTime"
@@ -1268,7 +1582,7 @@ Model {
       Name		      "bandaInf"
       SID		      "80"
       Ports		      [0, 1]
-      Position		      [520, 263, 550, 297]
+      Position		      [520, 243, 550, 267]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1426,7 +1740,7 @@ Model {
       Name		      "bandaSup"
       SID		      "70"
       Ports		      [0, 1]
-      Position		      [520, 208, 550, 242]
+      Position		      [520, 199, 550, 221]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1584,7 +1898,7 @@ Model {
       Name		      "bandas"
       SID		      "90"
       Ports		      [1]
-      Position		      [610, 234, 640, 266]
+      Position		      [610, 224, 640, 256]
       ZOrder		      -16
       Floating		      off
       Location		      [5, 81, 1371, 795]
@@ -1623,14 +1937,14 @@ Model {
       BlockRotation	      270
       BlockMirror	      on
       NamePlacement	      "alternate"
-      Value		      "4"
+      Value		      "3"
     }
     Block {
       BlockType		      Scope
       Name		      "error"
       SID		      "9"
       Ports		      [1]
-      Position		      [25, 42, 50, 68]
+      Position		      [25, 32, 50, 58]
       ZOrder		      -16
       BlockMirror	      on
       NamePlacement	      "alternate"
@@ -1697,7 +2011,7 @@ Model {
       Name		      "r(t)"
       SID		      "56"
       Ports		      [0, 1]
-      Position		      [25, 78, 55, 112]
+      Position		      [25, 68, 55, 102]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1855,7 +2169,7 @@ Model {
       Name		      "ref"
       SID		      "92"
       Ports		      [0, 1]
-      Position		      [520, 318, 550, 352]
+      Position		      [520, 284, 550, 306]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -2013,9 +2327,9 @@ Model {
       SrcPort		      1
       Points		      [10, 0]
       Branch {
-	Points			[0, 0; 1, 286; -231, -1]
+	Points			[0, 230; -230, 0]
 	Branch {
-	  Points		  [0, -265]
+	  Points		  [0, -210]
 	  DstBlock		  "MATLAB Function"
 	  DstPort		  2
 	}
@@ -2040,19 +2354,19 @@ Model {
 	DstPort			1
       }
       Branch {
-	Points			[0, 20]
+	Points			[0, 30]
 	Branch {
-	  Points		  [0, 80]
+	  Points		  [0, 40]
 	  Branch {
-	    Points		    [0, 80]
+	    Points		    [0, 70]
 	    Branch {
-	      Points		      [0, 5]
-	      DstBlock		      "Gain2"
+	      Points		      [0, 65]
+	      DstBlock		      "Fractional PI"
 	      DstPort		      1
 	    }
 	    Branch {
-	      Points		      [0, 80]
-	      DstBlock		      "Fractional PI"
+	      Labels		      [0, 0]
+	      DstBlock		      "PI"
 	      DstPort		      1
 	    }
 	  }
@@ -2062,16 +2376,10 @@ Model {
 	  }
 	}
 	Branch {
-	  Points		  [15, 0]
-	  Branch {
-	    DstBlock		    "Gain"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [-5, 0; 0, -70]
-	    DstBlock		    "Gain1"
-	    DstPort		    1
-	  }
+	  Labels		  [0, 0]
+	  Points		  [0, -30]
+	  DstBlock		  "PID"
+	  DstPort		  1
 	}
       }
     }
@@ -2084,7 +2392,7 @@ Model {
 	DstPort			1
       }
       Branch {
-	Points			[0, 315; 645, 0]
+	Points			[0, 290; 645, 0]
 	DstBlock		"Mux"
 	DstPort			2
       }
@@ -2117,67 +2425,28 @@ Model {
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Gain"
-      SrcPort		      1
-      DstBlock		      "Derivative"
-      DstPort		      1
-    }
-    Line {
       SrcBlock		      "Multiport\nSwitch"
       SrcPort		      1
       DstBlock		      "Saturation"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Sum1"
+      SrcBlock		      "PID"
       SrcPort		      1
       DstBlock		      "Multiport\nSwitch"
       DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Derivative"
-      SrcPort		      1
-      Points		      [50, 0]
-      DstBlock		      "Sum1"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Gain1"
-      SrcPort		      1
-      DstBlock		      "Transfer Fcn"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Transfer Fcn"
-      SrcPort		      1
-      Points		      [6, 0; 0, 40]
-      DstBlock		      "Sum1"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Gain2"
-      SrcPort		      1
-      DstBlock		      "Transfer Fcn1"
-      DstPort		      1
     }
     Line {
       SrcBlock		      "Fractional PID"
       SrcPort		      1
-      Points		      [95, 0; 0, -100]
+      Points		      [75, 0; 0, -60]
       DstBlock		      "Multiport\nSwitch"
       DstPort		      3
     }
     Line {
-      SrcBlock		      "Transfer Fcn1"
-      SrcPort		      1
-      Points		      [56, 0; 0, -175]
-      DstBlock		      "Multiport\nSwitch"
-      DstPort		      4
-    }
-    Line {
       SrcBlock		      "Fractional PI"
       SrcPort		      1
-      Points		      [130, 0; 0, -240]
+      Points		      [105, 0; 0, -175]
       DstBlock		      "Multiport\nSwitch"
       DstPort		      5
     }
@@ -2196,14 +2465,14 @@ Model {
     Line {
       SrcBlock		      "bandaSup"
       SrcPort		      1
-      Points		      [5, 0; 0, 15]
+      Points		      [5, 0; 0, 20]
       DstBlock		      "Mux1"
       DstPort		      1
     }
     Line {
       SrcBlock		      "bandaInf"
       SrcPort		      1
-      Points		      [5, 0; 0, -30]
+      Points		      [5, 0; 0, -15]
       DstBlock		      "Mux1"
       DstPort		      2
     }
@@ -2213,6 +2482,13 @@ Model {
       Points		      [15, 0]
       DstBlock		      "Mux1"
       DstPort		      3
+    }
+    Line {
+      SrcBlock		      "PI"
+      SrcPort		      1
+      Points		      [80, 0; 0, -120]
+      DstBlock		      "Multiport\nSwitch"
+      DstPort		      4
     }
   }
 }

@@ -1,7 +1,7 @@
 tic
 %% Paramtros Necesarios
 parameters;
-maxGain = 500;
+maxGain = inf;
 
 %% Funcion Objetivo y limites segun el tipo de controlador
 
@@ -11,7 +11,7 @@ if ControllerType == 0
 	% Limites de parametros
 	lb = [0,0,0.75,0,0];
 	ub = [maxGain,maxGain,1,maxGain,0.25];
-	initialPoint = [10; 10; 0.1; 10; 0.1];
+	initialPoint = [10; 10; 0.75; 10; 0.1];
 elseif ControllerType == 1	%PID
 	%-------------------- Funcion Objetivo PID --------------------
 	fun  = @objectiveFuncPID;
@@ -25,7 +25,7 @@ elseif ControllerType == 2
 	% Limites de parametros
 	lb = [0,0,0.75];
 	ub = [maxGain,maxGain,1];
-	initialPoint = [10; 10; 0.1];
+	initialPoint = [10; 10; 0.75];
 else
 	%-------------------- Funcion Objetivo PI --------------------
 	fun  = @objectiveFuncPI;

@@ -1,8 +1,8 @@
 %% Graficos
 
 % name = 'PIDOF, Sintonización en Frecuencia';
-% name = 'PID, Sintonización en Frecuencia';
-name = 'PIOF, Sintonización en Frecuencia';
+name = 'PI, Sintonización en Frecuencia';
+% name = 'PIOF, Sintonización en Frecuencia';
 % name = 'PI, Sintonización en Frecuencia';
 
 
@@ -11,3 +11,4 @@ plot(bandas.time, bandas.signals.values(:,1), 'k', bandas.time, bandas.signals.v
 set(gca,'fontsize',14)
 title(name, 'fontsize', 18)
 xlabel('Tiempo [s]', 'fontsize', 18); ylabel('Altura [cm]', 'fontsize', 18);
+legend('Banda 2%', 'Banda 2%', 'Altura', 'Referencia')
