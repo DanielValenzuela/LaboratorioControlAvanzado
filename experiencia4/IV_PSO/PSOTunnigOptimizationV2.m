@@ -7,7 +7,7 @@ if ControllerType == 0
     nvars = 5;
     % Limites de parametros
     lb = [0,0,0.75,0,0];
-    ub = [maxGain,maxGain,1,maxGain,0.25];
+    ub = [maxGain,maxGain,0.99,maxGain,0.25];
     initialPoint = [75; 2.5; 0.87; 2.5; 0.12];
 elseif ControllerType == 1  %PID
     %-------------------- Funcion Objetivo PID --------------------
@@ -21,7 +21,7 @@ elseif ControllerType == 2
     nvars = 3;
     % Limites de parametros
     lb = [0,0,0.75];
-    ub = [maxGain,maxGain,1];
+    ub = [maxGain,maxGain,0.99];
     initialPoint = [75; 2.5; 0.87];
 else
     %-------------------- Funcion Objetivo PI --------------------
@@ -32,7 +32,7 @@ else
     initialPoint = [75; 2.5];
 end
 
-options = optimoptions('particleswarm','Display','Off', 'InitialSwarmSpan', initialPoint, 'SwarmSize',30,'MaxIter',50);
+options = optimoptions('particleswarm','Display','Off', 'InitialSwarmSpan', initialPoint, 'SwarmSize',30,'MaxIter',30);
 % options = optimoptions('particleswarm','Display','Off', 'SwarmSize',30,'MaxIter',50);
 tic
 [x,fval,exitflag,output] = particleswarm(fun,nvars,lb,ub,options);
