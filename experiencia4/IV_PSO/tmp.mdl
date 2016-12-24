@@ -1,16 +1,17 @@
 Model {
   Name			  "tmp"
-  Version		  8.5
+  Version		  7.9
   MdlSubVersion		  0
-  SavedCharacterEncoding  "windows-1252"
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.5"
+    ComputedModelVersion    "1.8"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
+  SavedCharacterEncoding  "UTF-8"
+  SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
   DisableAllScopes	  on
@@ -20,54 +21,15 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  Object {
-    $PropName		    "BdWindowsInfo"
-    $ObjectID		    1
-    $ClassName		    "Simulink.BDWindowsInfo"
-    Object {
-      $PropName		      "WindowsInfo"
-      $ObjectID		      2
-      $ClassName	      "Simulink.WindowInfo"
-      IsActive		      [1]
-      Location		      [1012.0, 64.0, 816.0, 538.0]
-      Object {
-	$PropName		"ModelBrowserInfo"
-	$ObjectID		3
-	$ClassName		"Simulink.ModelBrowserInfo"
-	Visible			[0]
-	DockPosition		"Left"
-	Width			[50]
-	Height			[50]
-	Filter			[9]
-      }
-      Object {
-	$PropName		"ExplorerBarInfo"
-	$ObjectID		4
-	$ClassName		"Simulink.ExplorerBarInfo"
-	Visible			[1]
-      }
-      Object {
-	$PropName		"EditorsInfo"
-	$ObjectID		5
-	$ClassName		"Simulink.EditorInfo"
-	IsActive		[1]
-	ViewObjType		"SimulinkTopLevel"
-	LoadSaveID		"0"
-	Extents			[766.0, 364.0]
-	ZoomFactor		[1.0]
-	Offset			[0.0, 0.0]
-      }
-    }
-  }
   Created		  "Wed Dec 21 17:56:59 2016"
   Creator		  "felipe"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "felipe"
+  LastModifiedBy	  "root"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Dec 22 21:47:53 2016"
-  RTWModifiedTimeStamp	  404344048
-  ModelVersionFormat	  "1.%<AutoIncrement:5>"
+  LastModifiedDate	  "Sat Dec 24 02:00:24 2016"
+  RTWModifiedTimeStamp	  404443475
+  ModelVersionFormat	  "1.%<AutoIncrement:8>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -85,7 +47,6 @@ Model {
   SortedOrder		  off
   ExecutionContextIcon	  off
   ShowLinearizationAnnotations on
-  ShowMarkup		  on
   BlockNameDataTip	  off
   BlockParametersDataTip  off
   BlockDescriptionStringDataTip	off
@@ -94,11 +55,6 @@ Model {
   BrowserShowLibraryLinks off
   BrowserLookUnderMasks	  off
   SimulationMode	  "normal"
-  PauseTimes		  "5"
-  NumberOfSteps		  1
-  SnapshotBufferSize	  10
-  SnapshotInterval	  10
-  NumberOfLastSnapshots	  0
   LinearizationMsg	  "none"
   Profile		  off
   ParamWorkspaceSource	  "MATLABWorkspace"
@@ -108,9 +64,10 @@ Model {
   TryForcingSFcnDF	  off
   Object {
     $PropName		    "DataLoggingOverride"
-    $ObjectID		    6
+    $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "tmp"
+    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -132,7 +89,6 @@ Model {
   CovNameIncrementing	  off
   CovHtmlReporting	  on
   CovForceBlockReductionOff on
-  CovEnableCumulative	  on
   covSaveCumulativeToWorkspaceVar on
   CovSaveSingleToWorkspaceVar on
   CovCumulativeVarName	  "covCumulativeData"
@@ -140,12 +96,6 @@ Model {
   CovReportOnPause	  on
   CovModelRefEnable	  "Off"
   CovExternalEMLEnable	  off
-  CovSFcnEnable		  on
-  CovBoundaryAbsTol	  0.000010
-  CovBoundaryRelTol	  0.010000
-  CovUseTimeInterval	  off
-  CovStartTime		  0
-  CovStopTime		  0
   ExtModeBatchMode	  off
   ExtModeEnableFloating	  on
   ExtModeTrigType	  "manual"
@@ -167,20 +117,21 @@ Model {
   ExtModeSkipDownloadWhenConnect off
   ExtModeLogAll		  on
   ExtModeAutoUpdateStatusClock on
+  BufferReuse		  on
   ShowModelReferenceBlockVersion off
   ShowModelReferenceBlockIO off
   Array {
     Type		    "Handle"
     Dimension		    1
     Simulink.ConfigSet {
-      $ObjectID		      7
-      Version		      "1.15.0"
+      $ObjectID		      2
+      Version		      "1.12.0"
       Array {
 	Type			"Handle"
 	Dimension		9
 	Simulink.SolverCC {
-	  $ObjectID		  8
-	  Version		  "1.15.0"
+	  $ObjectID		  3
+	  Version		  "1.12.0"
 	  StartTime		  "0.0"
 	  StopTime		  "10.0"
 	  AbsTol		  "auto"
@@ -214,8 +165,8 @@ Model {
 	  InsertRTBMode		  "Whenever possible"
 	}
 	Simulink.DataIOCC {
-	  $ObjectID		  9
-	  Version		  "1.15.0"
+	  $ObjectID		  4
+	  Version		  "1.12.0"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
 	  FinalStateName	  "xFinal"
@@ -233,7 +184,6 @@ Model {
 	  SignalLogging		  on
 	  DSMLogging		  on
 	  InspectSignalLogs	  off
-	  VisualizeSimOutput	  on
 	  SaveTime		  on
 	  ReturnWorkspaceOutputs  off
 	  StateSaveName		  "xout"
@@ -247,8 +197,8 @@ Model {
 	  Refine		  "1"
 	}
 	Simulink.OptimizationCC {
-	  $ObjectID		  10
-	  Version		  "1.15.0"
+	  $ObjectID		  5
+	  Version		  "1.12.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    8
@@ -266,16 +216,13 @@ Model {
 	  BooleanDataType	  on
 	  ConditionallyExecuteInputs on
 	  InlineParams		  off
-	  UseDivisionForNetSlopeComputation "off"
+	  UseIntDivNetSlope	  off
 	  UseFloatMulNetSlope	  off
-	  DefaultUnderspecifiedDataType	"double"
 	  UseSpecifiedMinMax	  off
 	  InlineInvariantSignals  off
 	  OptimizeBlockIOStorage  on
 	  BufferReuse		  on
 	  EnhancedBackFolding	  off
-	  CachingGlobalReferences off
-	  GlobalBufferReuse	  on
 	  StrengthReduction	  off
 	  ExpressionFolding	  on
 	  BooleansAsBitfields	  off
@@ -283,13 +230,14 @@ Model {
 	  EnableMemcpy		  on
 	  MemcpyThreshold	  64
 	  PassReuseOutputArgsAs	  "Structure reference"
-	  PassReuseOutputArgsThreshold 12
 	  ExpressionDepthLimit	  128
+	  FoldNonRolledExpr	  on
 	  LocalBlockOutputs	  on
 	  RollThreshold		  5
+	  SystemCodeInlineAuto	  off
 	  StateBitsets		  off
 	  DataBitsets		  off
-	  ActiveStateOutputEnumStorageType "Native Integer"
+	  UseTempVars		  off
 	  ZeroExternalMemoryAtStartup on
 	  ZeroInternalMemoryAtStartup on
 	  InitFltsAndDblsToZero	  off
@@ -300,12 +248,13 @@ Model {
 	  LifeSpan		  "inf"
 	  MaxStackSize		  "Inherit from target"
 	  BufferReusableBoundary  on
-	  SimCompilerOptimization "off"
+	  SimCompilerOptimization "Off"
 	  AccelVerboseBuild	  off
+	  ParallelExecutionInRapidAccelerator on
 	}
 	Simulink.DebuggingCC {
-	  $ObjectID		  11
-	  Version		  "1.15.0"
+	  $ObjectID		  6
+	  Version		  "1.12.0"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
 	  ArrayBoundsChecking	  "none"
@@ -354,7 +303,7 @@ Model {
 	  UnnecessaryDatatypeConvMsg "none"
 	  VectorMatrixConversionMsg "none"
 	  InvalidFcnCallConnMsg	  "error"
-	  FcnCallInpInsideContextMsg "EnableAllAsError"
+	  FcnCallInpInsideContextMsg "Enable All"
 	  SignalLabelMismatchMsg  "none"
 	  UnconnectedInputMsg	  "warning"
 	  UnconnectedOutputMsg	  "warning"
@@ -365,10 +314,12 @@ Model {
 	  BusObjectLabelMismatch  "warning"
 	  RootOutportRequireBusObject "warning"
 	  AssertControl		  "UseLocalSettings"
+	  EnableOverflowDetection off
 	  ModelReferenceIOMsg	  "none"
 	  ModelReferenceMultiInstanceNormalModeStructChecksumCheck "error"
 	  ModelReferenceVersionMismatchMessage "none"
 	  ModelReferenceIOMismatchMessage "none"
+	  ModelReferenceCSMismatchMessage "none"
 	  UnknownTsInhSupMsg	  "warning"
 	  ModelReferenceDataLoggingMessage "warning"
 	  ModelReferenceSymbolNameMessage "warning"
@@ -380,6 +331,7 @@ Model {
 	  StrictBusMsg		  "ErrorLevel1"
 	  BusNameAdapt		  "WarnAndRepair"
 	  NonBusSignalsTreatedAsBus "none"
+	  LoggingUnavailableSignals "error"
 	  BlockIODiagnostic	  "none"
 	  SFUnusedDataAndEventsDiag "warning"
 	  SFUnexpectedBacktrackingDiag "warning"
@@ -387,19 +339,14 @@ Model {
 	  SFNoUnconditionalDefaultTransitionDiag "warning"
 	  SFTransitionOutsideNaturalParentDiag "warning"
 	  SFUnconditionalTransitionShadowingDiag "warning"
-	  SFUndirectedBroadcastEventsDiag "warning"
-	  SFTransitionActionBeforeConditionDiag	"warning"
-	  SFOutputUsedAsStateInMooreChartDiag "error"
-	  IntegerSaturationMsg	  "warning"
 	}
 	Simulink.HardwareCC {
-	  $ObjectID		  12
-	  Version		  "1.15.0"
+	  $ObjectID		  7
+	  Version		  "1.12.0"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
 	  ProdBitPerInt		  32
 	  ProdBitPerLong	  32
-	  ProdBitPerLongLong	  64
 	  ProdBitPerFloat	  32
 	  ProdBitPerDouble	  64
 	  ProdBitPerPointer	  32
@@ -409,23 +356,21 @@ Model {
 	  ProdEndianess		  "Unspecified"
 	  ProdWordSize		  32
 	  ProdShiftRightIntArith  on
-	  ProdLongLongMode	  off
 	  ProdHWDeviceType	  "32-bit Generic"
 	  TargetBitPerChar	  8
 	  TargetBitPerShort	  16
 	  TargetBitPerInt	  32
 	  TargetBitPerLong	  32
-	  TargetBitPerLongLong	  64
 	  TargetBitPerFloat	  32
 	  TargetBitPerDouble	  64
 	  TargetBitPerPointer	  32
 	  TargetLargestAtomicInteger "Char"
 	  TargetLargestAtomicFloat "None"
 	  TargetShiftRightIntArith on
-	  TargetLongLongMode	  off
 	  TargetIntDivRoundTo	  "Undefined"
 	  TargetEndianess	  "Unspecified"
 	  TargetWordSize	  32
+	  TargetTypeEmulationWarnSuppressLevel 0
 	  TargetPreprocMaxBitsSint 32
 	  TargetPreprocMaxBitsUint 32
 	  TargetHWDeviceType	  "Specified"
@@ -433,8 +378,8 @@ Model {
 	  ProdEqTarget		  on
 	}
 	Simulink.ModelReferenceCC {
-	  $ObjectID		  13
-	  Version		  "1.15.0"
+	  $ObjectID		  8
+	  Version		  "1.12.0"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
 	  CheckModelReferenceTargetMessage "error"
 	  EnableParallelModelReferenceBuilds off
@@ -448,21 +393,23 @@ Model {
 	  SupportModelReferenceSimTargetCustomCode off
 	}
 	Simulink.SFSimCC {
-	  $ObjectID		  14
-	  Version		  "1.15.0"
+	  $ObjectID		  9
+	  Version		  "1.12.0"
+	  SFSimEnableDebug	  on
 	  SFSimOverflowDetection  on
 	  SFSimEcho		  on
+	  SimBlas		  on
 	  SimCtrlC		  on
+	  SimExtrinsic		  on
 	  SimIntegrity		  on
 	  SimUseLocalCustomCode	  off
 	  SimParseCustomCode	  on
 	  SimBuildMode		  "sf_incremental_build"
-	  SimGenImportedTypeDefs  off
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
-	  $ObjectID		  15
-	  Version		  "1.15.0"
+	  $ObjectID		  10
+	  Version		  "1.12.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    16
@@ -485,15 +432,10 @@ Model {
 	    PropName		    "DisabledProps"
 	  }
 	  SystemTargetFile	  "grt.tlc"
-	  TLCOptions		  ""
 	  GenCodeOnly		  off
 	  MakeCommand		  "make_rtw"
 	  GenerateMakefile	  on
-	  PackageGeneratedCodeAndArtifacts off
-	  PackageName		  ""
 	  TemplateMakefile	  "grt_default_tmf"
-	  PostCodeGenCommand	  ""
-	  Description		  ""
 	  GenerateReport	  off
 	  SaveLog		  off
 	  RTWVerbose		  on
@@ -502,47 +444,34 @@ Model {
 	  TLCDebug		  off
 	  TLCCoverage		  off
 	  TLCAssert		  off
+	  ProcessScriptMode	  "Default"
+	  ConfigurationMode	  "Optimized"
+	  ConfigAtBuild		  off
 	  RTWUseLocalCustomCode	  off
 	  RTWUseSimCustomCode	  off
-	  CustomSourceCode	  ""
-	  CustomHeaderCode	  ""
-	  CustomInclude		  ""
-	  CustomSource		  ""
-	  CustomLibrary		  ""
-	  CustomInitializer	  ""
-	  CustomTerminator	  ""
-	  Toolchain		  "Automatically locate an installed toolchain"
-	  BuildConfiguration	  "Faster Builds"
 	  IncludeHyperlinkInReport off
 	  LaunchReport		  off
-	  PortableWordSizes	  off
-	  CreateSILPILBlock	  "None"
-	  CodeExecutionProfiling  off
-	  CodeExecutionProfileVariable "executionProfile"
-	  CodeProfilingSaveOptions "SummaryOnly"
-	  CodeProfilingInstrumentation off
-	  SILDebugging		  off
 	  TargetLang		  "C"
 	  IncludeBusHierarchyInRTWFileBlockHierarchyMap	off
+	  IncludeERTFirstTime	  off
 	  GenerateTraceInfo	  off
 	  GenerateTraceReport	  off
 	  GenerateTraceReportSl	  off
 	  GenerateTraceReportSf	  off
 	  GenerateTraceReportEml  off
+	  GenerateCodeInfo	  off
 	  GenerateWebview	  off
 	  GenerateCodeMetricsReport off
 	  GenerateCodeReplacementReport	off
-	  GenerateMissedCodeReplacementReport off
-	  RTWCompilerOptimization "off"
-	  RTWCustomCompilerOptimizations ""
+	  RTWCompilerOptimization "Off"
 	  CheckMdlBeforeBuild	  "Off"
-	  SharedConstantsCachingThreshold 1024
+	  CustomRebuildMode	  "OnUpdate"
 	  Array {
 	    Type		    "Handle"
 	    Dimension		    2
 	    Simulink.CodeAppCC {
-	      $ObjectID		      16
-	      Version		      "1.15.0"
+	      $ObjectID		      11
+	      Version		      "1.12.0"
 	      Array {
 		Type			"Cell"
 		Dimension		24
@@ -574,7 +503,6 @@ Model {
 	      }
 	      ForceParamTrailComments off
 	      GenerateComments	      on
-	      CommentStyle	      "Auto"
 	      IgnoreCustomStorageClasses on
 	      IgnoreTestpoints	      off
 	      IncHierarchyInIds	      off
@@ -582,7 +510,6 @@ Model {
 	      PreserveName	      off
 	      PreserveNameWithParent  off
 	      ShowEliminatedStatement off
-	      OperatorAnnotations     off
 	      IncAutoGenComments      off
 	      SimulinkDataObjDesc     off
 	      SFDataObjDesc	      off
@@ -597,7 +524,6 @@ Model {
 	      CustomSymbolStrBlkIO    "rtb_$N$M"
 	      CustomSymbolStrTmpVar   "$N$M"
 	      CustomSymbolStrMacro    "$R$N$M"
-	      CustomSymbolStrUtil     "$N$C"
 	      DefineNamingRule	      "None"
 	      ParamNamingRule	      "None"
 	      SignalNamingRule	      "None"
@@ -606,15 +532,14 @@ Model {
 	      SimulinkBlockComments   on
 	      MATLABSourceComments    off
 	      EnableCustomComments    off
-	      InternalIdentifier      "Shortened"
 	      InlinedPrmAccess	      "Literals"
 	      ReqsInCode	      off
 	      UseSimReservedNames     off
 	    }
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
-	      $ObjectID		      17
-	      Version		      "1.15.0"
+	      $ObjectID		      12
+	      Version		      "1.12.0"
 	      Array {
 		Type			"Cell"
 		Dimension		13
@@ -636,17 +561,16 @@ Model {
 	      TargetFcnLib	      "ansi_tfl_table_tmw.mat"
 	      TargetLibSuffix	      ""
 	      TargetPreCompLibLocation ""
-	      GenFloatMathFcnCalls    "NOT IN USE"
-	      TargetLangStandard      "C89/C90 (ANSI)"
 	      CodeReplacementLibrary  "None"
 	      UtilityFuncGeneration   "Auto"
 	      ERTMultiwordTypeDef     "System defined"
+	      CodeExecutionProfiling  off
 	      ERTMultiwordLength      256
 	      MultiwordLength	      2048
 	      GenerateFullHeader      on
-	      InferredTypesCompatibility off
 	      GenerateSampleERTMain   off
 	      GenerateTestInterfaces  off
+	      IsPILTarget	      off
 	      ModelReferenceCompliant on
 	      ParMdlRefBuildCompliant on
 	      CompOptLevelCompliant   on
@@ -663,22 +587,19 @@ Model {
 	      LogVarNameModifier      "rt_"
 	      MatFileLogging	      on
 	      MultiInstanceERTCode    off
-	      CodeInterfacePackaging  "Nonreusable function"
 	      SupportNonFinite	      on
 	      SupportComplex	      on
 	      PurelyIntegerCode	      off
 	      SupportContinuousTime   on
 	      SupportNonInlinedSFcns  on
 	      SupportVariableSizeSignals off
+	      EnableShiftOperators    on
 	      ParenthesesLevel	      "Nominal"
-	      CastingMode	      "Nominal"
-	      MATLABClassNameForMDSCustomization "Simulink.SoftwareTarget.GRTCustomization"
+	      PortableWordSizes	      off
 	      ModelStepFunctionPrototypeControlCompliant off
 	      CPPClassGenCompliant    on
 	      AutosarCompliant	      off
 	      GRTInterface	      off
-	      GenerateAllocFcn	      off
-	      GenerateSharedConstants on
 	      UseMalloc		      off
 	      ExtMode		      off
 	      ExtModeStaticAlloc      off
@@ -692,14 +613,13 @@ Model {
 	      RTWCAPIStates	      off
 	      RTWCAPIRootIO	      off
 	      GenerateASAP2	      off
-	      MultiInstanceErrorCode  "Error"
 	    }
 	    PropName		    "Components"
 	  }
 	}
 	hdlcoderui.hdlcc {
-	  $ObjectID		  18
-	  Version		  "1.15.0"
+	  $ObjectID		  13
+	  Version		  "1.12.0"
 	  Description		  "HDL Coder custom configuration component"
 	  Name			  "HDL Coder"
 	  Array {
@@ -720,17 +640,7 @@ Model {
   }
   Simulink.ConfigSet {
     $PropName		    "ActiveConfigurationSet"
-    $ObjectID		    7
-  }
-  Object {
-    $PropName		    "DataTransfer"
-    $ObjectID		    19
-    $ClassName		    "Simulink.GlobalDataTransfer"
-    DefaultTransitionBetweenSyncTasks "Ensure deterministic transfer (maximum delay)"
-    DefaultTransitionBetweenAsyncTasks "Ensure data integrity only"
-    DefaultTransitionBetweenContTasks "Ensure deterministic transfer (minimum delay)"
-    DefaultExtrapolationMethodBetweenContTasks "None"
-    AutoInsertRateTranBlk   [0]
+    $ObjectID		    2
   }
   ExplicitPartitioning	  off
   BlockDefaults {
@@ -763,25 +673,6 @@ Model {
     FontSize		    9
     FontWeight		    "normal"
     FontAngle		    "normal"
-  }
-  MaskDefaults {
-    SelfModifiable	    "off"
-    IconFrame		    "on"
-    IconOpaque		    "on"
-    RunInitForIconRedraw    "off"
-    IconRotate		    "none"
-    PortRotate		    "default"
-    IconUnits		    "autoscale"
-  }
-  MaskParameterDefaults {
-    Evaluate		    "on"
-    Tunable		    "on"
-    NeverSave		    "off"
-    Internal		    "off"
-    ReadOnly		    "off"
-    Enabled		    "on"
-    Visible		    "on"
-    ToolTip		    "on"
   }
   BlockParameterDefaults {
     Block {
@@ -872,7 +763,6 @@ Model {
       TickLabels	      "OneTimeTick"
       ZoomMode		      "on"
       Grid		      "on"
-      ShowLegends	      off
       TimeRange		      "auto"
       YMin		      "-5"
       YMax		      "5"
@@ -884,7 +774,6 @@ Model {
       Decimation	      "1"
       SampleInput	      off
       SampleTime	      "-1"
-      ScrollMode	      off
     }
     Block {
       BlockType		      Step
@@ -901,15 +790,10 @@ Model {
       Permissions	      "ReadWrite"
       PermitHierarchicalResolution "All"
       TreatAsAtomicUnit	      off
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
       CheckFcnCallInpInsideContextMsg off
       SystemSampleTime	      "-1"
-      RTWSystemCode	      "Auto"
       RTWFcnNameOpts	      "Auto"
       RTWFileNameOpts	      "Auto"
-      FunctionInterfaceSpec   "void_void"
-      FunctionWithSeparateData off
       RTWMemSecFuncInitTerm   "Inherit from model"
       RTWMemSecFuncExecute    "Inherit from model"
       RTWMemSecDataConstants  "Inherit from model"
@@ -919,13 +803,9 @@ Model {
       DataTypeOverride	      "UseLocalSettings"
       DataTypeOverrideAppliesTo	"AllNumericTypes"
       MinMaxOverflowLogging   "UseLocalSettings"
-      Opaque		      off
-      MaskHideContents	      off
       SFBlockType	      "NONE"
       Variant		      off
       GeneratePreprocessorConditionals off
-      ContentPreviewEnabled   off
-      IsWebBlock	      off
     }
     Block {
       BlockType		      Sum
@@ -954,7 +834,7 @@ Model {
   }
   System {
     Name		    "tmp"
-    Location		    [1012, 64, 1828, 602]
+    Location		    [886, 127, 1337, 572]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -970,25 +850,16 @@ Model {
     ReportName		    "simulink-default.rpt"
     SIDHighWatermark	    "64"
     Block {
-      BlockType		      Fcn
-      Name		      "Fcn"
-      SID		      "53"
-      Position		      [150, 172, 180, 198]
-      ZOrder		      10
-      Expr		      "(u<40)"
-    }
-    Block {
       BlockType		      Reference
       Name		      "Fractional PI"
       SID		      "56"
       Ports		      [1, 1]
-      Position		      [65, 33, 105, 67]
+      Position		      [95, 273, 135, 307]
       ZOrder		      12
       LibraryVersion	      "1.13"
       FontName		      "Arial"
       SourceBlock	      "nintblocks/Fractional PID"
       SourceType	      "Fractional PID controller"
-      ContentPreviewEnabled   off
       kp		      "Kp"
       kd		      "Kd"
       vd		      "mu"
@@ -1005,13 +876,12 @@ Model {
       Name		      "Fractional PID"
       SID		      "55"
       Ports		      [1, 1]
-      Position		      [285, 36, 325, 74]
+      Position		      [95, 71, 135, 109]
       ZOrder		      11
       LibraryVersion	      "1.13"
       FontName		      "Arial"
       SourceBlock	      "nintblocks/Fractional PID"
       SourceType	      "Fractional PID controller"
-      ContentPreviewEnabled   off
       kp		      "Kp"
       kd		      "Kd"
       vd		      "mu"
@@ -1028,7 +898,7 @@ Model {
       Name		      "Mux1"
       SID		      "21"
       Ports		      [3, 1]
-      Position		      [605, 166, 610, 204]
+      Position		      [320, 201, 325, 239]
       ZOrder		      8
       ShowName		      off
       Inputs		      "3"
@@ -1039,12 +909,18 @@ Model {
       Name		      "PI"
       SID		      "57"
       Ports		      [1, 1]
-      Position		      [260, 294, 300, 336]
+      Position		      [95, 349, 135, 391]
       ZOrder		      13
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
       RequestExecContextInheritance off
+      MaskHideContents	      off
       System {
 	Name			"PI"
-	Location		[25, 25, 920, 562]
+	Location		[25, 81, 920, 618]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1129,54 +1005,45 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  1
 	  SrcBlock		  "Gain2"
 	  SrcPort		  1
 	  Points		  [0, 0]
 	  Branch {
-	    ZOrder		    2
 	    DstBlock		    "Sum2"
 	    DstPort		    1
 	  }
 	  Branch {
-	    ZOrder		    3
 	    DstBlock		    "Product"
 	    DstPort		    1
 	  }
 	}
 	Line {
-	  ZOrder		  4
 	  SrcBlock		  "Sum2"
 	  SrcPort		  1
 	  Points		  [5, 0]
 	  Branch {
-	    ZOrder		    5
 	    Points		    [0, 110]
 	    DstBlock		    "Fcn"
 	    DstPort		    1
 	  }
 	  Branch {
-	    ZOrder		    6
 	    DstBlock		    "Out1"
 	    DstPort		    1
 	  }
 	}
 	Line {
-	  ZOrder		  7
 	  SrcBlock		  "Transfer Fcn1"
 	  SrcPort		  1
 	  DstBlock		  "Sum2"
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  8
 	  SrcBlock		  "Product"
 	  SrcPort		  1
 	  DstBlock		  "Transfer Fcn1"
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  9
 	  SrcBlock		  "Fcn"
 	  SrcPort		  1
 	  Points		  [-35, 0]
@@ -1184,7 +1051,6 @@ Model {
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  10
 	  SrcBlock		  "In1"
 	  SrcPort		  1
 	  DstBlock		  "Gain2"
@@ -1197,12 +1063,18 @@ Model {
       Name		      "PID"
       SID		      "10"
       Ports		      [1, 1]
-      Position		      [300, 104, 340, 146]
+      Position		      [95, 149, 135, 191]
       ZOrder		      3
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
       RequestExecContextInheritance off
+      MaskHideContents	      off
       System {
 	Name			"PID"
-	Location		[109, 52, 835, 660]
+	Location		[109, 81, 835, 689]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1319,31 +1191,26 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  1
 	  SrcBlock		  "Gain"
 	  SrcPort		  1
 	  DstBlock		  "Derivative"
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  2
 	  SrcBlock		  "Gain1"
 	  SrcPort		  1
 	  Points		  [20, 0]
 	  Branch {
-	    ZOrder		    3
 	    DstBlock		    "Sum2"
 	    DstPort		    1
 	  }
 	  Branch {
-	    ZOrder		    4
 	    Points		    [-20, 0]
 	    DstBlock		    "Product"
 	    DstPort		    1
 	  }
 	}
 	Line {
-	  ZOrder		  5
 	  SrcBlock		  "Sum2"
 	  SrcPort		  1
 	  Points		  [1, 0; 0, 40]
@@ -1351,7 +1218,6 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  6
 	  SrcBlock		  "Transfer Fcn"
 	  SrcPort		  1
 	  Points		  [25, 0]
@@ -1359,14 +1225,12 @@ Model {
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  7
 	  SrcBlock		  "Product"
 	  SrcPort		  1
 	  DstBlock		  "Transfer Fcn"
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  8
 	  SrcBlock		  "Fcn"
 	  SrcPort		  1
 	  Points		  [-40, 0]
@@ -1374,42 +1238,35 @@ Model {
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  9
 	  SrcBlock		  "In1"
 	  SrcPort		  1
 	  Points		  [0, 0]
 	  Branch {
-	    ZOrder		    10
 	    Points		    [0, 90]
 	    DstBlock		    "Gain"
 	    DstPort		    1
 	  }
 	  Branch {
-	    ZOrder		    11
 	    Points		    [0, 0]
 	    DstBlock		    "Gain1"
 	    DstPort		    1
 	  }
 	}
 	Line {
-	  ZOrder		  12
 	  SrcBlock		  "Sum1"
 	  SrcPort		  1
 	  Points		  [5, 0]
 	  Branch {
-	    ZOrder		    13
 	    DstBlock		    "Out1"
 	    DstPort		    1
 	  }
 	  Branch {
-	    ZOrder		    14
 	    Points		    [0, 60]
 	    DstBlock		    "Fcn"
 	    DstPort		    1
 	  }
 	}
 	Line {
-	  ZOrder		  15
 	  SrcBlock		  "Derivative"
 	  SrcPort		  1
 	  Points		  [75, 0]
@@ -1419,25 +1276,19 @@ Model {
       }
     }
     Block {
-      BlockType		      Product
-      Name		      "Product"
-      SID		      "54"
-      Ports		      [2, 1]
-      Position		      [200, 107, 230, 138]
-      ZOrder		      9
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
       BlockType		      SubSystem
       Name		      "bandaInf"
       SID		      "22"
       Ports		      [0, 1]
-      Position		      [540, 175, 570, 195]
+      Position		      [255, 210, 285, 230]
       ZOrder		      6
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
       RequestExecContextInheritance off
+      MaskHideContents	      off
       System {
 	Name			"bandaInf"
 	Location		[559, 59, 1232, 785]
@@ -1531,14 +1382,12 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  1
 	  SrcBlock		  "Sum2"
 	  SrcPort		  1
 	  DstBlock		  "r"
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  2
 	  SrcBlock		  "Step1"
 	  SrcPort		  1
 	  Points		  [50, 0; 0, 105]
@@ -1546,7 +1395,6 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  3
 	  SrcBlock		  "Step2"
 	  SrcPort		  1
 	  Points		  [40, 0; 0, 65]
@@ -1554,7 +1402,6 @@ Model {
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  4
 	  SrcBlock		  "Step5"
 	  SrcPort		  1
 	  Points		  [40, 0; 0, -65]
@@ -1562,7 +1409,6 @@ Model {
 	  DstPort		  5
 	}
 	Line {
-	  ZOrder		  5
 	  SrcBlock		  "Step6"
 	  SrcPort		  1
 	  Points		  [50, 0; 0, -100]
@@ -1570,7 +1416,6 @@ Model {
 	  DstPort		  6
 	}
 	Line {
-	  ZOrder		  6
 	  SrcBlock		  "Step3"
 	  SrcPort		  1
 	  Points		  [30, 0; 0, 20]
@@ -1578,7 +1423,6 @@ Model {
 	  DstPort		  3
 	}
 	Line {
-	  ZOrder		  7
 	  SrcBlock		  "Step4"
 	  SrcPort		  1
 	  Points		  [30, 0; 0, -20]
@@ -1587,11 +1431,7 @@ Model {
 	}
 	Annotation {
 	  SID			  "31"
-	  Position		  [179, 120, 181, 135]
-	  InternalMargins	  [0, 0, 0, 0]
-	  FixedHeight		  off
-	  FixedWidth		  off
-	  ZOrder		  -1
+	  Position		  [180, 137]
 	}
       }
     }
@@ -1600,9 +1440,15 @@ Model {
       Name		      "bandaSup"
       SID		      "32"
       Ports		      [0, 1]
-      Position		      [540, 132, 570, 158]
+      Position		      [255, 167, 285, 193]
       ZOrder		      5
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
       RequestExecContextInheritance off
+      MaskHideContents	      off
       System {
 	Name			"bandaSup"
 	Location		[559, 59, 1232, 785]
@@ -1696,14 +1542,12 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  1
 	  SrcBlock		  "Sum2"
 	  SrcPort		  1
 	  DstBlock		  "r"
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  2
 	  SrcBlock		  "Step1"
 	  SrcPort		  1
 	  Points		  [50, 0; 0, 105]
@@ -1711,7 +1555,6 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  3
 	  SrcBlock		  "Step2"
 	  SrcPort		  1
 	  Points		  [40, 0; 0, 65]
@@ -1719,7 +1562,6 @@ Model {
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  4
 	  SrcBlock		  "Step5"
 	  SrcPort		  1
 	  Points		  [40, 0; 0, -65]
@@ -1727,7 +1569,6 @@ Model {
 	  DstPort		  5
 	}
 	Line {
-	  ZOrder		  5
 	  SrcBlock		  "Step6"
 	  SrcPort		  1
 	  Points		  [50, 0; 0, -100]
@@ -1735,7 +1576,6 @@ Model {
 	  DstPort		  6
 	}
 	Line {
-	  ZOrder		  6
 	  SrcBlock		  "Step3"
 	  SrcPort		  1
 	  Points		  [30, 0; 0, 20]
@@ -1743,7 +1583,6 @@ Model {
 	  DstPort		  3
 	}
 	Line {
-	  ZOrder		  7
 	  SrcBlock		  "Step4"
 	  SrcPort		  1
 	  Points		  [30, 0; 0, -20]
@@ -1752,11 +1591,7 @@ Model {
 	}
 	Annotation {
 	  SID			  "41"
-	  Position		  [179, 120, 181, 135]
-	  InternalMargins	  [0, 0, 0, 0]
-	  FixedHeight		  off
-	  FixedWidth		  off
-	  ZOrder		  -1
+	  Position		  [180, 137]
 	}
       }
     }
@@ -1765,7 +1600,7 @@ Model {
       Name		      "bandas"
       SID		      "42"
       Ports		      [1]
-      Position		      [630, 169, 660, 201]
+      Position		      [345, 204, 375, 236]
       ZOrder		      7
       Floating		      off
       Location		      [5, 81, 1371, 795]
@@ -1785,6 +1620,7 @@ Model {
 	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
 	MarkerStyles		"none|none|none|none|none|none"
       }
+      ShowLegends	      off
       TimeRange		      "971.6614906832298"
       YMin		      "14.5"
       YMax		      "22.5"
@@ -1799,9 +1635,15 @@ Model {
       Name		      "ref"
       SID		      "43"
       Ports		      [0, 1]
-      Position		      [540, 210, 570, 230]
+      Position		      [255, 245, 285, 265]
       ZOrder		      4
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
       RequestExecContextInheritance off
+      MaskHideContents	      off
       System {
 	Name			"ref"
 	Location		[559, 59, 1232, 785]
@@ -1895,14 +1737,12 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  1
 	  SrcBlock		  "Sum2"
 	  SrcPort		  1
 	  DstBlock		  "r"
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  2
 	  SrcBlock		  "Step1"
 	  SrcPort		  1
 	  Points		  [50, 0; 0, 105]
@@ -1910,7 +1750,6 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  3
 	  SrcBlock		  "Step2"
 	  SrcPort		  1
 	  Points		  [40, 0; 0, 65]
@@ -1918,7 +1757,6 @@ Model {
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  4
 	  SrcBlock		  "Step5"
 	  SrcPort		  1
 	  Points		  [40, 0; 0, -65]
@@ -1926,7 +1764,6 @@ Model {
 	  DstPort		  5
 	}
 	Line {
-	  ZOrder		  5
 	  SrcBlock		  "Step6"
 	  SrcPort		  1
 	  Points		  [50, 0; 0, -100]
@@ -1934,7 +1771,6 @@ Model {
 	  DstPort		  6
 	}
 	Line {
-	  ZOrder		  6
 	  SrcBlock		  "Step3"
 	  SrcPort		  1
 	  Points		  [30, 0; 0, 20]
@@ -1942,7 +1778,6 @@ Model {
 	  DstPort		  3
 	}
 	Line {
-	  ZOrder		  7
 	  SrcBlock		  "Step4"
 	  SrcPort		  1
 	  Points		  [30, 0; 0, -20]
@@ -1951,23 +1786,17 @@ Model {
 	}
 	Annotation {
 	  SID			  "52"
-	  Position		  [179, 120, 181, 135]
-	  InternalMargins	  [0, 0, 0, 0]
-	  FixedHeight		  off
-	  FixedWidth		  off
-	  ZOrder		  -1
+	  Position		  [180, 137]
 	}
       }
     }
     Line {
-      ZOrder		      1
       SrcBlock		      "Mux1"
       SrcPort		      1
       DstBlock		      "bandas"
       DstPort		      1
     }
     Line {
-      ZOrder		      2
       SrcBlock		      "bandaSup"
       SrcPort		      1
       Points		      [5, 0; 0, 30]
@@ -1975,33 +1804,17 @@ Model {
       DstPort		      1
     }
     Line {
-      ZOrder		      3
       SrcBlock		      "bandaInf"
       SrcPort		      1
       DstBlock		      "Mux1"
       DstPort		      2
     }
     Line {
-      ZOrder		      4
       SrcBlock		      "ref"
       SrcPort		      1
       Points		      [5, 0; 0, -25]
       DstBlock		      "Mux1"
       DstPort		      3
-    }
-    Line {
-      ZOrder		      5
-      Points		      [140, 125; 0, -10]
-      DstBlock		      "Product"
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      6
-      SrcBlock		      "Fcn"
-      SrcPort		      1
-      Points		      [5, 0; 0, -55]
-      DstBlock		      "Product"
-      DstPort		      2
     }
   }
 }
